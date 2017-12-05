@@ -31,7 +31,7 @@ var app = express();
 
 //define the view engine (dynamic html in /view )
 app.set('view engine', 'ejs');
-app.set('port', process.env.PORT || 8080 );
+app.set('port', process.env.PORT || 80 );
 
 //blocks the meta data contained in headers
 app.disable('x-powered-by');

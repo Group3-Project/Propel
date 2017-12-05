@@ -27,7 +27,7 @@ module.exports = function (app,passport,db) {
 	passport.use(new FacebookStrategy({
     clientID: '960280067443569',
     clientSecret: '4ed9c2ce7f70d9912c94e29f3cbfc139',
-    callbackURL: "http://localhost:3014/auth/facebook/callback",
+    callbackURL: "http://reyleight.com/auth/facebook/callback",
     profileFields: ['id','displayName', 'email'] 
   },
   function(accessToken, refreshToken, profile, done) {
@@ -38,11 +38,27 @@ module.exports = function (app,passport,db) {
   	profile_data.fb_id = profile._json.id;
   	profile_data.name = profile._json.name;
 
-  	// db.query('insert into users set ? ', profile_data, function(err,resp){
-  	// 	if (err) throw err;
-  	// 	console.log('data saved succesfully');
-  	// } );
-  	
+    //check if user with that fb_id isnt aleady registerd in the db
+    db.query('select exists (select 1 from users where fb_id =  ?) as duplicateCheck', profile_data.fb_id, function(err,resp){
+      if(err){
+        //handleerror
+        console.log(err);
+      }
+
+      if(resp[0].duplicateCheck == 0){
+
+      db.query('insert into users set ? ', profile_data, function(err,resp){
+        if (err) throw err;
+         console.log('data saved succesfully');
+      });
+
+      }else{
+        console.log("User already exists");
+      }
+
+     
+    });
+
     done(null,profile);
   }
 ));
@@ -52,12 +68,10 @@ module.exports = function (app,passport,db) {
 // access was granted, the user will be logged in.  Otherwise,
 // authentication has failed.
 
-// app.get('/auth/facebook/callback',passport.authenticate('facebook', {successRedirect: '/', failureRedirect: '/login' }),function(res,req){
-	
-// });
 
-app.get('/auth/facebook/callback',passport.authenticate('facebook', { failureRedirect: '/login' }),function(res,req){
-	res.render('index');
+app.get('/auth/facebook/callback',passport.authenticate('facebook', { failureRedirect: '/login' }),function(req,res){
+   //sends back to home view 
+	 res.redirect('/');
 });
 
 app.get('/auth/facebook',passport.authenticate('facebook', { scope: ['email','public_profile']}));

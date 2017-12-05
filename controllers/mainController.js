@@ -7,9 +7,11 @@ DB.query("select * from game_list", function(error, rows, fields){
 	if(!!error){
 		console.log('mysql query error' + error);
 	}else{
-		game_list = rows;		
+		game_list = rows;
 	}
 });
+
+
 
 
 

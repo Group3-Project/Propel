@@ -8,12 +8,10 @@
 	<%include partials/nav.ejs %> 
 
 	<!-- main body -->
-	
-<!-- 	<div>
-		<% for(var i = 0; i< 2; i++ ){ %>
-		<p> <%= game_list[i].name %></p>
-		<% } %>	
-	</div> -->
+	<% for (var game in game_list) { %>
+      <h3><%= game_list[game].name %></h3>
+    <% } %>
+
 	
 </body>
 </html>
