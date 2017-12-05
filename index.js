@@ -17,16 +17,23 @@ connection.connect(function(error){
 });
 
 //app setup 
-
 var express = require('express');
-// auth module 
-var passport = require('passport');
-
-var fbauthController = require('./controllers/fbauthController'); 
-var mainController = require('./controllers/mainController');
+var session = require('express-session');
 
 
 var app = express();
+
+// authorization- flow
+var passport = require('passport');
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(session({
+		  secret: 'keyboard cat',
+		  resave: false,
+		  saveUninitialized: true,
+		  cookie: { secure: false }
+}));
 
 
 //define the view engine (dynamic html in /view )
@@ -39,10 +46,16 @@ app.disable('x-powered-by');
 //static files 
 app.use(express.static('./public'))
 
+//define controllers
+var fbauthController = require('./controllers/fbauthController'); 
+var mainController = require('./controllers/mainController');
+
 
 //launch controllers
 mainController(app,connection);
 fbauthController(app,passport,connection);
+
+
 
 app.listen(app.get('port'), function(){
 	console.log("express strated");

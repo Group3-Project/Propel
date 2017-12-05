@@ -1,27 +1,21 @@
 
 var FacebookStrategy = require('passport-facebook').Strategy;
-var session = require('express-session');
+
+
+
 
 module.exports = function (app,passport,db) {
 
-  
-  	app.use(passport.initialize());
-  	app.use(passport.session());
-	app.use(session({
-		  secret: 'keyboard cat',
-		  resave: false,
-		  saveUninitialized: true,
-		  cookie: { secure: false }
-	}));
 
 	passport.serializeUser(function(user, done) {
-	  done(null, user.id);
+	  done(null, user._json);
 	});
 
 	passport.deserializeUser(function(id, done) {
-	  User.findById(id, function(err, user) {
-	    done(err, user);
-	  });
+	  // User.findById(id, function(err, user) {
+	  //   done(err, user);
+	  // });
+    done(null,id);
 	});
 
 	passport.use(new FacebookStrategy({
@@ -69,10 +63,12 @@ module.exports = function (app,passport,db) {
 // authentication has failed.
 
 
-app.get('/auth/facebook/callback',passport.authenticate('facebook', { failureRedirect: '/login' }),function(req,res){
-   //sends back to home view 
-	 res.redirect('/');
+app.get('/auth/facebook/callback',passport.authenticate('facebook', {failureRedirect: '/login' }),function(req,res){
+
+  res.redirect('/');
+
 });
+
 
 app.get('/auth/facebook',passport.authenticate('facebook', { scope: ['email','public_profile']}));
 

@@ -7,6 +7,9 @@
 	<!-- nav bar --> 
 	<%include partials/nav.ejs %> 
 
+   <% if (typeof user == 'object' && user) { %>
+     <%=user.name%>
+  <% } %>
 	<!-- main body -->
 	<% for (var game in game_list) { %>
       <h3><%= game_list[game].name %></h3>
