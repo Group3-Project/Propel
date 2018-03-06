@@ -21,7 +21,7 @@ module.exports = function (app,passport,db) {
 	passport.use(new FacebookStrategy({
     clientID: '960280067443569',
     clientSecret: '4ed9c2ce7f70d9912c94e29f3cbfc139',
-    callbackURL: "http://reyleight.com/auth/facebook/callback",
+    callbackURL: "http://10.72.96.115/auth/facebook/callback",
     profileFields: ['id','displayName', 'email'] 
   },
   function(accessToken, refreshToken, profile, done) {
