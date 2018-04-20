@@ -4,8 +4,8 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host : '127.0.0.1',
   user: 'root',
-  password : 'root',
-  database : 'LAMPAmirgo42'
+  password : 'LAMPAmirgo42',
+  database : 'propel'
 });
 
 connection.connect(function(error){
@@ -23,7 +23,7 @@ var session = require('express-session');
 var app = express();
 
 var server = require('http').Server(app);
-server.listen(8011);
+server.listen(80);
 
 // authorization- flow
 var passport = require('passport');
