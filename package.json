@@ -18,6 +18,8 @@
     "mysql": "^2.15.0",
     "nodemon": "^1.12.1",
     "passport": "^0.4.0",
-    "passport-facebook": "^2.1.1"
+    "passport-facebook": "^2.1.1",
+    "express-sessions": "^1.0.6",
+    "socket.io": "^2.0.4"
   }
 }
