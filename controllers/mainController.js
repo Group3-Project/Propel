@@ -23,10 +23,10 @@ function getProfile(){
 //routes
 app.get('/',function(req, res){
 	
-	if(req.session.passport){
-		
+	if(req.user){	
+		console.log(req.user)
 		//temp solution -> in the future getProfile and db will be used 
-		 user_profile = req.session.passport.user;
+		 user_profile = req.user;
 		 console.log("User recognized");
 		 socketController(app, express,server, user_profile.id);
 
