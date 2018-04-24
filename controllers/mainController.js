@@ -22,7 +22,7 @@ function getProfile(){
 
 //routes
 app.get('/',function(req, res){
-	
+	user_profile = null;
 	if(req.user){	
 		console.log(req.user)
 		//temp solution -> in the future getProfile and db will be used 
