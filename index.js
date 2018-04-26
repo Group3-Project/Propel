@@ -23,7 +23,7 @@ var session = require('express-session');
 var app = express();
 
 var server = require('http').Server(app);
-server.listen(8011);
+server.listen(80);
 
 // authorization- flow
 var passport = require('passport');
