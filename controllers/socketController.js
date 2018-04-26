@@ -59,11 +59,13 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   Player.onConnect(socket);
 
   socket.on('disconnect', ()=>{ //Delete the player form the socket and player list when it desconnect. It's an automatic function, no need to emit
-    delete socket_list[socket.id];
+     if(user_fb_id){
+	  delete socket_list[socket.id];
     Player.onDisconnect(socket);
     user_fb_id = null;
-
+	
     console.log('Connection ' + socket.id + " is disconnected");
+     }
   });
   console.log('Socket Connection with unique id ' + socket.id + " is connected");
  }
