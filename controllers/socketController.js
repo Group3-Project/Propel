@@ -51,7 +51,7 @@ Player.update = ()=>{
   }
   return pack;
 }
-
+if(user_fb_id){
 io.sockets.on('connection', (socket)=>{ //Whenever a player connect
  
   socket.id = user_fb_id;
@@ -67,6 +67,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   });
   console.log('Socket Connection with unique id ' + socket.id + " is connected");
 });
+}
 var initPack = {player:[]};
 var removePack = {player:[]};
 
