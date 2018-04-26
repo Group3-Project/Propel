@@ -37,6 +37,7 @@ Player.getAllInitPack = ()=>{ //To get all the previous player states
 	var players = [];
 	for(var i in Player.list)
 		players.push(Player.list[i].getInitPack());
+	console.log(Player.list);
 	return players;
 }
 Player.onDisconnect = (socket)=>{
