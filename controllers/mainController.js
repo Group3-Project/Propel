@@ -28,8 +28,7 @@ app.get('/',function(req, res){
 		//temp solution -> in the future getProfile and db will be used 
 		 user_profile = req.user;
 		 console.log("User recognized");
-		 var id = Math.random();
-		 socketController(app, express,server, id);
+		 socketController(app, express,server, user_profile);
 
 	}else{
 		console.log('nobody has loged in yet');
