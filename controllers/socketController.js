@@ -1,7 +1,8 @@
 module.exports = function(app,express,server, user_fb_id,Player,initPack,removePack){
-var io = require('socket.io')(server,{});
+var io = require('socket.io')(server);
 
-
+io.set('heartbeat timeout',5000000);
+io.set('heartbeat interval',5000000);
 var socket_list = {};
 // var Player = (id)=>{
 //   var self = {
@@ -65,6 +66,7 @@ socket_list[socket.id] = socket;
 }
 
   socket.on('disconnect', (reason)=>{ //Delete the player form the socket and player list when it desconnect. It's an automatic function, no need to emit
+ console.log("user id" + user_fb_id);
  if(user_fb_id){
 	  delete socket_list[socket.id];
     Player.onDisconnect(socket);
