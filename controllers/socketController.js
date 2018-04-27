@@ -53,10 +53,11 @@ var socket_list = {};
 //   }
 //   return pack;
 // }
-
+var sockety;
 io.sockets.on('connection', (socket)=>{ //Whenever a player connect 
 if(user_fb_id){
 socket.id = user_fb_id
+	sockety = socket
 socket_list[socket.id] = socket;
 	if(!(user_fb_id in Player.list)){
 //  socket.id = user_fb_id;
@@ -80,7 +81,26 @@ socket_list[socket.id] = socket;
  // console.log('Socket Connection with unique id ' + socket.id + " is connected");
  }
 });
-
+app.get('/logout', function (req, res) {
+    req.logout();
+    req.session.destroy(function (err) {
+        if (err) {
+            return next(err);
+        }
+        delete socket_list[sockety.id];
+    Player.onDisconnect(sockety);
+	console.log("On diss");
+	console.log(Player.list);
+    user_fb_id = null;
+	
+    console.log('Connection ' + sockety.id + " is disconnected ");
+        // destroy session data
+        req.session = null;
+	
+        // redirect to homepage
+        res.redirect('/');
+    });
+});
 //var initPack = {player:[]};
 //var removePack = {player:[]};
 
