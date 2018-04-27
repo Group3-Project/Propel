@@ -1,4 +1,4 @@
-module.exports = function(app,express,server, user_fb_id){
+module.exports = function(app,express,server, user_fb_id,Player,initPack,removePack){
 var io = require('socket.io')(server,{});
 
 
@@ -53,27 +53,34 @@ var socket_list = {};
 //   return pack;
 // }
 
-io.sockets.on('connection', (socket)=>{ //Whenever a player connect
- if(user_fb_id){
-  socket.id = user_fb_id;
-  socket_list[socket.id] = socket;
+io.sockets.on('connection', (socket)=>{ //Whenever a player connect 
+if(user_fb_id){
+socket.id = user_fb_id
+socket_list[socket.id] = socket;
+	if(!(user_fb_id in Player.list)){
+//  socket.id = user_fb_id;
+//  socket_list[socket.id] = socket;
   Player.onConnect(socket);
+	console.log("connection with id " + socket.id + " is connected" );
+}
 
-  socket.on('disconnect', ()=>{ //Delete the player form the socket and player list when it desconnect. It's an automatic function, no need to emit
-     if(user_fb_id){
+  socket.on('disconnect', (reason)=>{ //Delete the player form the socket and player list when it desconnect. It's an automatic function, no need to emit
+ if(user_fb_id){
 	  delete socket_list[socket.id];
     Player.onDisconnect(socket);
+	console.log("On diss");
+	console.log(Player.list);
     user_fb_id = null;
 	
-    console.log('Connection ' + socket.id + " is disconnected");
+    console.log('Connection ' + socket.id + " is disconnected " + reason);
      }
   });
-  console.log('Socket Connection with unique id ' + socket.id + " is connected");
+ // console.log('Socket Connection with unique id ' + socket.id + " is connected");
  }
 });
 
-var initPack = {player:[]};
-var removePack = {player:[]};
+//var initPack = {player:[]};
+//var removePack = {player:[]};
 
 setInterval(()=>{
   var pack = Player.update();
@@ -86,6 +93,6 @@ setInterval(()=>{
   }
   initPack.player = [];
   removePack.player = [];
-},1000/25); //1000/25 this means 25fps, the function will run everytim after 40ms
+},1000000000/25); //1000/25 this means 25fps, the function will run everytim after 40ms
 
 }
