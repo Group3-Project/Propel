@@ -89,21 +89,21 @@ app.get('/',function(req, res){
 	
 });
 
-app.get('/logout', function (req, res) {
-    req.logout();
-    req.session.destroy(function (err) {
-        if (err) {
-            return next(err);
-        }
+// app.get('/logout', function (req, res) {
+//     req.logout();
+//     req.session.destroy(function (err) {
+//         if (err) {
+//             return next(err);
+//         }
         
-        user_profile = null;
-        // destroy session data
-        req.session = null;
+//         user_profile = null;
+//         // destroy session data
+//         req.session = null;
 
-        // redirect to homepage
-        res.redirect('/');
-    });
-});
+//         // redirect to homepage
+//         res.redirect('/');
+//     });
+// });
 
 
 };
