@@ -3,55 +3,55 @@ var io = require('socket.io')(server,{});
 
 
 var socket_list = {};
-var Player = (id)=>{
-  var self = {
-    id:id,
-    number:"" + Math.floor(10 * Math.random()), //***************For the cursor, could be removed - come back later
-  }
-  self.getInitPack = ()=>{
-		return {
-			id:self.id,
-			number:self.number,
-		};
-	}
-	self.getUpdatePack = ()=>{
-		return {
-			id:self.id,
-		}
-	}
-  Player.list[id] = self;
-  initPack.player.push(self.getInitPack());
-  return self;
-}
+// var Player = (id)=>{
+//   var self = {
+//     id:id,
+//     number:"" + Math.floor(10 * Math.random()), //***************For the cursor, could be removed - come back later
+//   }
+//   self.getInitPack = ()=>{
+// 		return {
+// 			id:self.id,
+// 			number:self.number,
+// 		};
+// 	}
+// 	self.getUpdatePack = ()=>{
+// 		return {
+// 			id:self.id,
+// 		}
+// 	}
+//   Player.list[id] = self;
+//   initPack.player.push(self.getInitPack());
+//   return self;
+// }
 
-Player.list = {};
+// //Player.list = {};
 
-Player.onConnect = (socket)=>{
-  var player = Player(socket.id);
+// Player.onConnect = (socket)=>{
+//   var player = Player(socket.id);
 
-  socket.emit('init',{
-		player:Player.getAllInitPack(),
-	})
-}
-Player.getAllInitPack = ()=>{ //To get all the previous player states
-	var players = [];
-	for(var i in Player.list)
-		players.push(Player.list[i].getInitPack());
-	console.log(Player.list);
-	return players;
-}
-Player.onDisconnect = (socket)=>{
-  delete Player.list[socket.id];
-  removePack.player.push(socket.id);
-}
-Player.update = ()=>{
-  var pack = []; //Contains information of every single player in the game and will be sent to each player connected
-  for(var i in Player.list){
-    var player = Player.list[i];
-    pack.push(player.getUpdatePack());
-  }
-  return pack;
-}
+//   socket.emit('init',{
+// 		player:Player.getAllInitPack(),
+// 	})
+// }
+// Player.getAllInitPack = ()=>{ //To get all the previous player states
+// 	var players = [];
+// 	for(var i in Player.list)
+// 		players.push(Player.list[i].getInitPack());
+// 	console.log(Player.list);
+// 	return players;
+// }
+// Player.onDisconnect = (socket)=>{
+//   delete Player.list[socket.id];
+//   removePack.player.push(socket.id);
+// }
+// Player.update = ()=>{
+//   var pack = []; //Contains information of every single player in the game and will be sent to each player connected
+//   for(var i in Player.list){
+//     var player = Player.list[i];
+//     pack.push(player.getUpdatePack());
+//   }
+//   return pack;
+// }
 
 io.sockets.on('connection', (socket)=>{ //Whenever a player connect
  if(user_fb_id){
