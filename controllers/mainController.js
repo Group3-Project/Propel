@@ -6,18 +6,16 @@ var initPack = {player:[]};
 var removePack = {player:[]};	
 var Player = (id)=>{
   var self = {
-    id:id,
-    number:"" + Math.floor(10 * Math.random()), //***************For the cursor, could be removed - come back later
+    id:id
   }
   self.getInitPack = ()=>{
 		return {
-			id:self.id,
-			number:self.number,
+			id:self.id
 		};
 	}
 	self.getUpdatePack = ()=>{
 		return {
-			id:self.id,
+			id:self.id
 		}
 	}
   Player.list[id] = self;
