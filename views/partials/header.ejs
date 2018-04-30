@@ -1,20 +1,51 @@
- 
-<meta name="viewport" content="width = device-width, initial-scale = 1">
-<title>Propel Games</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<nav class="navbar navbar-dark bg-dark">
+	<div class="container">
+  		<a class="navbar-brand" href="#">
+    		<img src="Images/propeldark.png" height="40px" class="d-inline-block align-top" alt="">
+  		</a>
 
-<!-- Link paths are relative to the public folder-->  
-<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+  		<% if (typeof user == 'object' && user) { %>
 
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  		<div class="nav-right">
+			<button type="button" class="btn btn-dark"><i class="material-icons">account_box</i></button>
+			<button type="button" class="btn btn-dark"><i class="material-icons">chat</i></button>
+			<button type="button" class="btn btn-dark"><i class="material-icons">announcement</i></button>
+			   <% if (typeof user == 'object' && user) { %>
+     <%=user.name%>
+  <% } %>
+  		</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  		<% } else { %> 
+  			<a href="/auth/facebook"><button type="button" class="btn btn-dark">Login</button></a>
+  		<%}%>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	</div>
+</nav>
 
+<div class="under-nav"></div>
 
+<!-- Navigation bar 2 -->
+<div class="container nav-cat">
 
+	<ul class="nav nav-pills nav-fill">
+	  <li class="nav-item">
+	    <a class="nav-link" href="#">Action</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="#">Arcade</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="#">Racing</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="#">Simulator</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="#">Turn Based</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="#">Puzzle</a>
+	  </li>
+	</ul>
 
-
-
-
+</div>
