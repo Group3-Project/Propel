@@ -70,7 +70,7 @@ function getProfile(userId){
 		console.log('mysql query error' + error);
 	}else{
 		console.log(rows);
-		return rows;
+		return rows[0];
 	}
 	return false;
 });
