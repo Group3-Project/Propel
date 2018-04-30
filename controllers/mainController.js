@@ -65,15 +65,14 @@ DB.query("select * from game_list", function(error, rows, fields){
 var user_profile = null;
 var other_profile = null;
 //get username and pic from fb_id
-function getProfile(userId){
+var getProfile = function (userId){
 	return new Promise(function(resolve, reject){
-		DB.query("select * from users where fb_id =?", userId, function(error, rows, fields){
+		DB.query("select * from users where fb_id =388165848307068", userId, function(error, rows, fields){
 			if(!!error){
 				console.log('mysql query error' + error);
 				reject(false);
 			}else{
-				console.log(rows);
-				resolve(rows);
+				resolve(rows[0]);
 				//her_profile =  rows;
 			}
 		});
@@ -87,13 +86,11 @@ app.use(cookieParser());
 //routes
 app.get('/',function(req, res){
 	user_profile = null;
-  	//console.log('Cookies: ', req.cookies);
 	if(req.user){	
 		console.log(req.user);
 		 user_profile = req.user;
 		 console.log("User recognized!");
 		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io);
-
 	}else{
 		console.log('User not logged in');
 	}
@@ -105,7 +102,7 @@ app.get('/profile',function(req, res){
 	if(req.user){	
 		 user_profile = req.user;
 		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io);
-		 res.render('profile',{user: user_profile});
+		 res.render('profile',{userview: user_profile, user: user_profile});
 	}else{
 		res.render('index',{game_list : game_list, user: user_profile});
 	}
@@ -114,19 +111,16 @@ app.get('/profile',function(req, res){
 app.get('/profile/:username',function(req, res){
 	user_profile = req.user;
 	var promise = getProfile(req.params.username);
-	
+
 	promise.then(function(data){
-		//other_profile = getProfile(req.params.username);
-		console.log("hi222222222222222222222222222", data);
 		if(req.user){
 			res.render('profile',{user: user_profile, userview: data});
 		}else{
 			res.render('profile',{userview: data});
 		}
-	
 	})
-
 });
+
 app.get('/logout', function (req, res) {
     req.logout();
     req.session.destroy(function (err) {
