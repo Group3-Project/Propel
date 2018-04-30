@@ -1,7 +1,6 @@
 module.exports = function(app,DB,express, server){
 
-	
-	
+var io = require('socket.io')(server);
 var socketController = require('./socketController');
 var game_list;
 var initPack = {player:[]};
@@ -79,7 +78,7 @@ function getProfile(userId){
 			}
 		});
 
-});
+	});
 };
 
 var cookieParser = require('cookie-parser')
@@ -88,16 +87,15 @@ app.use(cookieParser());
 //routes
 app.get('/',function(req, res){
 	user_profile = null;
-  	console.log('Cookies: ', req.cookies);
+  	//console.log('Cookies: ', req.cookies);
 	if(req.user){	
 		console.log(req.user);
-		//temp solution -> in the future getProfile and db will be used 
 		 user_profile = req.user;
-		 console.log("User recognized");
-		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name);
+		 console.log("User recognized!");
+		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io);
 
 	}else{
-		console.log('nobody has loged in yet');
+		console.log('User not logged in');
 	}
 
 	res.render('index',{game_list : game_list, user: user_profile});
@@ -105,10 +103,8 @@ app.get('/',function(req, res){
 });
 app.get('/profile',function(req, res){
 	if(req.user){	
-		console.log(req.user)
-		//temp solution -> in the future getProfile and db will be used 
 		 user_profile = req.user;
-		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name);
+		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io);
 		 res.render('profile',{user: user_profile});
 	}else{
 		res.render('index',{game_list : game_list, user: user_profile});
@@ -131,21 +127,20 @@ app.get('/profile/:username',function(req, res){
 	})
 
 });
-// app.get('/logout', function (req, res) {
-//     req.logout();
-//     req.session.destroy(function (err) {
-//         if (err) {
-//             return next(err);
-//         }
-        
-//         user_profile = null;
-//         // destroy session data
-//         req.session = null;
+app.get('/logout', function (req, res) {
+    req.logout();
+    req.session.destroy(function (err) {
+        if (err) {
+            return next(err);
+        }
+        user_profile = null;
+        // destroy session data
+        req.session = null;
 
-//         // redirect to homepage
-//         res.redirect('/');
-//     });
-// });
+        // redirect to homepage
+        res.redirect('/');
+    });
+});
 
 
 };

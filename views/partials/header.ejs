@@ -5,17 +5,17 @@
   		</a>
 
   		<% if (typeof user == 'object' && user) { %>
-
+  		<% var user_id = user.id; %>
   		<div class="nav-right">
 			<a href="profile"><button type="button" class="btn btn-dark"><i class="material-icons">account_box</i></button></a>
 			<button type="button" class="btn btn-dark"><i class="material-icons">chat</i></button>
 			<button type="button" class="btn btn-dark"><i class="material-icons">announcement</i></button>
-			<a href="/logout"><button type="button" class="btn btn-dark"><i class="material-icons">input</i></button></a>
+			<a href = "/logout"><button onclick = "logout()" type="button" class="btn btn-dark"><i class="material-icons">input</i></button></a>
   		</div>
   		<% } else { %> 
-  			<a href="/auth/facebook"><button type="button" class="btn btn-dark">Login</button></a>
+  			<a href="/auth/facebook"><button onclick type="button" class="btn btn-dark">Login</button></a>
   		<%}%>
-
+	
 	</div>
 </nav>
 
@@ -46,3 +46,9 @@
 	</ul>
 
 </div>
+<script type="text/javascript">
+	function logout(){
+		var getID = <%= user_id %>;
+		socket.emit('kill_user', getID);
+	}
+</script>

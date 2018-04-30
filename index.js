@@ -20,18 +20,13 @@ connection.connect(function(error){
 var express = require('express');
 var session = require('express-session');
 
-//var cookieParser = require('cookie-parser')
-
 
 var app = express();
-//app.use(cookieParser());
+
 var server = require('http').Server(app);
 
-//app.get('/', function(req, res) {
-  //console.log('Cookies: ', req.cookies)
-//})
-
 server.listen(80);
+
 
 // authorization- flow
 var passport = require('passport');
@@ -65,8 +60,4 @@ var mainController = require('./controllers/mainController');
 mainController(app,connection, express, server);
 fbauthController(app,passport,connection);
 
-
-// app.listen(app.get('port'), function(){
-//   console.log("express strated");
-// });
 
