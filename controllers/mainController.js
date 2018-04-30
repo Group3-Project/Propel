@@ -97,9 +97,10 @@ app.get('/profile',function(req, res){
 		res.render('index',{game_list : game_list, user: user_profile});
 	}
 });
+	
 app.get('/profile/:username',function(req, res){
 	if(req.user){	
-		var username = request.params.username;
+		var username = req.params.username;
 		console.log(req.user)
 		//temp solution -> in the future getProfile and db will be used 
 		 user_profile = req.user;
