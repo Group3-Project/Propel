@@ -20,12 +20,11 @@ connection.connect(function(error){
 var express = require('express');
 var session = require('express-session');
 
-var cookieParser = require('cookie-parser')
-
+//var cookieParser = require('cookie-parser')
 
 
 var app = express();
-app.use(cookieParser());
+//app.use(cookieParser());
 var server = require('http').Server(app);
 
 //app.get('/', function(req, res) {
