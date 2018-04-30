@@ -110,7 +110,9 @@ app.get('/profile/:username',function(req, res){
 	user_profile = null;
 	var username = req.params.username;
 	user_profile = getProfile(username);
-	console.log(user_profile.name);
+	console.log("'''''''''''''''''''''");
+	console.log(user_profile[2]);
+	console.log("'''''''''''''''''''''");
 	res.render('profile',{user: user_profile});
 });
 // app.get('/logout', function (req, res) {
