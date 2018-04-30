@@ -99,6 +99,7 @@ app.get('/profile',function(req, res){
 });
 	
 app.get('/profile/:username',function(req, res){
+	user_profile = null;
 	if(req.user){	
 		var username = req.params.username;
 		console.log(req.user)
