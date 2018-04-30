@@ -91,7 +91,7 @@ app.get('/profile',function(req, res){
 		console.log(req.user)
 		//temp solution -> in the future getProfile and db will be used 
 		 user_profile = req.user;
-		 socketController(app, express,server, user_profile.id);
+		 socketController(app, express,server,user_profile.id,Player,initPack,removePack);
 		 res.render('profile',{user: user_profile});
 	}else{
 		res.render('index',{game_list : game_list, user: user_profile});
