@@ -86,7 +86,15 @@ app.get('/',function(req, res){
 	res.render('index',{game_list : game_list, user: user_profile});
 	
 });
-
+app.get('/profile',function(req, res){
+	user_profile = null;
+	if(req.user){	
+		console.log(req.user)
+		//temp solution -> in the future getProfile and db will be used 
+		 user_profile = req.user;
+		 res.render('profile',{user: user_profile});
+	}
+});
 // app.get('/logout', function (req, res) {
 //     req.logout();
 //     req.session.destroy(function (err) {
