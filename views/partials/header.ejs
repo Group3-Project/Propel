@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark bg-dark">
 	<div class="container">
   		<a class="navbar-brand" href="#">
-    		<a href="index"><img src="Images/propeldark.png" height="40px" class="d-inline-block align-top" alt=""></a>
+    		<a href="/"><img src="Images/propeldark.png" height="40px" class="d-inline-block align-top" alt=""></a>
   		</a>
 
   		<% if (typeof user == 'object' && user) { %>
@@ -10,11 +10,7 @@
 			<a href="profile"><button type="button" class="btn btn-dark"><i class="material-icons">account_box</i></button></a>
 			<button type="button" class="btn btn-dark"><i class="material-icons">chat</i></button>
 			<button type="button" class="btn btn-dark"><i class="material-icons">announcement</i></button>
-			   <% if (typeof user == 'object' && user) { %>
-     <%=user.name%>
-  <% } %>
   		</div>
-
   		<% } else { %> 
   			<a href="/auth/facebook"><button type="button" class="btn btn-dark">Login</button></a>
   		<%}%>
