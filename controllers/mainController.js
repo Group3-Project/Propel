@@ -1,8 +1,5 @@
 module.exports = function(app,DB,express, server){
-var app = express();
-var cookieParser = express.cookieParser("hello world"), sessionStore = new express.session.MemoryStore();
-console.log(sessionStore);
-app.use(cookieParser);
+
 var socketController = require('./socketController');
 var game_list;
 var initPack = {player:[]};
