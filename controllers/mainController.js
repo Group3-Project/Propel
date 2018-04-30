@@ -110,6 +110,8 @@ app.get('/profile',function(req, res){
 app.get('/profile/:username',function(req, res){
 	user_profile = req.user;
 	other_profile = getProfile(req.params.username);
+	console.log(other_profile);
+	console.log(typeof(other_profile));
 	if(req.user){
 		res.render('profile',{user: user_profile, userview: other_profile});
 	}else{
