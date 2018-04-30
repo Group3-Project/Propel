@@ -97,6 +97,18 @@ app.get('/profile',function(req, res){
 		res.render('index',{game_list : game_list, user: user_profile});
 	}
 });
+app.get('/profile/:username',function(req, res){
+	if(req.user){	
+		var username = request.params.username;
+		console.log(req.user)
+		//temp solution -> in the future getProfile and db will be used 
+		 user_profile = req.user;
+		 socketController(app, express,server,user_profile.id,Player,initPack,removePack);
+		 res.render('profile/:username',{user: user_profile});
+	}else{
+		res.render('index',{game_list : game_list, user: user_profile});
+	}
+});
 // app.get('/logout', function (req, res) {
 //     req.logout();
 //     req.session.destroy(function (err) {
