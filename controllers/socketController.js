@@ -54,7 +54,7 @@ app.get('/logout', function (req, res) {
 //var initPack = {player:[]};
 //var removePack = {player:[]};
 
-setInterval(()=>{
+()=>{
   var pack = Player.update();
 
   for(var i in socket_list){
@@ -65,6 +65,6 @@ setInterval(()=>{
   }
   initPack.player = [];
   removePack.player = [];
-},1000000000/25); //1000/25 this means 25fps, the function will run everytim after 40ms
+};
 
 }
