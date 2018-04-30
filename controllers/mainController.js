@@ -1,14 +1,10 @@
 module.exports = function(app,DB,express, server){
 
 	
-var cookieParser = require('cookie-parser')
+var cookieParser = require('cookie-parser');
  
-var app = express()
-app.use(cookieParser())
- 
-app.get('/', function(req, res) {
-  console.log('Cookies: ', req.cookies)
-})	
+var app = express();
+app.use(cookieParser());	
 	
 var socketController = require('./socketController');
 var game_list;
