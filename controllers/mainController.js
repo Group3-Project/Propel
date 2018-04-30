@@ -62,6 +62,7 @@ DB.query("select * from game_list", function(error, rows, fields){
 });
 
 var user_profile = null;
+var other_profile = null;
 
 //get username and pic from fb_id
 function getProfile(userId){
@@ -107,13 +108,14 @@ app.get('/profile',function(req, res){
 });
 	
 app.get('/profile/:username',function(req, res){
-	user_profile = null;
-	var username = req.params.username;
-	user_profile = getProfile(username);
-	console.log("'''''''''''''''''''''");
-	console.log(user_profile[2]);
-	console.log("'''''''''''''''''''''");
+	user_profile = req.user;
+	other_profile = getProfile(req.params.username);
 	res.render('profile',{user: user_profile});
+	if(req.user){
+		res.render('profile',{user: user_profile, userview: other_profile});
+	}else{
+		res.render('profile',{userview: other_profile});
+	}
 });
 // app.get('/logout', function (req, res) {
 //     req.logout();
