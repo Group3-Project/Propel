@@ -1,6 +1,5 @@
 module.exports = function(app,DB,express, server){
 
-	
 var socketController = require('./socketController');
 var game_list;
 var initPack = {player:[]};
@@ -64,16 +63,20 @@ DB.query("select * from game_list", function(error, rows, fields){
 
 var user_profile = null;
 var other_profile = null;
-
 //get username and pic from fb_id
 function getProfile(userId){
-	DB.query("select * from users where fb_id =?", userId, function(error, rows, fields){
-	if(!!error){
-		console.log('mysql query error' + error);
-	}else{
-		console.log(rows);
-		other_profile =  rows;
-	}
+	return new Promise(function(resolve, reject)){
+		DB.query("select * from users where fb_id =?", userId, function(error, rows, fields){
+			if(!!error){
+				console.log('mysql query error' + error);
+				reject(false);
+			}else{
+				console.log(rows);
+				resolve(rows);
+				//her_profile =  rows;
+			}
+		}
+
 });
 };
 
@@ -82,11 +85,12 @@ function getProfile(userId){
 app.get('/',function(req, res){
 	user_profile = null;
 	if(req.user){	
-		console.log(req.user)
+		console.log(req.usersd
 		//temp solution -> in the future getProfile and db will be used 
 		 user_profile = req.user;
 		 console.log("User recognized");
-		 socketController(app, express,server,user_profile.id,Player,initPack,removePack);
+		 socketController(return new Promise(function(resolve, reject)){}asdapp, express,server,user_profile.id,Player,initPack
+				  ,removePack);
 
 	}else{
 		console.log('nobody has loged in yet');
@@ -109,14 +113,19 @@ app.get('/profile',function(req, res){
 	
 app.get('/profile/:username',function(req, res){
 	user_profile = req.user;
-	getProfile(req.params.username);
-	//other_profile = getProfile(req.params.username);
-	console.log("hi222222222222222222222222222", other_profile);
-	if(req.user){
-		res.render('profile',{user: user_profile, userview: other_profile});
-	}else{
-		res.render('profile',{userview: other_profile});
-	}
+	var promise = getProfile(req.params.username);
+	
+	promise.then(function(data){
+		//other_profile = getProfile(req.params.username);
+		console.log("hi222222222222222222222222222", data);
+		if(req.user){
+			res.render('profile',{user: user_profile, userview: data});
+		}else{
+			res.render('profile',{userview: data});
+		}
+	
+	})
+
 });
 // app.get('/logout', function (req, res) {
 //     req.logout();
