@@ -66,12 +66,12 @@ var other_profile = null;
 
 //get username and pic from fb_id
 function getProfile(userId){
-	return DB.query("select * from users where fb_id =?", userId, function(error, rows, fields){
+	DB.query("select * from users where fb_id =?", userId, function(error, rows, fields){
 	if(!!error){
 		console.log('mysql query error' + error);
 	}else{
 		console.log(rows);
-		return rows;
+		other_profile =  rows;
 	}
 });
 };
@@ -108,7 +108,8 @@ app.get('/profile',function(req, res){
 	
 app.get('/profile/:username',function(req, res){
 	user_profile = req.user;
-	other_profile = getProfile(req.params.username);
+	getProfile(req.params.username);
+	//other_profile = getProfile(req.params.username);
 	console.log(other_profile);
 	console.log(typeof(other_profile));
 	if(req.user){
