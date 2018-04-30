@@ -64,8 +64,16 @@ DB.query("select * from game_list", function(error, rows, fields){
 var user_profile = null;
 
 //get username and pic from fb_id
-function getProfile(){
-
+function getProfile(userId){
+	DB.query("select * from users where fb_id =?", userId, function(error, rows, fields){
+	if(!!error){
+		console.log('mysql query error' + error);
+	}else{
+		console.log(rows);
+		return rows;
+	}
+	return false;
+});
 };
 
 
@@ -100,13 +108,9 @@ app.get('/profile',function(req, res){
 	
 app.get('/profile/:username',function(req, res){
 	user_profile = null;
-	if(req.user){	
-		var username = req.params.username;
-		console.log(req.user)
-		//temp solution -> in the future getProfile and db will be used 
-		 user_profile = req.user;
-		 socketController(app, express,server,user_profile.id,Player,initPack,removePack);
-	}
+	var username = req.params.username;
+	console.log(req.user)
+	user_profile = getProfile(username);
 	res.render('profile',{user: user_profile});
 });
 // app.get('/logout', function (req, res) {
