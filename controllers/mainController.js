@@ -71,7 +71,7 @@ function getProfile(userId){
 		console.log('mysql query error' + error);
 	}else{
 		console.log(rows);
-		return rows[0];
+		return rows;
 	}
 	return false;
 });
@@ -86,7 +86,7 @@ app.get('/',function(req, res){
 		//temp solution -> in the future getProfile and db will be used 
 		 user_profile = req.user;
 		 console.log("User recognized");
-		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name);
+		 socketController(app, express,server,user_profile.id,Player,initPack,removePack);
 
 	}else{
 		console.log('nobody has loged in yet');
