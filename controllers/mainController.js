@@ -82,6 +82,8 @@ function getProfile(userId){
 });
 };
 
+var cookieParser = require('cookie-parser')
+app.use(cookieParser());
 
 //routes
 app.get('/',function(req, res){
