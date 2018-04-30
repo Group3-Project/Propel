@@ -66,14 +66,13 @@ var other_profile = null;
 
 //get username and pic from fb_id
 function getProfile(userId){
-	DB.query("select * from users where fb_id =?", userId, function(error, rows, fields){
+	return DB.query("select * from users where fb_id =?", userId, function(error, rows, fields){
 	if(!!error){
 		console.log('mysql query error' + error);
 	}else{
 		console.log(rows);
 		return rows;
 	}
-	return false;
 });
 };
 
