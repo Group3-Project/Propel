@@ -20,9 +20,18 @@ connection.connect(function(error){
 var express = require('express');
 var session = require('express-session');
 
-var app = express();
+var cookieParser = require('cookie-parser')
 
+
+
+var app = express();
+app.use(cookieParser());
 var server = require('http').Server(app);
+
+app.get('/', function(req, res) {
+  console.log('Cookies: ', req.cookies)
+})
+
 server.listen(80);
 
 // authorization- flow
