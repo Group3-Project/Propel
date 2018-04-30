@@ -94,7 +94,7 @@ app.get('/',function(req, res){
 		//temp solution -> in the future getProfile and db will be used 
 		 user_profile = req.user;
 		 console.log("User recognized");
-		 socketController(app, express,server,user_profile.id,Player,initPack,removePack);
+		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name);
 
 	}else{
 		console.log('nobody has loged in yet');
