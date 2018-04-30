@@ -111,9 +111,9 @@ app.get('/profile/:username',function(req, res){
 	user_profile = req.user;
 	other_profile = getProfile(req.params.username);
 	if(req.user){
-		//res.render('profile',{user: user_profile, userview: other_profile});
+		res.render('profile',{user: user_profile, userview: other_profile});
 	}else{
-		//res.render('profile',{userview: other_profile});
+		res.render('profile',{userview: other_profile});
 	}
 });
 // app.get('/logout', function (req, res) {
