@@ -28,9 +28,9 @@ var app = express();
 app.use(cookieParser());
 var server = require('http').Server(app);
 
-app.get('/', function(req, res) {
-  console.log('Cookies: ', req.cookies)
-})
+//app.get('/', function(req, res) {
+  //console.log('Cookies: ', req.cookies)
+//})
 
 server.listen(80);
 
