@@ -75,7 +75,7 @@ function getProfile(userId){
 				resolve(rows);
 				//her_profile =  rows;
 			}
-		)};
+		});
 
 });
 };
