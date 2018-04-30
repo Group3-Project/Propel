@@ -1,5 +1,7 @@
 module.exports = function(app,DB,express, server){
 
+	
+	
 var socketController = require('./socketController');
 var game_list;
 var initPack = {player:[]};
@@ -84,6 +86,7 @@ function getProfile(userId){
 //routes
 app.get('/',function(req, res){
 	user_profile = null;
+  	console.log('Cookies: ', req.cookies);
 	if(req.user){	
 		console.log(req.user);
 		//temp solution -> in the future getProfile and db will be used 
