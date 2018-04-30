@@ -93,6 +93,8 @@ app.get('/profile',function(req, res){
 		//temp solution -> in the future getProfile and db will be used 
 		 user_profile = req.user;
 		 res.render('profile',{user: user_profile});
+	}else{
+		res.render('index',{game_list : game_list, user: user_profile});
 	}
 });
 // app.get('/logout', function (req, res) {
