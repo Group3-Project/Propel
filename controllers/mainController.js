@@ -85,7 +85,7 @@ function getProfile(userId){
 app.get('/',function(req, res){
 	user_profile = null;
 	if(req.user){	
-		console.log(req.usersd
+		console.log(req.user);
 		//temp solution -> in the future getProfile and db will be used 
 		 user_profile = req.user;
 		 console.log("User recognized");
