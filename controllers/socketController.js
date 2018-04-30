@@ -35,6 +35,9 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
           console.log(Player.list);
           console.log('Connection ' + socket.id + ", " + user_fb_name  + " is disconnected " + reason);
       }
+      //Possible solution to random disconnects:
+      // * try to reconect like 5 times or for 10 sec
+      // if you fail -> disconnect and alles gut
     });
    }
 });
