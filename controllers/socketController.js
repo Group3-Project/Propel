@@ -13,7 +13,7 @@ if(user_fb_id){
 	socket_list[socket.id] = socket;
 	if(!(user_fb_id in Player.list)){
 		Player.onConnect(socket);
-		console.log("connection with id " + socket.id + ", " + user_fb_name + is connected" );
+		console.log("connection with id " + socket.id + ", " + user_fb_name +" is connected" );
 	}
 
   socket.on('disconnect', (reason)=>{ //Delete the player form the socket and player list when it desconnect. It's an automatic function, no need to emit
