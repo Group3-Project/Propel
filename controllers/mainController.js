@@ -106,7 +106,7 @@ app.get('/profile/:username',function(req, res){
 		 user_profile = req.user;
 		 socketController(app, express,server,user_profile.id,Player,initPack,removePack);
 	}
-	res.render('profile/:username',{user: user_profile});
+	res.render('profile/',{user: user_profile});
 });
 // app.get('/logout', function (req, res) {
 //     req.logout();
