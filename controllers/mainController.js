@@ -109,8 +109,8 @@ app.get('/profile',function(req, res){
 app.get('/profile/:username',function(req, res){
 	user_profile = null;
 	var username = req.params.username;
-	console.log(req.user)
 	user_profile = getProfile(username);
+	console.log(user_profile.name);
 	res.render('profile',{user: user_profile});
 });
 // app.get('/logout', function (req, res) {
