@@ -9,7 +9,6 @@ var socket_list = {};
 io.sockets.on('connection', (socket)=>{ //Whenever a player connect 
   if(user_fb_id){ //If id is not NULL
   	socket.id = user_fb_id; 
-  	sockety = socket;
   	socket_list[socket.id] = socket;
   	if(!(user_fb_id in Player.list)){
   		Player.onConnect(socket);
@@ -17,19 +16,20 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 		console.log("After Connection ------------------");
 		console.log(Player.list);
 		console.log("-------------------------------");
-  	}
+  	};
 
-    socket.on('kill_user', (id)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainController
-      delete socket_list[id];
-      Player.onDisconnect(socket);
-      user_fb_id = null;
-      console.log('Connection with ID ' + socket.id + ', ' + user_fb_name + ' is disconnected');
-      console.log("After Disconnection ------------------");
-      console.log(Player.list);
-      console.log("-------------------------------");  
-    })
-   }
+socket.on('kill_user', (id)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainController
+	delete socket_list[id];
+	Player.onDisconnect(socket);
+	user_fb_id = null;
+	console.log('Connection with ID ' + socket.id + ', ' + user_fb_name + ' is disconnected');
+	console.log("After Disconnection ------------------");
+	console.log(Player.list);
+	console.log("-------------------------------");  
+});
+};
 	
+
 	socket.on('requestGame', function(user){ //joinLobby -> requestGame
         console.log(user.id + ' joined');
         // findRoom()
@@ -38,9 +38,9 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     });
  
     socket.on('gameFound', function(user){
+
         console.log(user.id + ' assigned game');
-    });
-	
+    });	
 });
 
 setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time
@@ -54,4 +54,4 @@ setInterval(()=>{ //Set the interval, it runs the function again and again after
   	initPack.player = [];
   	removePack.player = [];
     },1000); //Run after every 1000ms
-}
+};
