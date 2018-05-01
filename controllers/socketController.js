@@ -17,30 +17,29 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 		console.log("After Connection ------------------");
 		console.log(Player.list);
 		console.log("-------------------------------");
-  	}
+  	};
 
-    socket.on('kill_user', (id)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainController
-      delete socket_list[id];
-      Player.onDisconnect(socket);
-      user_fb_id = null;
-      console.log('Connection with ID ' + socket.id + ', ' + user_fb_name + ' is disconnected');
-      console.log("After Disconnection ------------------");
-      console.log(Player.list);
-      console.log("-------------------------------");  
-    })
-   }
+socket.on('kill_user', (id)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainController
+	delete socket_list[id];
+	Player.onDisconnect(socket);
+	user_fb_id = null;
+	console.log('Connection with ID ' + socket.id + ', ' + user_fb_name + ' is disconnected');
+	console.log("After Disconnection ------------------");
+	console.log(Player.list);
+	console.log("-------------------------------");  
+});
+};
 	
-	client.on('requestGame', function(user){ //joinLobby -> requestGame
+client.on('requestGame', function(user){ //Join Lobby -> Request Game
         console.log(user.id + ' joined');
-        // findRoom()
+        //FindRoom()
         client.emit('assignGame', {id: 'localhost:8082'});
         lobby.addUser({ name: user.id });
-    });
- 
-    client.on('gameFound', function(user){
+});
+
+client.on('gameFound', function(user){
         console.log(user.id + ' assigned game');
-    });
-	
+});	
 });
 
 setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time
@@ -54,4 +53,4 @@ setInterval(()=>{ //Set the interval, it runs the function again and again after
   	initPack.player = [];
   	removePack.player = [];
     },1000); //Run after every 1000ms
-}
+};
