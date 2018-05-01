@@ -67,7 +67,7 @@ var other_profile = null;
 //get username and pic from fb_id
 var getProfile = function (userId){
 	return new Promise(function(resolve, reject){
-		DB.query("select * from users where fb_id =userId", userId, function(error, rows, fields){
+		DB.query("select * from users where fb_id =388165848307068", userId, function(error, rows, fields){
 			if(!!error){
 				console.log('mysql query error' + error);
 				reject(false);
