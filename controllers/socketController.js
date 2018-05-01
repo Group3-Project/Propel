@@ -29,7 +29,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
       console.log("-------------------------------");
         
     })
-    socket.on('disconnect', (reason)=>{ //Delete the player form the socket and player list when it desconnect. It's an automatic function, no need to emit
+    /*socket.on('disconnect', (reason)=>{ //Delete the player form the socket and player list when it desconnect. It's an automatic function, no need to emit
        if(user_fb_id){
          delete socket_list[socket.id];
           Player.onDisconnect(socket);
@@ -41,7 +41,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
       //Possible solution to random disconnects:
       // * try to reconect like 5 times or for 10 sec
       // if you fail -> disconnect and alles gut
-    });
+    });*/
    }
 });
 
