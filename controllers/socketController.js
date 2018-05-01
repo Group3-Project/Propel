@@ -29,6 +29,18 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
       console.log("-------------------------------");  
     })
    }
+	
+	client.on('requestGame', function(user){ //joinLobby -> requestGame
+        console.log(user.id + ' joined');
+        // findRoom()
+        client.emit('assignGame', {id: 'localhost:8082'});
+        lobby.addUser({ name: user.id });
+    });
+ 
+    client.on('gameFound', function(user){
+        console.log(user.id + ' assigned game');
+    });
+	
 });
 
 setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time
