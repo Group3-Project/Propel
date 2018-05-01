@@ -14,6 +14,8 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   	if(!(user_fb_id in Player.list)){
   		Player.onConnect(socket);
   		console.log("connection with id " + socket.id + ", " + user_fb_name +" is connected" );
+		console.log("After Connection ------------------");
+		console.log(Player.list);
   	}
 
     socket.on('kill_user', (id)=>{
@@ -21,9 +23,10 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
       console.log("id" + id)
       delete socket_list[id];
       Player.onDisconnect(socket);
-      console.log(Player.list);
+      console.log("After Disconnection ------------------");
       user_fb_id = null;
       console.log('Connection ' + socket.id + ' is disconnected');
+      console.log(Player.list);
         
     })
     socket.on('disconnect', (reason)=>{ //Delete the player form the socket and player list when it desconnect. It's an automatic function, no need to emit
