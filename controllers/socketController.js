@@ -13,7 +13,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   	socket_list[socket.id] = socket;
   	if(!(user_fb_id in Player.list)){
   		Player.onConnect(socket);
-  		console.log("connection with id " + socket.id + ", " + user_fb_name + " is connected" );
+  		console.log("Connection with ID " + socket.id + ", " + user_fb_name + " is connected" );
 		console.log("After Connection ------------------");
 		console.log(Player.list);
 		console.log("-------------------------------");
@@ -23,7 +23,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
       delete socket_list[id];
       Player.onDisconnect(socket);
       user_fb_id = null;
-      console.log('Connection with id ' + socket.id + ', ' + user_fb_name + ' is disconnected');
+      console.log('Connection with ID ' + socket.id + ', ' + user_fb_name + ' is disconnected');
       console.log("After Disconnection ------------------");
       console.log(Player.list);
       console.log("-------------------------------");  
