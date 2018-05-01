@@ -65,9 +65,9 @@ DB.query("select * from game_list", function(error, rows, fields){
 var user_profile = null;
 var other_profile = null;
 //get username and pic from fb_id
-var getProfile = function (userId){
+var getData = function (query){
 	return new Promise(function(resolve, reject){
-		DB.query("select * from users where fb_id =" + userId, function(error, rows, fields){
+		DB.query(query, function(error, rows, fields){
 			if(!!error){
 				console.log('mysql query error' + error);
 				reject(false);
@@ -110,8 +110,7 @@ app.get('/profile',function(req, res){
 	
 app.get('/profile/:username',function(req, res){
 	user_profile = req.user;
-	var promise = getProfile(req.params.username);
-
+	var promise = getProfile("select * from users where fb_id =" + req.params.username);
 	promise.then(function(data){
 		if(req.user){
 			res.render('profile',{user: user_profile, userview: data});
