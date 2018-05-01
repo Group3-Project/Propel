@@ -110,7 +110,7 @@ app.get('/profile',function(req, res){
 	
 app.get('/profile/:username',function(req, res){
 	user_profile = req.user;
-	var promise = getProfile("select * from users where fb_id =" + req.params.username);
+	var promise = getData("select * from users where fb_id =" + req.params.username);
 	promise.then(function(data){
 		if(req.user){
 			res.render('profile',{user: user_profile, userview: data});
