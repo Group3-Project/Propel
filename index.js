@@ -1,34 +1,29 @@
-
 //Initialise the DB 
 var mysql = require('mysql');
-var connection = mysql.createConnection({
+var connection = mysql.createConnection({ //Establishing the connection
   host : '127.0.0.1',
   user: 'root',
   password : 'toor',
   database : 'propel'
 });
 
-connection.connect(function(error){
+connection.connect(function(error){ //Error Handler
   if(!!error){
-    console.log('mysql error' + error);
+    console.log('MySQL Error' + error);
   }else{
-    console.log('connected to mysql');
+    console.log('Connected to MySQL');
   }
 });
 
-//app setup 
+//App setup
 var express = require('express');
 var session = require('express-session');
-
-
 var app = express();
-
 var server = require('http').Server(app);
 
 server.listen(80);
 
-
-// authorization- flow
+//Authorization-Flow
 var passport = require('passport');
 app.use(session({
       secret: 'keyboard cat',
@@ -39,25 +34,19 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//Define the view engine (dynamic html in /view )
+app.set('view engine', 'ejs');
 
-
-//define the view engine (dynamic html in /view )
-app.set('view engine', 'ejs')
-//app.set('port', process.env.PORT || 80);
-
-
-//blocks the meta data contained in headers
+//Blocks the meta data contained in headers
 app.disable('x-powered-by');
 
-//static files 
-app.use(express.static('./public'))
+//Static files 
+app.use(express.static('./public'));
 
-//define controllers
-var fbauthController = require('./controllers/fbauthController'); 
+//Definining the controllers needed for core Functionality
+var fbauthController = require('./controllers/fbauthController');
 var mainController = require('./controllers/mainController');
 
-//launch controllers
+//Launch the defined controllers
 mainController(app,connection, express, server);
 fbauthController(app,passport,connection);
-
-
