@@ -29,7 +29,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
       console.log("-------------------------------");
         
     })
-   //}
+   }
 });
 
 setInterval(()=>{
