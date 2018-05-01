@@ -110,13 +110,17 @@ app.get('/profile',function(req, res){
 	
 app.get('/profile/:username',function(req, res){
 	user_profile = req.user;
-	var promise = getData("select * from users where fb_id =" + req.params.username);
-	promise.then(function(data){
-		if(req.user){
-			res.render('profile',{user: user_profile, userview: data});
-		}else{
-			res.render('profile',{userview: data});
-		}
+	var promise_user = getData("select * from users where fb_id =" + req.params.username);
+	promise_user.then(function(dataUser){
+			var promise_friends = getData("select * from user_friends where user_id =" + req.params.username);
+			promise_friends.then(function(dataFriends){
+				if(req.user){
+					res.render('profile',{user: user_profile, userview: dataUser, userfriends : dataFriends});
+				}else{
+					res.render('profile',{userview: dataUser, userfriends : dataFriends});
+				}
+				
+			})
 	})
 });
 
