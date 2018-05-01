@@ -46,7 +46,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 });
 
 
-()=>{
+setInterval(()=>{
   var pack = Player.update();
 
   for(var i in socket_list){
@@ -57,6 +57,6 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   }
   initPack.player = [];
   removePack.player = [];
-};
+},100000);
 
 }
