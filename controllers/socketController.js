@@ -57,6 +57,6 @@ setInterval(()=>{
   }
   initPack.player = [];
   removePack.player = [];
-},100000);
+},1000);
 
 }
