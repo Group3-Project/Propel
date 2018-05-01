@@ -1,49 +1,37 @@
-
 var FacebookStrategy = require('passport-facebook').Strategy;
 
-
-
-
-module.exports = function (app,passport,db) {
-
-
+module.exports = function (app,passport,db) { //Initialise the login
 	passport.serializeUser(function(user, done) {
-	  done(null, user._json);
-	});
+	done(null, user._json);
+});
 
-	passport.deserializeUser(function(id, done) {
-	  // User.findById(id, function(err, user) {
-	  //   done(err, user);
-	  // });
-    done(null,id);
-	});
+passport.deserializeUser(function(id, done) { //Setting the id to null, eg. after logout happens
+	done(null,id);
+});
 
-	passport.use(new FacebookStrategy({
-    clientID: '960280067443569',
-    clientSecret: '4ed9c2ce7f70d9912c94e29f3cbfc139',
-    callbackURL: "http://reyleight.com/auth/facebook/callback",
-    profileFields: ['id','displayName', 'email'] 
-  },
-  function(accessToken, refreshToken, profile, done) {
-  	
+passport.use(new FacebookStrategy({
+	clientID: '960280067443569',
+	clientSecret: '4ed9c2ce7f70d9912c94e29f3cbfc139',
+	callbackURL: "http://reyleight.com/auth/facebook/callback",
+	profileFields: ['id','displayName', 'email'] 
+},
+function(accessToken, refreshToken, profile, done) {
   	profile_data = {};
-
   	profile_data. email = profile._json.email;
   	profile_data.fb_id = profile._json.id;
   	profile_data.name = profile._json.name;
+	
+//Check if user with that FB_id isn't aleady registerd in the Database
+db.query('select exists (select 1 from users where fb_id =  ?) as duplicateCheck', profile_data.fb_id, function(err,resp){
 
-    //check if user with that fb_id isnt aleady registerd in the db
-    db.query('select exists (select 1 from users where fb_id =  ?) as duplicateCheck', profile_data.fb_id, function(err,resp){
-      if(err){
-        //handleerror
+if(err){ //Error Handling
         console.log(err);
-      }
-
-      if(resp[0].duplicateCheck == 0){
-
-      db.query('insert into users set ? ', profile_data, function(err,resp){
+      };
+	
+if(resp[0].duplicateCheck == 0){
+	db.query('insert into users set ? ', profile_data, function(err,resp){
         if (err) throw err;
-         console.log('data saved succesfully');
+         console.log('Data Saved Succesfully');
       });
 
       }else{
