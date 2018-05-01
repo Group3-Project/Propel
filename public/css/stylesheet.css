@@ -90,8 +90,10 @@ nav .btn{
 	font-size: 30px;
 	font-weight: 600;
 	color: white;
-	height: 86px;
-	padding:0;
+	height: 88px;
+}
+.profile-username .card-body{
+	padding:5px;
 }
 .profile-bio{
 	max-height: 119px;
