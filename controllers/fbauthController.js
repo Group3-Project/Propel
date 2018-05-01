@@ -29,37 +29,25 @@ if(err){ //Error Handling
       };
 	
 if(resp[0].duplicateCheck == 0){
-	db.query('insert into users set ? ', profile_data, function(err,resp){
+	db.query('Insert into Users Set ? ', profile_data, function(err,resp){
         if (err) throw err;
-         console.log('Data Saved Succesfully');
-      });
-
-      }else{
-        console.log("User already exists");
-      }
-
-     
-    });
-
-    done(null,profile);
-  }
+		console.log('Data Saved Succesfully');
+	});
+	}else{
+        	console.log("User already exists");
+	}
+});
+done(null,profile);
+}
 ));
 
-// Facebook will redirect the user to this URL after approval.  Finish the
-// authentication process by attempting to obtain an access token.  If
-// access was granted, the user will be logged in.  Otherwise,
-// authentication has failed.
-
+/*Facebook will redirect the user to this URL after approval. Finish the authentication process by attempting to obtain an access token.
+If access was granted, the user will be logged in. Otherwise, authentication has failed.*/
 
 app.get('/auth/facebook/callback',passport.authenticate('facebook', {failureRedirect: '/login' }),function(req,res){
-
-  res.redirect('/');
-
+	res.redirect('/');
 });
 
-
 app.get('/auth/facebook',passport.authenticate('facebook', { scope: ['email','public_profile']}));
-
 return passport;
 };
-
