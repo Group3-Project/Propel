@@ -9,7 +9,6 @@ var socket_list = {};
 io.sockets.on('connection', (socket)=>{ //Whenever a player connect 
   if(user_fb_id){ //If id is not NULL
   	socket.id = user_fb_id; 
-  	sockety = socket;
   	socket_list[socket.id] = socket;
   	if(!(user_fb_id in Player.list)){
   		Player.onConnect(socket);
