@@ -1,0 +1,27 @@
+{
+  "name": "jsShooter",
+  "version": "1.0.0",
+  "description": "Nodejs game",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zeeraa/jsShooter.git"
+  },
+  "dependencies": {
+    "colors": "1.1.2",
+    "express": "4.15.5",
+    "socket.io": "2.1.0",
+    "socketio-wildcard": "2.0.0",
+    "ws": "3.2.0"
+  },
+  "keywords": [],
+  "author": "Zeeraa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zeeraa/jsShooter/issues"
+  },
+  "homepage": "https://github.com/Zeeraa/jsShooter#readme"
+}
