@@ -90,7 +90,8 @@ nav .btn{
 	font-size: 30px;
 	font-weight: 600;
 	color: white;
-	height: 90px;
+	height: 86px;
+	padding:0;
 }
 .profile-bio{
 	max-height: 119px;
