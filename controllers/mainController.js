@@ -118,6 +118,7 @@ app.get('/profile/:username',function(req, res){
 					res.render('profile',{user: user_profile, userview: dataUser, userfriends : dataFriends});
 				}else{
 					res.render('profile',{userview: dataUser, userfriends : dataFriends});
+					console.log(userfriends);
 				}
 				
 			})
