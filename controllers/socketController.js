@@ -30,14 +30,14 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     })
    }
 	
-	client.on('requestGame', function(user){ //joinLobby -> requestGame
+	socket.on('requestGame', function(user){ //joinLobby -> requestGame
         console.log(user.id + ' joined');
         // findRoom()
-        client.emit('assignGame', {id: 'localhost:8082'});
+        socket.emit('assignGame', {id: 'localhost:8082'});
         lobby.addUser({ name: user.id });
     });
  
-    client.on('gameFound', function(user){
+    socket.on('gameFound', function(user){
         console.log(user.id + ' assigned game');
     });
 	

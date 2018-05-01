@@ -13,7 +13,10 @@
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="card card-item">
-				<span class="card-head">Popular</span>
+				<span class="card-head"><%= game_list[0].name %></span>
+				<a href="/gameView/<%= game_list[0].id %>">
+					<img class="hero-item" src = "<%= game_list[0].thumb %>" style="height: 175px; width: 100%;">
+				</a>
 		</div>
 		</div>
 		<div class="col-lg-3">
@@ -35,8 +38,8 @@
 				<span class="card-head">Racing</span>
 			</div>
 		</div>
-		<div class="col-lg-3">
-			<div class="card card-item">
+		<div class="col-lg-3" >
+			<div class="card card-item" >
 				<span class="card-head">Simulator</span>
 			</div>
 		</div>

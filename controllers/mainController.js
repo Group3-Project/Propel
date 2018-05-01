@@ -125,6 +125,23 @@ app.get('/profile/:username',function(req, res){
 	})
 });
 
+app.get('/gameView/:gameID',function(req, res){
+	user_profile = req.user;
+	var gameID = req.params.gameID;
+	var gameInfo = getData("select * from game_list where id = " + gameID);
+
+	if(req.user){
+		user_profile = req.user;
+		socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io);
+		gameInfo.then(function(data){
+			 console.log(data);
+			 res.render('gameView',{game: data, user: user_profile});
+		})
+	}else{
+		res.render('index',{game_list : game_list, user: user_profile});
+	}
+});
+
 app.get('/logout', function (req, res) {
     req.logout();
     req.session.destroy(function (err) {
