@@ -264,7 +264,6 @@ nav .btn{
         
       }
       #users{
-      	display:none;
       	float:left;
       	overflow-y:auto;
         font-style:italic;
