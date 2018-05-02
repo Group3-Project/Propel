@@ -1,13 +1,15 @@
-module.exports = function(app,express,server, user_fb_id,user_fb_name,io){ //Get all the passed variables
+module.exports = function(req,app,express,server, user_fb_id,user_fb_name,io){ //Get all the passed variables
 
 var users = {};
 
 //listen on every connection
 io.sockets.on('connection', function(socket){
 
-users[user_fb_name] = socket;
-updateNicknames();
-
+    if(req){
+        users[user_fb_name] = socket;
+        updateNicknames();
+    }
+    
     function updateNicknames(){
         io.sockets.emit('usernames', Object.keys(users));
     }
