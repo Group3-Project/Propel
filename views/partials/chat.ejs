@@ -33,7 +33,7 @@
       socket.on('usernames', function(data){
         var user ='';
         for(i=0; i < data.length;i++){
-          html += data[i] + '<br/>'
+          user += data[i] + '<br/>'
         }
         users.html(user);
       });
