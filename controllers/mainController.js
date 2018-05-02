@@ -149,8 +149,6 @@ app.get('/gameView/:gameID',function(req, res){
 			 console.log(data);
 			 res.render('gameView',{game: data, user: user_profile});
 		})
-	}else{
-		res.render('index',{game_list : game_list, user: user_profile});
 	}
 });
 

@@ -1,4 +1,7 @@
 <div class="container main-area">
+  	<% if (typeof user == 'object' && user) { %>
+  		<% var user_id = user.id; %>
+	<%}else{ var user_id = null; console.log("ads") }%>
 
 	<!-- ROW 1 -->
 	<div class="row">
@@ -19,12 +22,10 @@
 				</a>
 			</div>
 		</div>
-		<div class="col-lg-3">
+		<div class="col-lg-3" onclick = "checkLogin()">
 			<div class="card card-item">
 				<span class="card-head"><%= game_list[0].name %></span>
-				<a class href="/gameView/<%= game_list[0].id %>">
 					<img class="hero-item" src = "<%= game_list[0].thumb %>">
-				</a>
 			</div>
 		</div>
 		<div class="col-lg-3">
@@ -58,3 +59,13 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	function checkLogin () {
+		if(<%= user_id!= null %>){
+			window.location.href = "/gameView/<%= game_list[0].id %>";
+		}else{
+			window.location.href = "/auth/facebook";
+		}
+	}
+</script>
