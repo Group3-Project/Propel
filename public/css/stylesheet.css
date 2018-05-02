@@ -198,19 +198,15 @@ h3{
 	
 }
 /* Table infomration (div fomrmating) */
-table{
+.uploadform table{
 	margin: auto;
 }
 
-td{
+.uploadform td{
 	padding: 0 70px 0 70px;
 	vertical-align: top;
 }
-
-h2 {
-	color: white;
-}
-label{
+.uploadform label{
 	color:#343a40;
 	text-transform: capitalize;
 	text-decoration: underline;
