@@ -274,7 +274,7 @@ color:black;
 }
 #chatWrap{
   height: 300px;
-  width:299px;
+  width:298px;
   float: left;
   position: relative; 
   border: 1px black solid;
@@ -282,7 +282,7 @@ color:black;
 }
 #users{
   height: 300px;
-  width:199px;
+  width:198px;
   float: right;
   border: 1px black solid;
   border-right:0;
