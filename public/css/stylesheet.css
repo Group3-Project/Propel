@@ -182,7 +182,7 @@ nav .btn{
 	border-color:#343a40; 
 }
 /* Headers */
-.UploadForm h2, .NeededInfo h3{
+.UploadForm h2, .NeededInfo h3, .Extra Information h3{
 	color: white;
 }
 /* Table infomration (div fomrmating) */
@@ -222,6 +222,7 @@ nav .btn{
 }
 .SubmitArea{
 	margin-top: 20px;
+	margin-bottom:100px;
 }
 .FinalSubmit{
 	background-color: #343a40;
