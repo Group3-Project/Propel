@@ -261,9 +261,6 @@ nav .btn{
 #contentWrap{
   height: auto;
   width: 500px;
-  position: fixed;
-  bottom: 0;
-  right:0;
   background-color:white;
   border: 1px black solid;
 color:black;
