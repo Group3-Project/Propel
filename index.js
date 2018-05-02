@@ -46,7 +46,6 @@ app.use(express.static('./public'));
 //Definining the controllers needed for core Functionality
 var fbauthController = require('./controllers/fbauthController');
 var mainController = require('./controllers/mainController');
-var chatController = require('./controllers/chatController');
 
 //Launch the defined controllers
 mainController(app,connection, express, server);
