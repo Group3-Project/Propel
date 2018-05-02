@@ -261,7 +261,6 @@ nav .btn{
         overflow-y:auto;
       }
       #contentWrap{
-       	display:none;
        	clear:both;
        	position: relative;
        	max-height: 300px;
@@ -269,7 +268,6 @@ nav .btn{
         
       }
       #users{
-      	display:none;
       	float:left;
       	overflow-y:auto;
         font-style:italic;
