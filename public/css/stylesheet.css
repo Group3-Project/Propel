@@ -118,6 +118,167 @@ nav .btn{
 }
 
 
+/*=========================================================================*/
+/*ADDED BY GEORGE*/
+/*=========================================================================*/
+
+.container{
+	z-index: 0;
+}
+/*Upload Form title*/
+.UploadForm {
+	background-color: #343a40;
+	text-align: center;
+	width: 50%;
+	margin: auto;
+	padding: 1px;
+	margin-top: 15px;
+	border-radius: 7px;
+	margin-bottom: 10px;
+	z-index: 4;
+}
+/*Needed Information title*/
+.NeededInfo{
+	background-color: #343a40;
+	text-align: center;
+	width: 50%;	
+	margin: auto;
+	margin-top: 20px;
+	border-radius: 7px;
+	padding: 1px;
+	z-index: 4;
+}
+.ExtraInfo{
+	background-color: #343a40;
+	text-align: center;
+	width: 50%;	
+	margin: auto;
+	margin-top: 20px;
+	border-radius: 7px;
+	padding: 1px;
+}
+/*Needed Information Area*/
+.NeededInfoArea{
+	width: 90%;	
+	margin: auto;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+	padding-bottom: 20px;
+	background-color: white;
+	border-radius: 7px;
+	border: 3px solid;
+	border-color:#343a40;
+	resize:both;
+	overflow:auto; 
+}
+
+.ExtraInfoArea{
+	width: 90%;	
+	margin: auto;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+	padding-bottom: 20px;
+	background-color: white;
+	border-radius: 7px;
+	margin-top: 20px;
+	border-radius: 7px;
+	border: 3px solid;
+	border-color:#343a40; 
+}
+/* Headers */
+h1{
+	border: 3px solid;
+	border-color: #343a40;
+	width: 50%;
+	margin: auto;
+	padding: 10px;
+	color: white;
+}
+h2{
+	color: white;
+}
+h3{
+	color: white;
+	
+}
+/* Table infomration (div fomrmating) */
+table{
+	margin: auto;
+}
+
+td{
+	padding: 0 70px 0 70px;
+	vertical-align: top;
+}
+
+h2 {
+	color: white;
+}
+label{
+	color:#343a40;
+	text-transform: capitalize;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.BigInput{
+	border: 1.5px solid;
+	border-radius: 7px;
+	width: 400px;
+	height: 200px;
+	border-color:#343a40;
+}
+
+.StandardInput{
+	border: 1.5px solid;
+	border-radius: 7px;
+	width: 300px;
+	height: 25px;
+	border-color:#343a40;
+}
+
+.FileInput{
+	border: 1.5px solid;
+	border-radius: 7px;
+	width: 300px;
+	height: 33px;
+	border-color:#343a40;
+}
+
+.SubmitArea{
+	margin-top: 20px;
+}
+
+.FinalSubmit{
+	background-color: #343a40;
+	color: white;
+	border-radius: 15px;
+	height: 40px;
+	width: 150px;
+}
+
+.footer{
+	margin-top: 20px;
+	background-color: #343a40;
+	height: 150px;
+	width: 100%; 
+}
+
+h5{
+	color: white;
+	margin-top: auto;
+	text-align: center;
+	position: relative;
+	top: 50%;
+	transform; translateY(-50%)
+
+}
+
+.HelpfulLinks{
+	background-color: 
+	padding:15px;
+	border: 1px solid black;
+}
+
+
 
 
 
