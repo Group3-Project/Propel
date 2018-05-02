@@ -256,7 +256,6 @@ nav .btn{
         overflow-y:auto;
       }
       #contentWrap{
-       	display:none;
        	clear:both;
        	position: relative;
        	max-height: 300px;
