@@ -5,19 +5,8 @@ var users = {};
 //listen on every connection
 io.sockets.on('connection', function(socket){
 
-    // Usernames
-    socket.on('new user',function(data, callback){
-       // console.log("user connected...");
-        if(data in users){
-            callback(false);
-        }
-        else{
-            callback(true);
-            socket.nickname = user_fb_name;
-            users[socket.nickname] = socket;
-            updateNicknames();
-        }
-    });
+users[user_fb_name] = socket;
+updateNicknames();
 
     function updateNicknames(){
         io.sockets.emit('usernames', Object.keys(users));
@@ -34,7 +23,7 @@ io.sockets.on('connection', function(socket){
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 1);
                 if(name in users){
-                    users[name].emit('whisper', {msg: msg, nick: socket.nickname});
+                    users[name].emit('whisper', {msg: msg, nick: user_fb_name});
                 } else{
                     callback('Error! Enter a valid User.');
                 }
@@ -43,20 +32,20 @@ io.sockets.on('connection', function(socket){
                 }
             
         } else{
-        io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
+        io.sockets.emit('new message', {msg: msg, nick: user_fb_name});
         }
     });
 
   
 
     socket.on('disconnect', function(data){
-        if(!socket.nickname) return;
-        delete users[socket.nickname];
+        if(!user_fb_name) return;
+        delete users[user_fb_name];
         updateNicknames();
     });
 
     socket.on('typing', function(data){
-        io.sockets.emit('typing', {nick : socket.nickname});
+        io.sockets.emit('typing', {nick : user_fb_name});
     });
 });
 }
