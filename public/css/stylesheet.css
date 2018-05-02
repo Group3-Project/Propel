@@ -45,6 +45,11 @@ nav .btn{
 	object-position: center;
 	max-height: 214px;
 }
+.card-head .game-item{
+	object-fit: cover;
+	object-position: center;
+}
+
 
 /* PROFILE AREA*/
 /*###################################################################*/
@@ -256,6 +261,7 @@ nav .btn{
         overflow-y:auto;
       }
       #contentWrap{
+       	display:none;
        	clear:both;
        	position: relative;
        	max-height: 300px;
@@ -263,6 +269,7 @@ nav .btn{
         
       }
       #users{
+      	display:none;
       	float:left;
       	overflow-y:auto;
         font-style:italic;
