@@ -2,7 +2,6 @@
 /*###################################################################*/
 /*###################################################################*/
 /*###################################################################*/
-
 html{
 	min-height: 100vh;
 }
@@ -245,3 +244,57 @@ nav .btn{
 		padding:0 !important;
 	}
 }
+
+/* Chat Style*/
+/*###################################################################*/
+/*###################################################################*/
+/*###################################################################*/
+      #chat{
+        height: 300px;
+        display: block;
+        
+        overflow-y:auto;
+      }
+      #contentWrap{
+       	display:none;
+       	clear:both;
+       	position: relative;
+       	max-height: 300px;
+        max-width: 500px;
+        
+      }
+      #users{
+      	display:none;
+      	float:left;
+      	overflow-y:auto;
+        font-style:italic;
+        font-weight: bold;
+        width: 200px;
+        height: 330px;
+    	padding: 5px;
+    	border: 1px solid #ccc;
+    	margin: 0px 2px 2px 2px;
+    	
+      }
+      #chatWrap{
+        float:left;
+        max-height: 400px;
+        max-width: 500px;
+        padding: 5px;
+    	border: 1px solid #ccc;
+    	margin: 0px 2px 2px 2px;
+      }
+      #typing{
+      	position: relative;
+      	clear:both;
+      	max-height: 20px;
+        max-width: 500px;
+        
+      }
+      .error{
+        color:red;
+      }
+      .whipser{
+        color:gray;
+        font-style:italic;
+      }
