@@ -1,16 +1,16 @@
 <nav class="navbar navbar-dark bg-dark">
 	<div class="container">
   		<a class="navbar-brand" href="/">
-    			<img src="../Images/propeldark.png" height="40px" class="d-inline-block align-top" alt="">
+    			<img src="../Images/propeldark.png" height="40px" class="d-inline-block align-top" alt="Website Logo" title="Home">
   		</a>
 
   		<% if (typeof user == 'object' && user) { %>
   		<% var user_id = user.id; %>
   		<div class="nav-right">
 			<a href="profile"><button type="button" title="Account" class="btn btn-dark"><i class="material-icons">account_box</i></button></a>
-			<button type="button" class="btn btn-dark"><i class="material-icons">chat</i></button>
-			<button type="button" class="btn btn-dark"><i class="material-icons">announcement</i></button>
-			<a href = "/logout"><button onclick = "logout()" type="button" class="btn btn-dark"><i class="material-icons">input</i></button></a>
+			<a href=""><button type="button" title="Chat" class="btn btn-dark"><i class="material-icons">chat</i></button></a>
+			<a href=""><button type="button" title="Notifications" class="btn btn-dark"><i class="material-icons">announcement</i></button></a>
+			<a href="/logout"><button type="button" title="Logout" class="btn btn-dark"><i class="material-icons">input</i></button></a>
   		</div>
   		<% } else { %> 
   			<a href="/auth/facebook"><button onclick type="button" class="btn btn-dark">Login</button></a>
