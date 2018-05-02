@@ -182,7 +182,7 @@ nav .btn{
 	border-color:#343a40; 
 }
 /* Headers */
-h1{
+.uploadform h1{
 	border: 3px solid;
 	border-color: #343a40;
 	width: 50%;
@@ -190,10 +190,10 @@ h1{
 	padding: 10px;
 	color: white;
 }
-h2{
+.uploadform h2{
 	color: white;
 }
-h3{
+.uploadform h3{
 	color: white;
 	
 }
@@ -202,11 +202,11 @@ h3{
 	margin: auto;
 }
 
-td{
+.TableA td{
 	padding: 0 70px 0 70px;
 	vertical-align: top;
 }
-label{
+.uploadform label{
 	color:#343a40;
 	text-transform: capitalize;
 	text-decoration: underline;
