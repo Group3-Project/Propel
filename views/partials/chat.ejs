@@ -31,11 +31,11 @@
       var box = document.getElementById('chat');
 
       socket.on('usernames', function(data){
-        var html ='';
+        var user ='';
         for(i=0; i < data.length;i++){
           html += data[i] + '<br/>'
         }
-        users.html(html);
+        users.html(user);
       });
       //Emit message
       messageForm.submit(function(e){
