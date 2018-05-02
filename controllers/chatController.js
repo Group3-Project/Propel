@@ -13,7 +13,7 @@ io.sockets.on('connection', function(socket){
         }
         else{
             callback(true);
-            socket.nickname = data;
+            socket.nickname = user_fb_name;
             users[socket.nickname] = socket;
             updateNicknames();
         }
