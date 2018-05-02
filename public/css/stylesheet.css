@@ -45,9 +45,10 @@ nav .btn{
 	object-position: center;
 	max-height: 214px;
 }
-.col-lg-6 .hero-item{
+.col-lg-6 .hero-item, .col-lg-3 .hero-item{
 	object-fit: cover;
 	object-position: center;
+	max-height: 175px;
 }
 
 
