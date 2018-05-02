@@ -2,7 +2,7 @@ module.exports = function() {  // Markuss I will let you handle this during impl
 
   function game(port, noPlayers) {
     this.port = port;
-    this.noPlayers = noPlayers; // noPlayers == max number of players in given game
+    this.noPlayers = noPlayers; // noPlayers == max number of players in given game, - ref , 2 in chess, 4 in shooter - need to pass this
     this.rooms = []
   }
 
