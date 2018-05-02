@@ -294,7 +294,7 @@ text-align: center;
   bottom: 0;
 }
 #chat{
-  height: 270px;
+  height: 260px;
   display: block;
   overflow-y:auto;
 }
