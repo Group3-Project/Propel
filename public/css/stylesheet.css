@@ -258,16 +258,7 @@ nav .btn{
 .card#contentWrap{
   max-height:initial;
 }
-#contentWrap{
-  height: 310px;
-  width: 500px;
-  background-color:white;
-  border: 1px black solid;
-  position:fixed;
-  right:0;
-  bottom:0;
-color:black;
-}
+
 #chatWrap{
   height: 300px;
   width:299px;
