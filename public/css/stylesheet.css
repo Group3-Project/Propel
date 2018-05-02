@@ -117,14 +117,12 @@ nav .btn{
 	background: linear-gradient(#efefef, #cfcfcf);
 }
 
+/*UPLOAD A GAME*/
+/*###################################################################*/
+/*###################################################################*/
+/*###################################################################*/
 
-/*=========================================================================*/
-/*ADDED BY GEORGE*/
-/*=========================================================================*/
 
-.container{
-	z-index: 0;
-}
 /*Upload Form title*/
 .UploadForm {
 	background-color: #343a40;
@@ -184,35 +182,24 @@ nav .btn{
 	border-color:#343a40; 
 }
 /* Headers */
-h1{
-	border: 3px solid;
-	border-color: #343a40;
-	width: 50%;
-	margin: auto;
-	padding: 10px;
+.UploadForm h2{
 	color: white;
 }
-h2{
-	color: white;
-}
-h3{
+.NeededInfo h3{
 	color: white;
 	
 }
 /* Table infomration (div fomrmating) */
-table{
+.uploadform table{
 	margin: auto;
 }
 
-td{
+.uploadform td{
 	padding: 0 70px 0 70px;
 	vertical-align: top;
 }
 
-h2 {
-	color: white;
-}
-label{
+.uploadform label{
 	color:#343a40;
 	text-transform: capitalize;
 	text-decoration: underline;
@@ -254,24 +241,6 @@ label{
 	height: 40px;
 	width: 150px;
 }
-
-.footer{
-	margin-top: 20px;
-	background-color: #343a40;
-	height: 150px;
-	width: 100%; 
-}
-
-h5{
-	color: white;
-	margin-top: auto;
-	text-align: center;
-	position: relative;
-	top: 50%;
-	transform; translateY(-50%)
-
-}
-
 .HelpfulLinks{
 	background-color: 
 	padding:15px;
@@ -280,10 +249,7 @@ h5{
 
 
 
-
-
-
-
+/*MQ*/
 @media (max-width: 768px) {
 	.col-lg-3, .col-lg-6{
 		padding:0 !important;
