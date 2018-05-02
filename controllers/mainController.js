@@ -2,7 +2,7 @@ module.exports = function(app,DB,express, server){
 
 var io = require('socket.io')(server);
 var socketController = require('./socketController');
-var chatController = require('./controllers/chatController');
+var chatController = require('./chatController');
 var game_list;
 var initPack = {player:[]};
 var removePack = {player:[]};	
