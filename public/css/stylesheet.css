@@ -258,11 +258,11 @@ nav .btn{
 /*###################################################################*/
 /*###################################################################*/
 /*###################################################################*/
-.card-item#contentWrap{
-	height:300px;
+.card#contentWrap{
+	height:340px;
 }
 #contentWrap{
-  height: auto;
+  height: 340px;
   width: 500px;
   background-color:white;
   border: 1px black solid;
