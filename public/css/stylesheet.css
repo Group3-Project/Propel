@@ -257,6 +257,10 @@ nav .btn{
 /*###################################################################*/
 .card#contentWrap{
   max-height:initial;
+  display:initial;
+}
+#contentWrap .card-head{
+  width:100%;	
 }
 #contentWrap{
   height: 310px;
@@ -269,7 +273,7 @@ nav .btn{
 color:black;
 }
 #chatWrap{
-  height: 300px;
+  height: 270px;
   width:299px;
   float: left;
   position: relative; 
@@ -277,7 +281,7 @@ color:black;
   border-left:0;
 }
 #users{
-  height: 300px;
+  height: 270px;
   width:199px;
   float: right;
   border: 1px black solid;
