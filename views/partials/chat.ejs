@@ -7,16 +7,6 @@
   <header>
     <h1>ChatRoom</h1>
   </header>
-
-  <div id="nickWrap">
-   	<p>Enter a Username:</p>
-    <p id="nickError"></p>
-    <form id="setNick">
-      <input size="35" id="nickname"></input>
-      <input type="submit" value="submit">
-    </form>
-    </div>
-
 	
     <div id="contentWrap">
       	<div id="chatWrap">
@@ -48,22 +38,7 @@
       var users = $('#users');
       var typing = $('#typing');
       var box = document.getElementById('chat');
-      nickForm.submit(function(e){
-        console.log("nickname sent");
-        e.preventDefault();
-        socket.emit('new user', nickBox.val(),function(data){
-            if(data){
-             $('#nickWrap').hide();
-             $('#contentWrap').show();
-             $('#users').show();
-            }
-            else{
-             nickError.html('That username is already taken! Try again.');
-            }
-          
-          });
-          nickBox.val("");
-        });
+
       socket.on('usernames', function(data){
         var html ='';
         for(i=0; i < data.length;i++){
