@@ -45,7 +45,15 @@ nav .btn{
 	object-position: center;
 	max-height: 214px;
 }
-
+.col-lg-12 .hero-item{
+	object-fit: cover;
+	object-position: center;
+	max-height: 214px;
+}
+.col-lg-6 .hero-item{
+	object-fit: cover;
+	object-position: center;
+}
 
 
 /* PROFILE AREA*/
