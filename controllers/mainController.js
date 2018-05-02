@@ -108,6 +108,16 @@ app.get('/profile',function(req, res){
 	}
 });
 	
+app.get('/upload',function(req, res){
+	if(req.user){	
+		 user_profile = req.user;
+		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io);
+		 res.render('upload',{userview: user_profile, user: user_profile});
+	}else{
+		res.render('index',{game_list : game_list, user: user_profile});
+	}
+});
+	
 app.get('/profile/:username',function(req, res){
 	user_profile = req.user;
 	var promise_user = getData("select * from users where fb_id =" + req.params.username);
