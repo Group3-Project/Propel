@@ -263,7 +263,7 @@ nav .btn{
   width: 500px;
   background-color:white;
   border: 1px black solid;
-  position:absolute;
+  position:fixed;
   right:0;
   bottom:0;
 color:black;
