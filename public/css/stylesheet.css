@@ -182,24 +182,35 @@ nav .btn{
 	border-color:#343a40; 
 }
 /* Headers */
-.UploadForm h2{
+h1{
+	border: 3px solid;
+	border-color: #343a40;
+	width: 50%;
+	margin: auto;
+	padding: 10px;
 	color: white;
 }
-.NeededInfo h3{
+h2{
+	color: white;
+}
+h3{
 	color: white;
 	
 }
 /* Table infomration (div fomrmating) */
-.uploadform table{
+table{
 	margin: auto;
 }
 
-.uploadform td{
+td{
 	padding: 0 70px 0 70px;
 	vertical-align: top;
 }
 
-.uploadform label{
+h2 {
+	color: white;
+}
+label{
 	color:#343a40;
 	text-transform: capitalize;
 	text-decoration: underline;
@@ -241,6 +252,24 @@ nav .btn{
 	height: 40px;
 	width: 150px;
 }
+
+.footer{
+	margin-top: 20px;
+	background-color: #343a40;
+	height: 150px;
+	width: 100%; 
+}
+
+h5{
+	color: white;
+	margin-top: auto;
+	text-align: center;
+	position: relative;
+	top: 50%;
+	transform; translateY(-50%)
+
+}
+
 .HelpfulLinks{
 	background-color: 
 	padding:15px;
