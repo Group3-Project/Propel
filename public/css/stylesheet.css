@@ -259,7 +259,7 @@ nav .btn{
   max-height:initial;
 }
 #contentWrap{
-  height: 340px;
+  height: 310px;
   width: 500px;
   background-color:white;
   border: 1px black solid;
@@ -292,7 +292,7 @@ text-align: center;
   bottom: 0;
 }
 #chat{
-  height: 260px;
+  height: 270px;
   display: block;
   overflow-y:auto;
 }
