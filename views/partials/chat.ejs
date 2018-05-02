@@ -1,15 +1,4 @@
-<% if (typeof user == 'object' && user) { %>
-<% var user_id = user.id; %>
-<html>
-  <head>
-    <title>chatroom</title>
-</head>
-
-<body>
-  <header>
-    <h1>ChatRoom</h1>
-  </header>
-	
+<div class="somewrapper" style="width:auto; height:auto; position:absolute; right:0; bottom:0;>
     <div id="contentWrap">
       	<div id="chatWrap">
        	 	<div id="chat"></div>
@@ -23,7 +12,7 @@
 	<div id="users">
 		<h2>Players online</h2>
 	</div>
-
+</div>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -86,6 +75,3 @@
       });
     });
     </script>
-  </body>
-</html>
-<%}%>
