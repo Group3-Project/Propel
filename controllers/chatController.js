@@ -1,11 +1,11 @@
-module.exports = function(req,app,express,server, user_fb_id,user_fb_name,io){ //Get all the passed variables
+module.exports = function(reqs,app,express,server, user_fb_id,user_fb_name,io){ //Get all the passed variables
 
 var users = {};
 
 //listen on every connection
 io.sockets.on('connection', function(socket){
 
-    if(req){
+    if(reqs){
         users[user_fb_name] = socket;
         updateNicknames();
     }
