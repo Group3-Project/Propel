@@ -6,7 +6,8 @@ var users = {};
 io.sockets.on('connection', function(socket){
 
     if(reqs){
-        users[user_fb_name] = socket;
+        socket.nickname = user_fb_name;
+        users[socket.nickname] = socket;
         updateNicknames();
     }
     
@@ -25,7 +26,7 @@ io.sockets.on('connection', function(socket){
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 1);
                 if(name in users){
-                    users[name].emit('whisper', {msg: msg, nick: user_fb_name});
+                    users[name].emit('whisper', {msg: msg, nick: socket.nickname});
                 } else{
                     callback('Error! Enter a valid User.');
                 }
@@ -34,15 +35,15 @@ io.sockets.on('connection', function(socket){
                 }
             
         } else{
-        io.sockets.emit('new message', {msg: msg, nick: user_fb_name});
+        io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
         }
     });
 
   
 
     socket.on('disconnect', function(data){
-        if(!user_fb_name) return;
-        delete users[user_fb_name];
+        if(!socket.nickname) return;
+        delete users[socket.nickname];
         updateNicknames();
     });
 
