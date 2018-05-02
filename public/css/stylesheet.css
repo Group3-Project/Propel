@@ -202,11 +202,11 @@ h3{
 	margin: auto;
 }
 
-.uploadform td{
+td{
 	padding: 0 70px 0 70px;
 	vertical-align: top;
 }
-.uploadform label{
+label{
 	color:#343a40;
 	text-transform: capitalize;
 	text-decoration: underline;
