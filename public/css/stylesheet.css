@@ -257,7 +257,7 @@ nav .btn{
 /*###################################################################*/
 .card#contentWrap{
   max-height:initial;
-  display:initial;
+  display:inline-block;
 }
 #contentWrap .card-head{
   width:100%;	
