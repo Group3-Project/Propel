@@ -258,46 +258,33 @@ nav .btn{
 /*###################################################################*/
 /*###################################################################*/
 /*###################################################################*/
-      #chat{
-        height: 300px;
-        display: block;
-        
-        overflow-y:auto;
-      }
       #contentWrap{
-       	clear:both;
-       	position: relative;
-       	max-height: 300px;
-        max-width: 500px;
-        
-      }
-      #users{
-      	float:left;
-      	overflow-y:auto;
-        font-style:italic;
-        font-weight: bold;
-        width: 200px;
-        height: 330px;
-    	padding: 5px;
-    	border: 1px solid #ccc;
-    	margin: 0px 2px 2px 2px;
-    	
-      }
-      #chatWrap{
-        float:left;
-        max-height: 400px;
-        max-width: 500px;
-        padding: 5px;
-    	border: 1px solid #ccc;
-    	margin: 0px 2px 2px 2px;
-      }
-      #typing{
-      	position: relative;
-      	clear:both;
-      	max-height: 20px;
-        max-width: 500px;
-        
-      }
+  height: auto;
+  width: auto;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+#chatWrap{
+  height: auto;
+  width: auto;
+}
+#chat{
+  height: 300px;
+  width: 200px;
+}
+#typing{
+  width: 100%;
+  height: auto;
+}
+#send-message{
+  width: auto;
+  height: 20px;
+}
+#users{
+  height: 300px;
+  width: 75px;
+}
       .error{
         color:red;
       }
