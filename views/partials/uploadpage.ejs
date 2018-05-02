@@ -1,0 +1,181 @@
+	<div class="container">
+
+		<!-- Upload Form title -->
+		<div class="UploadForm">
+			<h2>Upload Form</h2>
+		</div>
+
+			<!-- =============================== -->
+			<!-- NEEDED INFOMATION SECTION START -->
+			<!-- =============================== -->
+			<!-- Div Controlling Needed Info Input Area-->
+			<div class ="NeededInfoArea">
+
+				<!-- Needed Info title (included in Input Area Div for looks) -->
+				<div class="NeededInfo">
+					<h3>Needed Information</h3>
+				</div>
+
+					<!-- FORM STARTS HERE -->
+					<form name ="uploadform" onsubmit="" method="post" action="form-to-email.php">
+						<!-- A Table to Orgnise Input Boxs -->
+						<table class="TableA">
+							<tr>
+								<td>
+									<!-- Game File Input Box -->
+									<br><label>Game File Upload</label></br>	
+
+										<input type="file" 
+										name="GameFiles"
+										accept="video/*"
+										class ="FileInput"
+										multiple>
+								</td>
+
+								<td>
+									<!-- Game File Instructions Input Box -->
+									<br><label>Game File Instructions</label></br>
+
+										<textarea name="GameFilesInstructions" 
+										class ="BigInput" 
+										placeholder="Language Written in.&#x0a;Storage space required.&#x0a;Flash Required." 
+										spellcheck="true" 
+										contenteditable="true"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<!-- Game Name Input Box -->
+									<br><label>Game Name</label></br>	
+
+										<input name="GameName" 
+										class ="StandardInput"
+										placeholder="Game Name">
+								</td>
+
+								<td>
+									<!-- Game Instructions Input Box -->
+									<br><label>Instructions</label></br>
+
+										<textarea name="Instructions"
+										class ="BigInput" placeholder="W foward,&#x0a; D Right,&#x0a; A left,&#x0a; S Backward." contenteditable="true" spellcheck="true"></textarea>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<!-- Genre Drop Box -->
+									<br><label>Genre</label></br>
+
+									<select name="Genre" class ="StandardInput">
+										<option value="Action">Action</option>
+										<option value="Adventure">Adventure</option>
+										<option value="Arcade">Arcade</option>
+										<option value="Board">Board</option>
+										<option value="Music">Music</option>
+										<option value="Shooter">Shooter</option>
+										<option value="Fighting">Fighting</option>
+										<option value="Platform">Platform</option>
+										<option value="Puzzle">Puzzle</option>
+										<option value="Racing">Racing</option>
+										<option value="Retro">Retro</option>
+										<option value="RPG">RPG</option>
+										<option value="Sports">Sports</option>
+										<option value="Strategy">Strategy</option>
+									</select>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<!-- Author Input Box -->
+									<br><label>Author</label></br>
+
+									<input name="Author" class ="StandardInput" placeholder="X-Star Games"
+									contenteditable="true" spellcheck="true">
+								</td>
+								
+								<td>
+									<!-- Game Description Input Box -->
+									<br><label>Description</label></br>
+
+									<textarea name="Description" class ="BigInput" placeholder= "A Classic Solitaire Game with a Modem Twist to ensure hours of endless fun!!"
+									contenteditable="true" spellcheck="true"></textarea>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<!-- ============================== -->
+					<!-- NEEDED INFOMATION SECTION END   -->
+					<!-- ============================== -->
+					<!-- ============================== -->
+					<!-- EXTRA INFOMATION SECTION START -->
+					<!-- ============================== -->
+					<div class="ExtraInfoArea">
+						<div class ="ExtraInfo">
+							<h3>Extra Information</h3>
+						</div>
+								<table class="TableA">
+									<tr>
+										<td>
+											<!-- Achivements Input -->
+											<br><label>List Of Achievements</label></br>	
+
+											<textarea name="Achievements" class ="BigInput" contenteditable="true" spellcheck="true"></textarea>
+										</td>
+
+										<td>
+											<!-- Screenshots Input -->
+											<br><label>Screenshots</label></br>
+
+											<br><input type="file" name="Screenshots" class ="FileInput" accept="image/*" multiple contenteditable="true" spellcheck="true"></br>
+										</td>
+
+									</tr>
+
+									<tr>
+										<td>
+											<!-- Game Version Input -->
+											<br><label>Game Version</label></br>
+
+											<input name="Version" class ="StandardInput" placeholder="0.1.18V" contenteditable="true" spellcheck="true">
+										</td>
+
+										<td>
+											<!-- Solutions Input -->
+											<br><label>Solutions</label></br>	
+
+												<br><input type="file" name="PictureUpload" class="FileInput" accept="" multiple id="PictureFormat"></br>
+
+											</div>
+
+										</td>
+									</tr>
+
+									<tr>
+										<td>
+											<!-- Game Version Input -->
+											<br><label>Trailer</label></br>	
+
+											<br><input type="file" name="Trailer" accept="video/*" class ="FileInput" contenteditable="true" spellcheck="true"></br>
+										</td>
+									</tr>
+							</table>
+						</div>
+						<!-- ============================== -->
+						<!-- EXTRA INFOMATION SECTION END   -->
+						<!-- ============================== -->
+						<div class = "SubmitArea" align="center">
+							<input type="submit" value="Submit" class="FinalSubmit">
+						</div>
+					</form>
+
+						
+		
+
+					</div>
+			</div>
+		</div>
+			<div class = "footer">
+					<h5> Thankyou for Visting Propel </h5>		
+			</div>
