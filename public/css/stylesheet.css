@@ -12,9 +12,6 @@ nav button .material-icons{
 nav .btn{
 	padding: 6px;
 }
-.navbar{
-	
-}
 .under-nav{
 	height: 20px;
 	background-color: #343a40;
@@ -259,6 +256,7 @@ nav .btn{
 /*###################################################################*/
 /*###################################################################*/
 .card#contentWrap{
+  max-height:initial;
 }
 #contentWrap{
   height: 340px;
