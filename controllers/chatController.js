@@ -1,17 +1,6 @@
-var express = require('express');
-var app = express();
-var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
+module.exports = function(app,express,server, user_fb_id,user_fb_name,io){ //Get all the passed variables
+
 var users = {};
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/public/index.html');
-});
-
-app.use('/public',express.static(__dirname + '/public'));
-
-//Listen on port 3000
-server.listen(process.env.PORT || 1000);
 
 //listen on every connection
 io.sockets.on('connection', function(socket){
@@ -22,7 +11,6 @@ io.sockets.on('connection', function(socket){
         if(data in users){
             callback(false);
         }
-
         else{
             callback(true);
             socket.nickname = data;
@@ -71,3 +59,4 @@ io.sockets.on('connection', function(socket){
         io.sockets.emit('typing', {nick : socket.nickname});
     });
 });
+}
