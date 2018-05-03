@@ -73,7 +73,7 @@ var getData = function (query){
 				console.log('mysql query error' + error);
 				reject(false);
 			}else{
-				resolve(rows[0]);
+				resolve(rows);
 				//her_profile =  rows;
 			}
 		});
@@ -128,12 +128,12 @@ app.get('/profile/:username',function(req, res){
 	promise_user.then(function(dataUser){
 			var promise_friends = getData("select * from user_friends where user_id =" + req.params.username);
 			promise_friends.then(function(dataFriends){
-				console.log(dataFriends)
 				if(req.user){
+					console.log(dataFriends)
 					socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 					res.render('profile',{user: user_profile, userview: dataUser, userfriends : dataFriends});
 				}else{
-					res.render('profile',{userview: dataUser, userfriends : dataFriends});
+					res.render('profile',{userview: dataUser[0], userfriends : dataFriends});
 					console.log(userfriends);
 				}
 				
@@ -150,8 +150,8 @@ app.get('/gameView/:gameID',function(req, res){
 		user_profile = req.user;
 		socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 		gameInfo.then(function(data){
-			 console.log(data);
-			 res.render('gameView',{game: data, user: user_profile});
+			 console.log(data[0]);
+			 res.render('gameView',{game: data[0], user: user_profile});
 		})
 	}
 });
