@@ -7,12 +7,22 @@ io.sockets.on('connection', function(socket){
 
     if(user_fb_id){
   	    socket.nickname = user_fb_name;
+
         users[socket.nickname] = socket;
+        users[socket.nickname].id = user_fb_id;
         updateNicknames();
     }
     
     function updateNicknames(){
-        io.sockets.emit('usernames', Object.keys(users));
+        var temp_list = [];
+        for (i = 0; i < Object.keys(users).length; i++){
+            tempObj = {
+                'name' : Object.keys(users)[i],
+                'id' : users[Object.keys(users)[i]].id
+            }
+            temp_list.push(tempObj)
+        }
+        io.sockets.emit('usernames', temp_list);
     }
 
     //listen on new_message

@@ -122,6 +122,7 @@ app.get('/upload',function(req, res){
 	
 app.get('/profile/:username',function(req, res){
 	user_profile = req.user;
+	console.log(req.params.username)
 	var promise_user = getData("select * from users where fb_id =" + req.params.username);
 	promise_user.then(function(dataUser){
 			var promise_friends = getData("select * from user_friends where user_id =" + req.params.username);

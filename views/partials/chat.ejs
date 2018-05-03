@@ -33,8 +33,9 @@
 
       socket.on('usernames', function(data){
         var user ='';
+        console.log(data)
         for(i=0; i < data.length;i++){
-          user += data[i] + '<br/>'
+          user += '<a href = "/profile/' + data[i].id + '">' + data[i].name + '</a><br/>'
         }
           users.append(user);
       });
