@@ -56,7 +56,6 @@ io.sockets.on('connection', function(socket){
     //socket.on('disconnect', function(data){
     socket.on('kill_user', (data)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainContro
         delete users[socket.nickname];
-	console.log('hdeewdfjkwqehfdjkwqehfjkwqehfjkqewhfejkwqfhewjkfhwqekjfhweqkfhewqjkfhewqjkfhewjkfhewqkj');
         Player.onDisconnect(socket);
 	user_fb_id = null;
         updateNicknames();
