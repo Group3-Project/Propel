@@ -20,9 +20,7 @@ io.sockets.on('connection', function(socket){
               	 'name' : Object.keys(users)[i],
               	  'id' : users[Object.keys(users)[i]].id
             }
-		if(temp_list.indexOf(tempObj) > -1){
-		    temp_list.push(tempObj)
-		}		
+		console.log(temp_list.indexOf(tempObj));	
        	 }
 	    
 	
