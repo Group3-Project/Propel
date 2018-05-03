@@ -92,7 +92,7 @@ app.get('/',function(req, res){
 		 user_profile = req.user;
 		 console.log("User recognized!");
 		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io);
-		 chatController(req.user,app,express,server,user_profile.id,user_profile.name,io);
+		 chatController(app,express,server,user_profile.id,user_profile.name,io);
 	}else{
 		console.log('User not logged in');
 	}
