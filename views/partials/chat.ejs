@@ -74,10 +74,8 @@ Global Chat
       });
       //Listen on new_message
       socket.on("new message", function(data) {
-        var list = [];
         messageBox.val("");
-        list.push('<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>');
-        chat.append(list);
+        chat.append('<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>');
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
