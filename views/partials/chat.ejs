@@ -1,13 +1,13 @@
 <% if (typeof user == 'object' && user) { %>
 <% var user_id = user.id; %>
 
+<div id="contentWrap" class="card card-item">
 <span class="chat-main-wrap">
 <span class="card-head">
 Global Chat
 <i class="material-icons" title="Close chat window">cancel</i>
 <i class="material-icons" title="Minimize chat window">arrow_drop_down_circle</i>
 </span>
-<div id="contentWrap" class="card card-item">
   <div id="chatWrap">
     <div id="chat"></div>
     <form id="send-message" onsubmit="return false">
@@ -19,7 +19,7 @@ Global Chat
    <h4>Players Online</h4>
   <div id="users"></div>
 </div>
-</span>
+</div>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
