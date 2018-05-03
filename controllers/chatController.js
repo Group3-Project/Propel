@@ -20,8 +20,11 @@ io.sockets.on('connection', function(socket){
               	 'name' : Object.keys(users)[i],
               	  'id' : users[Object.keys(users)[i]].id
             }
-            temp_list.push(tempObj)
+		if(!temp_List.includes(tempObj)){
+		    temp_list.push(tempObj)
+		}		
        	 }
+	    
 	
         io.sockets.emit('usernames', temp_list);
     }
