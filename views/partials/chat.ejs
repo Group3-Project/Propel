@@ -5,7 +5,7 @@
 <span class="chat-main-wrap">
 <span class="card-head">
 Global Chat
-<i class="material-icons" title="Close chat window">cancel</i>
+<i class="material-icons" id="closechat" onclick="closechat()" title="Close chat window">cancel</i>
 <i class="material-icons" id="hidechat" onclick="hidechat()" title="Minimize chat window">expand_more</i>
 <i class="material-icons" id="showchat" onclick="showchat()" title="Minimize chat window">expand_less</i>
 </span>
@@ -32,6 +32,9 @@ Global Chat
       document.getElementById("showchat").style.display= "none";
       document.getElementById("hidechat").style.display= "initial";
     }
+    function closechat(){
+      document.getElementById("contentWrap").style.display= "none";
+      }
     </script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
