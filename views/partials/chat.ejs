@@ -32,8 +32,8 @@
       var box = document.getElementById('chat');
       
       function DuplicatesRemove(a){
-        var user ='';
-        for (i = 0;i < a.length; i++){
+        let user ='';
+        for (let i = 0;i < a.length; i++){
           if(user.indexOf(a[i]) == -1){
             user.push(a[i]);
           }
