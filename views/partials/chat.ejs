@@ -6,7 +6,7 @@
 <span class="card-head">
 Global Chat
 <i class="material-icons" title="Close chat window">cancel</i>
-<i class="material-icons" onclick="Document.getElementById('contentWrap').style.height ='40px;'") title="Minimize chat window">arrow_drop_down_circle</i>
+<i class="material-icons" onclick="hidechat()" title="Minimize chat window">arrow_drop_down_circle</i>
 </span>
   <div id="chatWrap">
     <div id="chat"></div>
@@ -20,6 +20,9 @@ Global Chat
   <div id="users"></div>
 </div>
 </div>
+    <script>
+    document.getElementById("contentWrap").style.height = "50px";
+    </script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
