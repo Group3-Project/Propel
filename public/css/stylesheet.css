@@ -320,7 +320,8 @@ text-align: center;
 }
 #typing{
   position: relative;
-  width:50px;
+  width:24px;
+  height:24px;
 }
 #chat, #users{
 	padding-left:5px;
