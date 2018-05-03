@@ -281,6 +281,9 @@ color:black;
   border: 1px black solid;
   border-left:0;
 }
+#chatWrap h4{
+	padding-left:305px;
+}
 #users{
   height: 270px;
   width:199px;
