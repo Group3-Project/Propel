@@ -260,7 +260,7 @@ nav .btn{
   display: none;
 }
 .material-icons#typing{
-	float:none;
+	float:left;
 	margin-left:10px;
 }
 #contentWrap .card-head{
@@ -324,6 +324,7 @@ text-align: center;
   clear:both;
   max-height: 20px;
   max-width: 500px;
+	margin-left:100px;
 }
 #chat, #users{
 	padding-left:5px;
