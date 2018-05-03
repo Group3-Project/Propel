@@ -47,12 +47,7 @@ io.sockets.on('connection', function(socket){
                 }
             
         } else{
-	var user_list = [];
-	var msg_list = [];
-	user_list.push(socket.nickname);
-	msg_list.push(msg);
-	io.sockets.emit('new message', {msg: msg_list, nick: user_list});
-        //io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
+        io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
         }
     });
 
