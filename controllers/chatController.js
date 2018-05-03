@@ -7,9 +7,11 @@ io.sockets.on('connection', function(socket){
 
     if(user_fb_id){
   	    socket.nickname = user_fb_name;
-
+        if(user_fb_name in users){
+            return;
+        }
         users[socket.nickname] = socket;
-        users[socket.nickname].id = user_fb_id;
+        //users[socket.nickname].id = user_fb_id;
         updateNicknames();
     }
     
