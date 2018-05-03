@@ -15,15 +15,14 @@ io.sockets.on('connection', function(socket){
     
     function updateNicknames(){
         var temp_list = [];
-        if(!(temp_list.name in users)){
-	    for (i = 0; i < Object.keys(users).length; i++){
-            	tempObj = {
-              	  'name' : Object.keys(users)[i],
-              	  'id' : users[Object.keys(users)[i]].id
-           	 }
-            	temp_list.push(tempObj)
-       	     }
-	}
+    	for (i = 0; i < Object.keys(users).length; i++){
+            tempObj = {
+              	 'name' : Object.keys(users)[i],
+              	  id' : users[Object.keys(users)[i]].id
+            }
+            temp_list.push(tempObj)
+       	 }
+	
         io.sockets.emit('usernames', temp_list);
     }
 
@@ -54,10 +53,10 @@ io.sockets.on('connection', function(socket){
   
 
     //socket.on('disconnect', function(data){
-    socket.on('kill_user', (id)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainContro
-        delete users[socket.nickname];
+    socket.on('kill_user', (User_fb_name)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainContro
+        delete users[User_fb_name];
         Player.onDisconnect(socket);
-	    user_fb_id = null;
+	user_fb_id = null;
         updateNicknames();
     });
 
