@@ -8,7 +8,7 @@
     <form id="send-message" onsubmit="return false">
       <div id ='typing'></div>
       <input size="35" id="message"></input>
-      <input type="submit" value="send">
+      <input type="submit" value="Send">
     </form>
   </div>
   <div id="users">
@@ -54,7 +54,7 @@
       socket.on("new message", function(data) {
         
         messageBox.val("");
-        chat.append('<span class="msg"><b>' + data.nick +':- </b> '+ data.msg + '</span><br/>');
+        chat.append('<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>');
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
