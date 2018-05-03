@@ -55,6 +55,7 @@ Global Chat
       
       
       var user_control = []
+      users.html('');
       socket.on('usernames', function(data){
         var user ='';
         for(i=0; i < data.length;i++){
