@@ -18,7 +18,7 @@ io.sockets.on('connection', function(socket){
     	for (i = 0; i < Object.keys(users).length; i++){
             tempObj = {
               	 'name' : Object.keys(users)[i],
-              	  id' : users[Object.keys(users)[i]].id
+              	  'id' : users[Object.keys(users)[i]].id
             }
             temp_list.push(tempObj)
        	 }
