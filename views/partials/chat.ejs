@@ -77,8 +77,7 @@ Global Chat
         var list = [];
         messageBox.val("");
         list.push('<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>');
-        console.log(list);
-        chat.append('<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>');
+        chat.append(list);
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
