@@ -264,6 +264,7 @@ nav .btn{
   display:inline-block;
 }
 #contentWrap{
+  transition: height 0.3s linear;
   height: 310px;
   width: 500px;
   background-color:white;
