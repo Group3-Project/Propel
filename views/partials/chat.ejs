@@ -36,9 +36,7 @@
         for(i=0; i < data.length;i++){
           user += data[i] + '<br/>'
         }
-        if (users.val() != user){
           users.append(user);
-        }
       });
       //Emit message
       messageForm.submit(function(e){
