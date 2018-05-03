@@ -140,7 +140,7 @@ app.get('/profile/:username',function(req, res){
 						}
 					}
 					socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
-					res.render('profile',{user: user_profile, userview: dataUser, userfriends : dataFriends,friends: friends});
+					res.render('profile',{user: user_profile, userview: dataUser[0], userfriends : dataFriends,friends: friends});
 				}else{
 					res.render('profile',{userview: dataUser[0], userfriends : dataFriends});
 					console.log(userfriends);
