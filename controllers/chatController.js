@@ -5,14 +5,13 @@ var users = {};
 //listen on every connection
 io.sockets.on('connection', function(socket){
 
-    block:if(user_fb_id){
-  	    socket.nickname = user_fb_name;
-        if(user_fb_name in users){
-            break block;
+   if(user_fb_id){
+  	socket.nickname = user_fb_name;
+        if(!user_fb_name in users){
+            users[socket.nickname] = socket;
+            updateNicknames();
         }
-        users[socket.nickname] = socket;
-        updateNicknames();
-    }
+      }
     
     function updateNicknames(){
         var temp_list = [];
