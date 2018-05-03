@@ -1,4 +1,4 @@
-module.exports = function(app,express,server,user_fb_id,user_fb_name,io){ //Get all the passed variables
+module.exports = function(app,express,server,user_fb_id,Player,user_fb_name,io){ //Get all the passed variables
 
 var users = {};
 
@@ -55,6 +55,8 @@ io.sockets.on('connection', function(socket){
     //socket.on('disconnect', function(data){
     socket.on('kill_user', (id)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainContro
         delete users[id];
+        Player.onDisconnect(socket);
+	    user_fb_id = null;
         updateNicknames();
     });
 
