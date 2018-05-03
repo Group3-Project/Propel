@@ -15,7 +15,7 @@
     						<a class="nav-link" href="#">Add Friend</a>
  						</li>
  						<% } else{ %>
- 							<li class="nav-item" onclick ="addFriend()">
+ 							<li class="nav-item" onclick ="removeFriend()">
     						<a class="nav-link" href="#">Remove Friend</a>
  						</li>
  						<% } %>
@@ -55,6 +55,15 @@
 		<div class="col-lg-3"">
 			<div class="card">
 				<span class="card-head">Friends</span>
+				<table>
+				<% if(userfriends.length > 0){ console.log(userfriends)%>
+				<% for(var i=0; i < userfriends.length; i++) { %>
+				   <tr>
+				     <td><%= userfriends[i].id %></td>
+				     <td><%= userfriends[i].name %></td>
+				   </tr>
+				<% } } %>
+				</table>
 			</div>
 		</div>
 		<div class="col-lg-3">
@@ -78,5 +87,8 @@
 <script type="text/javascript">
 	function addFriend(){
 		socket.emit('addFriend', {user_id : <%= user.id %>, friend_id : <%= userview.fb_id %> })
+	}
+	function removeFriend(){
+		
 	}
 </script>

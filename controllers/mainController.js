@@ -73,6 +73,7 @@ var getData = function (query){
 				console.log('mysql query error' + error);
 				reject(false);
 			}else{
+				console.log(rows)
 				resolve(rows);
 				//her_profile =  rows;
 			}
@@ -105,7 +106,10 @@ app.get('/profile',function(req, res){
 		 user_profile = req.user;
 		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 		 user_profile.fb_id = user_profile.id;
-		 res.render('profile',{userview: user_profile, user: user_profile});
+		 var promise_friends = getData("select * from user_friends where user_id =" + user_profile.id);
+			promise_friends.then(function(dataFriends){
+		 	res.render('profile',{userview: user_profile, user: user_profile,userfriends:dataFriends});
+		 });
 	}else{
 		res.render('index',{game_list : game_list, user: user_profile});
 	}
@@ -127,10 +131,10 @@ app.get('/profile/:username',function(req, res){
 	console.log(req.params.username)
 	var promise_user = getData("select * from users where fb_id =" + req.params.username);
 	promise_user.then(function(dataUser){
-			var promise_friends = getData("select * from user_friends where user_id =" + req.params.username);
+			var promise_friends = getData("select * from user_friends s1 LEFT JOIN users s2 ON s1.friend_id = s2.fb_id WHERE s1.user_id =" + req.params.username);
 			promise_friends.then(function(dataFriends){
 				if(req.user){
-					for (i = 0; i < dataFriends.length; i++){
+					for (i = 0; i < dataFriends.length; i++){			
 						if (dataFriends[i].friend_id == user_profile.id){
 							friends = true;
 						}
