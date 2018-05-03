@@ -20,7 +20,7 @@ io.sockets.on('connection', function(socket){
               	 'name' : Object.keys(users)[i],
               	  'id' : users[Object.keys(users)[i]].id
             }
-		if(!temp_List.includes(tempObj)){
+		if(!temp_list.includes(tempObj)){
 		    temp_list.push(tempObj)
 		}		
        	 }
