@@ -279,6 +279,7 @@ color:black;
   float: left;
   position: relative; 
   border-bottom:1px solid black;
+  border-right:1px solid black;
 }
 #contentWrap h4{
 	padding-left:305px;
@@ -292,7 +293,7 @@ color:black;
   width:199px;
   float: right;
   border: 1px black solid;
-  border-right:0;
+  border-left:0;
   overflow-y:scroll;
 }
 #users h2{
