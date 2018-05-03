@@ -259,6 +259,9 @@ nav .btn{
   max-height:initial;
   display: none;
 }
+.material-icons#typing{
+	float:left;
+}
 #contentWrap .card-head{
   width:100%;	
   display:inline-block;
