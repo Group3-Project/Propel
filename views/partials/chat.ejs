@@ -92,7 +92,7 @@ Global Chat
         socket.emit('typing');
       });
       messageBox.bind("keyup", function(){
-        setTimeout(function(){typing.html("")},2500);
+        setTimeout(function(){typing.html("")},1000);
       });
       
       socket.on('typing', function(data){
