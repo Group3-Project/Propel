@@ -4,7 +4,7 @@
 <div id="contentWrap" class="card card-item">
 <span class="chat-main-wrap">
 <span class="card-head">
-<span id ='typing'></span>
+<span id='typing' class="material-icons"></span>
 Global Chat
 <i class="material-icons" id="closechat" onclick="closechat()" title="Close chat window">cancel</i>
 <i class="material-icons" id="hidechat" onclick="hidechat()" title="Minimize chat window">expand_more</i>
@@ -74,16 +74,14 @@ Global Chat
       });
       //Listen on new_message
       socket.on("new message", function(data) {
-        var templist = {};
-        messageBox.val("");
-        templist.push('<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>');
-        console.log(templist);
+        
+        //messageBox.val("");
         chat.append('<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>');
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
       socket.on('whisper', function(data){
-        messageBox.val("");
+        //messageBox.val("");
         chat.append('<span class="whipser"><b>' + data.nick +':- </b> '+ data.msg + '</span><br/>');
         box.scrollTop = box.scrollHeight;
         typing.html("");
@@ -92,11 +90,11 @@ Global Chat
         socket.emit('typing');
       });
       messageBox.bind("keyup", function(){
-        setTimeout(function(){typing.html("")},1000);
+        setTimeout(function(){typing.html("")},2500);
       });
       
       socket.on('typing', function(data){
-        typing.html("<p><i>" + data.nick + " is typing a message..." + "</i></p>");
+        typing.innerHTML("sms");
         box.scrollTop = box.scrollHeight;
       });
     });
