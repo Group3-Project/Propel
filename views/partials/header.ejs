@@ -1,3 +1,8 @@
+<script>
+function openChat(){
+document.getElementById("contentWrap").style.display = "initial";
+}
+</script>
 <nav class="navbar navbar-dark bg-dark">
 	<div class="container">
   		<a class="navbar-brand" href="/">
@@ -8,7 +13,7 @@
   		<% var user_id = user.id; %>
   		<div class="nav-right">
 			<a href="profile"><button type="button" title="Account" class="btn btn-dark"><i class="material-icons">account_box</i></button></a>
-			<a href=""><button type="button" title="Chat" class="btn btn-dark"><i class="material-icons">chat</i></button></a>
+			<button type="button" title="Open chat window" onclick="openChat()" class="btn btn-dark"><i class="material-icons">chat</i></button>
 			<a href=""><button type="button" title="Notifications" class="btn btn-dark"><i class="material-icons">announcement</i></button></a>
 			<a href="/logout"><button type="button" title="Logout"  onclick = "logout()" class="btn btn-dark"><i class="material-icons">input</i></button></a>
   		</div>
