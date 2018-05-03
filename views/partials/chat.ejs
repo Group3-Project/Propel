@@ -72,10 +72,18 @@ Global Chat
         messageBox.val("");
         typing.html("");
       });
+      var list = [];
       //Listen on new_message
       socket.on("new message", function(data) {
         messageBox.val("");
-        chat.append('<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>');
+        var value = '<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>';
+        for (var i=0; i<list.length; i++){
+          if (val != list[i]){
+            list.push(value);
+          }
+        }
+        chat.append(list);
+        //chat.append('<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>');
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
