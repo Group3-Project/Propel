@@ -36,6 +36,7 @@ io.sockets.on('connection', function(socket){
             if(ind !== -1){
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 1);
+		
                 if(name in users){
                     users[name].emit('whisper', {msg: msg, nick: socket.nickname});
                 } else{
@@ -46,7 +47,12 @@ io.sockets.on('connection', function(socket){
                 }
             
         } else{
-        io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
+	var user_list = [];
+	var msg_list = [];
+	user_list.push(socket.nickname);
+	msg_list.push(msg);
+	io.sockets.emit('new message', {msg: msg_list, nick: user_list});
+        //io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
         }
     });
 
