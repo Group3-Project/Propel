@@ -52,6 +52,8 @@ Global Chat
       var users = $('#users');
       var typing = $('#typing');
       var box = document.getElementById('chat');
+      
+      
       var user_control = []
       socket.on('usernames', function(data){
         var user ='';
@@ -76,14 +78,19 @@ Global Chat
         messageBox.val("");
         typing.html("");
       });
-
-      //Listen on new_message
-      socket.on("new message", function(data) {
+      
+      var list = [];
+      socket.on("new message", function(data) { //Listen on new_message
         messageBox.val("");
-        var list = [];
-        var value = '<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>';
-        list.push(value);
-        chat.append(list);
+        var value = '';
+        value += '<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>';
+        
+        if(list.indexOf(value) < 0){
+            chat.append(value);
+            list.push(value);
+        }
+        //list.push(value);
+        //chat.append(list);
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
