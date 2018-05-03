@@ -36,6 +36,8 @@ app.use(passport.session());
 
 //Define the view engine (dynamic html in /view )
 app.set('view engine', 'ejs');
+//jquery 
+app.use(require('express-jquery')('/jquery.js'));
 
 //Blocks the meta data contained in headers
 app.disable('x-powered-by');
