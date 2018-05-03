@@ -52,14 +52,19 @@ Global Chat
       var users = $('#users');
       var typing = $('#typing');
       var box = document.getElementById('chat');
-
+      var user_control = []
       socket.on('usernames', function(data){
         var user ='';
-        console.log(data)
         for(i=0; i < data.length;i++){
           user += '<a href = "/profile/' + data[i].id + '">' + data[i].name + '</a><br/>'
         }
-          users.append(user);
+        console.log(user_control.indexOf(user))
+        if(user_control.indexOf(user) < 0){
+            users.append(user);
+            user_control.push(user);
+        }
+         
+
       });
       //Emit message
       messageForm.submit(function(e){
