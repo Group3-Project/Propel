@@ -123,15 +123,20 @@ app.get('/upload',function(req, res){
 	
 app.get('/profile/:username',function(req, res){
 	user_profile = req.user;
+	var friends = false;
 	console.log(req.params.username)
 	var promise_user = getData("select * from users where fb_id =" + req.params.username);
 	promise_user.then(function(dataUser){
 			var promise_friends = getData("select * from user_friends where user_id =" + req.params.username);
 			promise_friends.then(function(dataFriends){
 				if(req.user){
-					console.log(dataFriends)
+					for (i = 0; i < dataFriends.length; i++){
+						if (dataFriends[i].friend_id == user_profile.id){
+							friends = true;
+						}
+					}
 					socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
-					res.render('profile',{user: user_profile, userview: dataUser, userfriends : dataFriends});
+					res.render('profile',{user: user_profile, userview: dataUser, userfriends : dataFriends,friends: friends});
 				}else{
 					res.render('profile',{userview: dataUser[0], userfriends : dataFriends});
 					console.log(userfriends);

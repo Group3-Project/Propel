@@ -9,9 +9,16 @@
   				<% if (user.id != userview.fb_id){ %>
 				<div class="profile-menu">
 					<ul class="nav nav-pills nav-fill">
+						<% console.log('asd' + friends) %>
+						<% if (!friends){ %>
   						<li class="nav-item" onclick ="addFriend()">
     						<a class="nav-link" href="#">Add Friend</a>
  						</li>
+ 						<% } else{ %>
+ 							<li class="nav-item" onclick ="addFriend()">
+    						<a class="nav-link" href="#">Remove Friend</a>
+ 						</li>
+ 						<% } %>
 
 						<li class="nav-item">
 							<a class="nav-link" href="#">Report</a>
