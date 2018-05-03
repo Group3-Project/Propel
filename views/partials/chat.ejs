@@ -24,13 +24,13 @@ Global Chat
     <script>
     function hidechat(){
       document.getElementById("contentWrap").style.height = "40px";
-      document.getElementById("showchat").style.visibility= "collapsed";
-      document.getElementById("hidechat").style.visibility= "visible";
+      document.getElementById("showchat").style.display= "none";
+      document.getElementById("hidechat").style.display= "initial";
     }
     function showchat(){
       document.getElementById("contentWrap").style.height = "310px";
-      document.getElementById("hidechat").style.visibility= "collapsed";
-      document.getElementById("showchat").style.visibility= "visible";
+      document.getElementById("hidechat").style.display= "none";
+      document.getElementById("showchat").style.display= "initial";
     }
     </script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
