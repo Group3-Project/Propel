@@ -30,24 +30,15 @@
       var users = $('#users');
       var typing = $('#typing');
       var box = document.getElementById('chat');
-      
-      function DuplicatesRemove(a){
-        let user ='';
-        for (let i = 0;i < a.length; i++){
-          if(user.indexOf(a[i]) == -1){
-            user.push(a[i]);
-          }
-        }
-        return user;
-      };
 
       socket.on('usernames', function(data){
-        var u ='';
+        var user ='';
         for(i=0; i < data.length;i++){
-          u += data[i] + '<br/>'
+          user += data[i] + '<br/>'
         }
-        DuplicatesRemove(u);
-        users.append(u);
+        if (users.val() != user){
+          users.append(user);
+        }
       });
       //Emit message
       messageForm.submit(function(e){
