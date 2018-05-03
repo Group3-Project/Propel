@@ -78,7 +78,11 @@ Global Chat
         messageBox.val("");
         var value = '<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>';
         list.push(value);
-        chat.append(list);
+        var uniqueNames = [];
+        $.each(names, function(i, list){
+          if($.inArray(list, uniqueNames) === -1) uniqueNames.push(list);
+        }
+        chat.append(uniqueNames);
         //chat.append('<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>');
         box.scrollTop = box.scrollHeight;
         typing.html("");
