@@ -29,7 +29,7 @@ if(err){ //Error Handling
       };
 	
 if(resp[0].duplicateCheck == 0){
-	db.query('Insert into Users Set ? ', profile_data, function(err,resp){
+	db.query('Insert into users Set ? ', profile_data, function(err,resp){
         if (err) throw err;
 		console.log('Data Saved Succesfully');
 	});
