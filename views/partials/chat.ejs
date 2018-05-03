@@ -4,6 +4,7 @@
 <div id="contentWrap" class="card card-item">
 <span class="chat-main-wrap">
 <span class="card-head">
+<span id ='typing'></span>
 Global Chat
 <i class="material-icons" id="closechat" onclick="closechat()" title="Close chat window">cancel</i>
 <i class="material-icons" id="hidechat" onclick="hidechat()" title="Minimize chat window">expand_more</i>
@@ -12,7 +13,6 @@ Global Chat
   <div id="chatWrap">
     <div id="chat"></div>
     <form id="send-message" onsubmit="return false">
-      <div id ='typing'></div>
       <input size="35" id="message"></input>
       <input type="submit" value="Send">
     </form>
