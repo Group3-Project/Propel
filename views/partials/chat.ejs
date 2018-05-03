@@ -32,10 +32,14 @@
       var box = document.getElementById('chat');
 
       socket.on('usernames', function(data){
+        var u ='';
         var user ='';
         for(i=0; i < data.length;i++){
           user += data[i] + '<br/>'
         }
+        $.each(u, function(i, el){
+          if($.inArray(el, user) === -1) user.push(el);
+        });
         users.append(user);
       });
       //Emit message
