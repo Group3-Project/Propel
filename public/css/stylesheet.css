@@ -278,15 +278,18 @@ color:black;
   width:299px;
   float: left;
   position: relative; 
-  border: 1px black solid;
-  border-left:0;
+  border-right:1px solid black;
+  border-bottom:1px solid black;
 }
 #contentWrap h4{
 	padding-left:305px;
 	margin-top:1px solid black;
 }
+#contentWrap .card-head{
+  border-bottom:1px solid black;
+}
 #users{
-  height: 270px;
+  height: 242px;
   width:199px;
   float: right;
   border: 1px black solid;
