@@ -5,19 +5,19 @@
 		<div class="col-lg-3">
 			<div class="card profile-image">
   				<img class="card-img-top" src="../Images/prof.png">
+  				<% if (user.id != userview.fb_id){ %>
 				<div class="profile-menu">
 					<ul class="nav nav-pills nav-fill">
   						<li class="nav-item">
-    						<a class="nav-link" href="#">Message</a>
+    						<a class="nav-link" href="#">Add Friend</a>
  						</li>
-  						<li class="nav-item">
-    						<a class="nav-link" href="#">Message</a>
-  						</li>
+
 						<li class="nav-item">
 							<a class="nav-link" href="#">Report</a>
 						</li>
 					</ul>
 				</div>
+				<% } %>
 			</div>
 		</div>
 

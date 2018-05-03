@@ -104,6 +104,7 @@ app.get('/profile',function(req, res){
 	if(req.user){	
 		 user_profile = req.user;
 		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io);
+		 user_profile.fb_id = user_profile.id;
 		 res.render('profile',{userview: user_profile, user: user_profile});
 	}else{
 		res.render('index',{game_list : game_list, user: user_profile});
@@ -127,6 +128,7 @@ app.get('/profile/:username',function(req, res){
 	promise_user.then(function(dataUser){
 			var promise_friends = getData("select * from user_friends where user_id =" + req.params.username);
 			promise_friends.then(function(dataFriends){
+				console.log(dataFriends)
 				if(req.user){
 					res.render('profile',{user: user_profile, userview: dataUser, userfriends : dataFriends});
 				}else{

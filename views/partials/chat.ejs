@@ -58,7 +58,6 @@ Global Chat
         for(i=0; i < data.length;i++){
           user += '<a href = "/profile/' + data[i].id + '">' + data[i].name + '</a><br/>'
         }
-        console.log(user_control.indexOf(user))
         if(user_control.indexOf(user) < 0){
             users.append(user);
             user_control.push(user);
