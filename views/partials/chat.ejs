@@ -69,19 +69,19 @@ Global Chat
             chat.append('<span class="error"><b>' + data + '</span><br/>');
         });
         box.scrollTop = box.scrollHeight;
-        messageBox.val("");
+        //messageBox.val("");
         typing.html("");
       });
       //Listen on new_message
       socket.on("new message", function(data) {
         
-        messageBox.val("");
+        //messageBox.val("");
         chat.append('<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>');
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
       socket.on('whisper', function(data){
-        messageBox.val("");
+        //messageBox.val("");
         chat.append('<span class="whipser"><b>' + data.nick +':- </b> '+ data.msg + '</span><br/>');
         box.scrollTop = box.scrollHeight;
         typing.html("");
