@@ -6,7 +6,8 @@
 <span class="card-head">
 Global Chat
 <i class="material-icons" title="Close chat window">cancel</i>
-<i class="material-icons" onclick="hidechat()" title="Minimize chat window">arrow_drop_down_circle</i>
+<i class="material-icons" id="hidechat" onclick="hidechat()" title="Minimize chat window">expand_more</i>
+<i class="material-icons" id="showchat" onclick="showchat()" title="Minimize chat window">expand_less</i>
 </span>
   <div id="chatWrap">
     <div id="chat"></div>
@@ -23,6 +24,13 @@ Global Chat
     <script>
     function hidechat(){
       document.getElementById("contentWrap").style.height = "40px";
+      document.getElementById("showchat").style.visibility= "collapsed";
+      document.getElementById("hidechat").style.visibility= "visible";
+    }
+    function showchat(){
+      document.getElementById("contentWrap").style.height = "310px";
+      document.getElementById("hidechat").style.visibility= "collapsed";
+      document.getElementById("showchat").style.visibility= "visible";
     }
     </script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
