@@ -77,7 +77,7 @@ Global Chat
       socket.on("new message", function(data) {
         messageBox.val("");
         var value = '<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>';
-        for (var i=0; i<list.length; i++){
+        for (i=0; i<list.length; i++){
           if (value != list[i]){
             list.push(value);
           }
