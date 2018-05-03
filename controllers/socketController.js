@@ -43,12 +43,14 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 
   socket.on('addFriend', function(data){
     console.log(data);
-    DB.query('Select friend_id from user_friends where user_id = ?', data.user_id, function(error, rows, fields){
+    var query = 'Select * from user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id;
+    console.log(query)
+    DB.query(query, function(error, rows, fields){
       if(!!error){
         console.log('mysql query error' + error);
       }else{
-        if(rows.length = 0){
-          console.log("No dupes")
+        if(rows.length == 0){
+          console.log("No entries")
           DB.query('Insert into user_friends Set ?', data, function(error, rows, fields){
             if(!!error){
               console.log('mysql query error' + error);
