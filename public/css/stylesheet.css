@@ -317,6 +317,10 @@ text-align: center;
 #chat, #users{
 	padding-left:5px;
 }
+.card-head .material-icons{
+	float:right;
+	cursor:pointer;
+}
 .error{
   color:red;
 }
