@@ -1,5 +1,3 @@
-This project has been abandoned. See [issue #15](https://github.com/thebinarypenguin/socket.io-chess/issues/15).
-
 # Description
 
 A real-time multi-player chess app using [node](https://github.com/joyent/node), [express](https://github.com/visionmedia/express), and of course [socket.io](https://github.com/LearnBoost/socket.io).
@@ -15,18 +13,12 @@ This project is just a little something I threw together for personal education 
 
 # Getting Started
 
-1. Download
+1. Install
 ```
-git clone https://github.com/thebinarypenguin/socket.io-chess.git
-```
-
-2. Install
-```
-cd socket.io-chess
 npm install
 ```
 
-3. Run
+2. Run
 ```
 node server.js
 ```
