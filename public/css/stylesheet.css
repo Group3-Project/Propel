@@ -331,6 +331,9 @@ text-align: center;
 #showchat{
 	display:none;
 }
+.chat-icon{
+  width:50px;
+}
 .card-head .material-icons{
 	float:right;
 	cursor:pointer;
