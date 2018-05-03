@@ -4,7 +4,7 @@
 <div id="contentWrap" class="card card-item">
 <span class="chat-main-wrap">
 <span class="card-head">
-<span id='typing' class="material-icons"><div class="chat-icon"></div></span>
+<span id='typing' class="material-icons"></span>
 Global Chat
 <i class="material-icons" id="closechat" onclick="closechat()" title="Close chat window">cancel</i>
 <i class="material-icons" id="hidechat" onclick="hidechat()" title="Minimize chat window">expand_more</i>
@@ -77,8 +77,7 @@ Global Chat
         var list = [];
         messageBox.val("");
         list.push('<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>');
-        let listdup = Array.from(new Set(list));
-        chat.append(listdup);
+        chat.append(list);
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
