@@ -283,6 +283,7 @@ color:black;
 }
 #contentWrap h4{
 	padding-left:305px;
+	margin-top:1px solid black;
 }
 #users{
   height: 270px;
@@ -290,6 +291,7 @@ color:black;
   float: right;
   border: 1px black solid;
   border-right:0;
+  overflow-y:scroll;
 }
 #users h2{
 text-align: center;
