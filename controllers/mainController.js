@@ -91,7 +91,7 @@ app.get('/',function(req, res){
 		console.log(req.user);
 		 user_profile = req.user;
 		 console.log("User recognized!");
-		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io);
+		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 		 chatController(app,express,server,user_profile.id,Player,user_profile.name,io);
 	}else{
 		console.log('User not logged in');
@@ -103,7 +103,7 @@ app.get('/',function(req, res){
 app.get('/profile',function(req, res){
 	if(req.user){	
 		 user_profile = req.user;
-		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io);
+		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 		 user_profile.fb_id = user_profile.id;
 		 res.render('profile',{userview: user_profile, user: user_profile});
 	}else{
@@ -114,7 +114,7 @@ app.get('/profile',function(req, res){
 app.get('/upload',function(req, res){
 	if(req.user){	
 		 user_profile = req.user;
-		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io);
+		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 		 res.render('upload',{userview: user_profile, user: user_profile});
 	}else{
 		res.render('index',{game_list : game_list, user: user_profile});
@@ -130,6 +130,7 @@ app.get('/profile/:username',function(req, res){
 			promise_friends.then(function(dataFriends){
 				console.log(dataFriends)
 				if(req.user){
+					socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 					res.render('profile',{user: user_profile, userview: dataUser, userfriends : dataFriends});
 				}else{
 					res.render('profile',{userview: dataUser, userfriends : dataFriends});
@@ -147,7 +148,7 @@ app.get('/gameView/:gameID',function(req, res){
 
 	if(req.user){
 		user_profile = req.user;
-		socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io);
+		socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 		gameInfo.then(function(data){
 			 console.log(data);
 			 res.render('gameView',{game: data, user: user_profile});

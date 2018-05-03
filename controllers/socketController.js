@@ -1,4 +1,4 @@
-module.exports = function(app,express,server, user_fb_id,Player,initPack,removePack,user_fb_name,io){ //Get all the passed variables
+module.exports = function(app,express,server, user_fb_id,Player,initPack,removePack,user_fb_name,io,DB){ //Get all the passed variables
 
 //Handling the Ping TimeOut
 io.set('heartbeat timeout',5000000);
@@ -18,15 +18,15 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 		console.log("-------------------------------");
   	};
 
-socket.on('kill_user', (id)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainController
-	delete socket_list[id];
-	Player.onDisconnect(socket);
-	user_fb_id = null;
-	console.log('Connection with ID ' + socket.id + ', ' + user_fb_name + ' is disconnected');
-	console.log("After Disconnection ------------------");
-	console.log(Player.list);
-	console.log("-------------------------------");  
-});
+  socket.on('kill_user', (id)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainController
+  	delete socket_list[id];
+  	Player.onDisconnect(socket);
+  	user_fb_id = null;
+  	console.log('Connection with ID ' + socket.id + ', ' + user_fb_name + ' is disconnected');
+  	console.log("After Disconnection ------------------");
+  	console.log(Player.list);
+  	console.log("-------------------------------");  
+  });
 };
 	
 
@@ -37,10 +37,21 @@ socket.on('kill_user', (id)=>{ //Only disconnect if Logout is pressed, cacthes t
         lobby.addUser({ name: user.id });
     });
  
-    socket.on('gameFound', function(user){
+  socket.on('gameFound', function(user){
+    console.log(user.id + ' assigned game');
+  });
 
-        console.log(user.id + ' assigned game');
-    });	
+  socket.on('addFriend', function(data){
+    console.log(data);
+    DB.query('Insert into user_friends Set ?', data, function(error, rows, fields){
+      if(!!error){
+        console.log('mysql query error' + error);
+      }else{
+        socket.emit('friend_added');
+      }
+    });
+  })
+
 });
 
 setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time

@@ -5,10 +5,11 @@
 		<div class="col-lg-3">
 			<div class="card profile-image">
   				<img class="card-img-top" src="../Images/prof.png">
+  				<% if (typeof user == 'object' && user){ %>
   				<% if (user.id != userview.fb_id){ %>
 				<div class="profile-menu">
 					<ul class="nav nav-pills nav-fill">
-  						<li class="nav-item">
+  						<li class="nav-item" onclick ="addFriend()">
     						<a class="nav-link" href="#">Add Friend</a>
  						</li>
 
@@ -17,7 +18,7 @@
 						</li>
 					</ul>
 				</div>
-				<% } %>
+				<% } }%>
 			</div>
 		</div>
 
@@ -66,3 +67,9 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	function addFriend(){
+		socket.emit('addFriend', {user_id : <%= user.id %>, friend_id : <%= userview.fb_id %> })
+	}
+</script>
