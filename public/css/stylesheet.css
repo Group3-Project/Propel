@@ -278,6 +278,9 @@ nav .btn{
   bottom:0;
 color:black;
 }
+.col-lg-3 .hero-item, .col-lg-6 .hero-item{
+	cursor:pointer
+}
 #chatWrap{
   height: 270px;
   width:299px;
