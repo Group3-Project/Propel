@@ -44,7 +44,7 @@ nav .btn{
 .footer a{
 	text-decoration:none;
 }
-a .text-muted:hover{
+a span:hover{
 	color:white;
 }
 
