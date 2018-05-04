@@ -36,7 +36,13 @@ nav .btn{
 .footer{
 	margin-top:200px;
 	color:white;
-	padding: 25px 0 50px;
+	padding: 25px;
+}
+.footer a{
+	text-decoration:none;
+}
+.footer a:hover{
+	text-color:white;
 }
 
 /* INDEX AREA*/
