@@ -1,4 +1,11 @@
-module.exports = function() {  // Markuss I will let you handle this during implementation
+
+module.exports = function(app, express, server, fbId, Player, initPack, removePack, io, DB, thingToDo, game, gamerscore) {
+
+  if (thingToDo == 'newConnection') {
+    newConnection(fbId, gamerScore, game);
+  } else if (thingToDo == 'timeLoop') {
+    timeLoop();
+  }
 
   function game(port, noPlayers) {
     this.port = port;
@@ -52,7 +59,7 @@ module.exports = function() {  // Markuss I will let you handle this during impl
       }
     },
     removeRoom: function(id) {
-      this.rooms = this.rooms.filter(function(oldRoom){return oldRoom.id != id;});
+      this.rooms = this.rooms.filter(function(oldRoom) {return oldRoom.id != id;});
     },
     checkRooms: function() { // as users get places in rooms immediately
       console.log('  check rooms')
@@ -137,6 +144,7 @@ module.exports = function() {  // Markuss I will let you handle this during impl
       return {port: values.port, id: values.id}; // pass back port and game to join !!! VALUES TO BE EMMITED !!!
     } else { // else -> game not found
       waitingUsers.push({id: id, game: game});
+      return {port: null, id: null};
       // return a null value
     }
   }
@@ -161,19 +169,21 @@ module.exports = function() {  // Markuss I will let you handle this during impl
       }
     }
   }
-
-
-  console.log('5, 22, chess');
-  newConnection(5, 22, chess);
-  console.log('timeLoop');
-  timeLoop();
-  console.log('7, 30, chess');
-  newConnection(8, 30, chess);
-  // remove from waiting users, like a reverse newConnection
-  console.log('timeLoop');
-  timeLoop();
-  //console.log(chess.findRoom(12, 21));
 };
+
+
+
+
+//console.log('5, 22, chess');
+//newConnection(5, 22, chess);
+//console.log('timeLoop');
+//timeLoop();
+//console.log('7, 30, chess');
+//newConnection(8, 30, chess);
+// remove from waiting users, like a reverse newConnection
+//console.log('timeLoop');
+//timeLoop();
+//console.log(chess.findRoom(12, 21));
 
 /* General Comments
 
@@ -186,8 +196,8 @@ lobby calls the newConnection function here, passing the fb id (acts as a new ro
 ... list in game), the gamerScore of user and the game they wish to connect to (game title ^^^)
 
 This function returns a) port and room id, to be emmited to user that requested newConnection *
-                      b) null value where a wait call is emmited to client side js. This also puts user in ...
-                         ... wait list to be explained below
+                    b) null value where a wait call is emmited to client side js. This also puts user in ...
+                       ... wait list to be explained below
 
 That handles new connections but what about users who don't get an immediate match? The timeLoop function is ...
 ... called every second, you could do this just before your lobby secondly emit. This will return a list of ...
