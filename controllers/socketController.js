@@ -1,41 +1,53 @@
 module.exports = function(app,express,server, user_fb_id,Player,initPack,removePack,user_fb_name,io,DB){ //Get all the passed variables
 
+var matchController = require('./matchController');
+	
 //Handling the Ping TimeOut
 io.set('heartbeat timeout',5000000);
 io.set('heartbeat interval',5000000);
 
 //Global List for all the socket connections
 var socket_list = {};
-io.sockets.on('connection', (socket)=>{ //Whenever a player connect 
-  if(user_fb_id){ //If id is not NULL
-  	socket.id = user_fb_id; 
-  	socket_list[socket.id] = socket;
-  	if(!(user_fb_id in Player.list)){
-  		Player.onConnect(socket);
-  		console.log("Connection with ID " + socket.id + ", " + user_fb_name + " is connected" );
-		console.log("After Connection ------------------");
-		console.log(Player.list);
-		console.log("-------------------------------");
-  	};
-
-  socket.on('kill_user', (id)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainController
-  	delete socket_list[id];
-  	Player.onDisconnect(socket);
-  	user_fb_id = null;
-  	console.log('Connection with ID ' + socket.id + ', ' + user_fb_name + ' is disconnected');
-  	console.log("After Disconnection ------------------");
-  	console.log(Player.list);
-  	console.log("-------------------------------");  
-  });
-};
+io.sockets.on('connection', (socket)=>{ //Whenever a player connect '
 	
+  if (user_fb_id) { //If id is not NULL
+    socket.id = user_fb_id;
+    socket_list[socket.id] = socket;
 
-	socket.on('requestGame', function(user){ //joinLobby -> requestGame
-        console.log(user.id + ' joined');
-        // findRoom()
-        socket.emit('assignGame', {id: 'localhost:8082'});
-        lobby.addUser({ name: user.id });
+    if (!(user_fb_id in Player.list)) {
+      Player.onConnect(socket);
+      console.log("Connection with ID " + socket.id + ", " + user_fb_name + " is connected" );
+      console.log("After Connection ------------------");
+      console.log(Player.list);
+      console.log("-------------------------------");
+    };
+
+    socket.on('kill_user', (id)=> { //Only disconnect if Logout is pressed, cacthes the emit from mainController
+      delete socket_list[id];
+      Player.onDisconnect(socket);
+      user_fb_id = null;
+      console.log('Connection with ID ' + socket.id + ', ' + user_fb_name + ' is disconnected');
+      console.log("After Disconnection ------------------");
+      console.log(Player.list);
+      console.log("-------------------------------");
     });
+  };
+
+
+  socket.on('requestGame', function(user) { //joinLobby -> requestGame
+    var query = 'Select gamerscore from users where fb_id ='+ user.id;
+
+    DB.query(query, function(error, rows, fields) { // get gamerScore
+      if (!!error) {
+        console.log('MySQL query error: ' + error); // throw error
+      } else {
+        var emitObj = socketController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'newConnection', user.game, query); // pass it literally everything I can, even if it is not used. Tidy up if you wish
+        if (emitObj.port != null) { // if -> match found
+          socket.emit('assignGame', emitObj); // emit all the new connection data to user
+        }
+      }
+    });
+  });
  
   socket.on('gameFound', function(user){
     console.log(user.id + ' assigned game');
