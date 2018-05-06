@@ -1,5 +1,5 @@
 
-module.exports = function(app, express, server, fbId, Player, initPack, removePack, io, DB, thingToDo, game, gamerscore) {
+module.exports = function(app, express, server, fbId, Player, initPack, removePack, io, DB, thingToDo, game, gamerScore) {
 
   if (thingToDo == 'newConnection') {
     newConnection(fbId, gamerScore, game);
