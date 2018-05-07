@@ -84,7 +84,7 @@ setInterval(()=>{ //Set the interval, it runs the function again and again after
   var i;
   var y;
   var emitToSocket;
-
+ if (typeof emitObj !== 'undefined'){
   for (i = 0; i < emitObj.length; i++) {
     for (y = 0; y < socket_list.length; y++) {
       if (socket_list[y] == emitObj[i].oldId) {
@@ -92,6 +92,7 @@ setInterval(()=>{ //Set the interval, it runs the function again and again after
       }
     }
     socket.broadcast.to(emitToSocket).emit('message', {port: emitObj[i].port, id: emitObj[i].id});
+  }
   }
   // end of matchmaking, presume issue is here if there are any
 
