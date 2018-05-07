@@ -1,5 +1,5 @@
 module.exports = function(app,express,server, user_fb_id,Player,initPack,removePack,user_fb_name,io,DB){ //Get all the passed variables
-
+var GamerScore;
 var matchController = require('./matchController');
 
 //Handling the Ping TimeOut
@@ -80,7 +80,7 @@ var query2 = "select gamerscore from users where fb_id = " + user_fb_id;
 var get_gamescore = function(query){
 	return new Promise (function(resolve,reject){
 		DB.query(query, function(error, rows, fields){
-			if(error){
+			if(!!error){
 				console.log('MySQL Query Error ' + error);
 				reject(false);
 			}
@@ -93,14 +93,15 @@ var get_gamescore = function(query){
 };
 var gamer_score_temp = get_gamescore(query2);
 gamer_score_temp.then(function(gamerscore){
-	console.log("-------------------------------------------------------------------------------------------------------------------");
-	console.log(gamerscore[0]);
-	console.log(gamerscore[0].gamerscore);
-	console.log("-------------------------------------------------------------------------------------------------------------------");
+	GamerScore = gamerscore[0].gamerscore;
+	console.log(GamerScore);
 });
   setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time
   // putting the matchmaking emit above the whole pack things as I do not know what it is
-  var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'timeLoop', null, null); // pass it literally everything I can, even if it is not used. Tidy up if you wish
+  if(GamerScore){
+  	var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'timeLoop', null, GamerScore); // pass it literally everything I can, even if it is not used. Tidy up if you wish
+  }
+ 
   var i;
   var y;
   var emitToSocket;
