@@ -38,6 +38,7 @@ Player.getAllInitPack = ()=>{ //To get all the previous player states
 	var players = [];
 	for(var i in Player.list)
 		players.push(Player.list[i].getInitPack());
+	console.log(Player.list);
 	return players;
 }
 Player.onDisconnect = (socket)=>{
@@ -56,7 +57,7 @@ Player.update = ()=>{
 //first db select to get all the game list
 DB.query("select * from game_list", function(error, rows, fields){
 	if(!!error){
-		console.log('MySQL query Error: ' + error);
+		console.log('mysql query error' + error);
 	}else{
 		game_list = rows;
 	}
@@ -69,9 +70,10 @@ var getData = function (query){
 	return new Promise(function(resolve, reject){
 		DB.query(query, function(error, rows, fields){
 			if(!!error){
-				console.log('MySQL query Error: ' + error);
+				console.log('mysql query error' + error);
 				reject(false);
 			}else{
+				console.log(typeof rows)
 				resolve(rows);
 				//her_profile =  rows;
 			}
@@ -137,11 +139,14 @@ app.get('/profile/:username',function(req, res){
 			var promise_friends = getData("select * from user_friends s1 LEFT JOIN users s2 ON s1.friend_id = s2.fb_id WHERE s1.user_id =" + req.params.username);
 			promise_friends.then(function(dataFriends){
 				if(req.user){
-					for (i = 0; i < dataFriends.length; i++){	
-						if (dataFriends[i].friend_id == req.params.username){
-							friends = true;
+					var promiseisfriend = getData("select * from user_friends where friend_id = " + req.params.username + " and user_id = " + user_profile.id);
+						promiseisfriend.then(function(dataIsFriend){
+							if(dataIsFriend.length > 0){
+								friends = true;
+							}
 						}
 					}
+					
 					
 
 					socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
@@ -164,6 +169,7 @@ app.get('/gameView/:gameID',function(req, res){
 		user_profile = req.user;
 		socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 		gameInfo.then(function(data){
+			 console.log(data[0]);
 			 res.render('gameView',{game: data[0], user: user_profile});
 		})
 	}
