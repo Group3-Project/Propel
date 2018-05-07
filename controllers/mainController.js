@@ -143,6 +143,7 @@ app.get('/profile/:username',function(req, res){
 					for (i = 0; i < dataFriends.length; i++){			
 						if (dataFriends[i].friend_id == user_profile.id){
 							friends = true;
+							console.log(friends + "2222222222222222");
 						}
 					}
 					socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
