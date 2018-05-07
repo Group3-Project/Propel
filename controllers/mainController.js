@@ -113,7 +113,7 @@ app.get('/profile',function(req, res){
 							friends = true;
 						}
 					}
-		 	res.render('profile',{userview: user_profile, user: user_profile,userfriends:dataFriends});
+		 	res.render('profile',{userview: user_profile, user: user_profile,userfriends:dataFriends, friends: friends});
 		 });
 	}else{
 		res.render('index',{game_list : game_list, user: user_profile});
