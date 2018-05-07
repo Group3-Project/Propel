@@ -15,14 +15,18 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 
   	if (!(user_fb_id in Player.list)) {
   		Player.onConnect(socket);
-  		console.log("Connection with ID " + socket.id + ", " + user_fb_name + " is connected" );
+		if(GamerScore){
+			console.log("Connection with ID " + socket.id + ", " + user_fb_name + "with GamerScore " + GamerScore + " is connected" );
+		}
   	};
 
     socket.on('kill_user', (id)=> { //Only disconnect if Logout is pressed, cacthes the emit from mainController
     	delete socket_list[id];
     	Player.onDisconnect(socket);
     	user_fb_id = null;
-    	console.log('Connection with ID ' + socket.id + ', ' + user_fb_name + ' is disconnected');
+    	if(GamerScore){
+		console.log("Connection with ID " + socket.id + ", " + user_fb_name + "with GamerScore " + GamerScore + " is disconnected" );
+	}
     });
   };
 
@@ -86,7 +90,6 @@ var get_gamescore = function(query){
 var gamer_score_temp = get_gamescore(query2);
 gamer_score_temp.then(function(gamerscore){
 	GamerScore = gamerscore[0].gamerscore;
-	console.log(GamerScore);
 });
   setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time
   // putting the matchmaking emit above the whole pack things as I do not know what it is
