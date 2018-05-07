@@ -73,7 +73,7 @@ var getData = function (query){
 				console.log('mysql query error' + error);
 				reject(false);
 			}else{
-				console.log(rows)
+				console.log(typeof rows)
 				resolve(rows);
 				//her_profile =  rows;
 			}
