@@ -16,9 +16,6 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   	if (!(user_fb_id in Player.list)) {
   		Player.onConnect(socket);
   		console.log("Connection with ID " + socket.id + ", " + user_fb_name + " is connected" );
-  		console.log("After Connection ------------------");
-  		console.log(Player.list);
-  		console.log("-------------------------------");
   	};
 
     socket.on('kill_user', (id)=> { //Only disconnect if Logout is pressed, cacthes the emit from mainController
@@ -26,9 +23,6 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     	Player.onDisconnect(socket);
     	user_fb_id = null;
     	console.log('Connection with ID ' + socket.id + ', ' + user_fb_name + ' is disconnected');
-    	console.log("After Disconnection ------------------");
-    	console.log(Player.list);
-    	console.log("-------------------------------");
     });
   };
 
