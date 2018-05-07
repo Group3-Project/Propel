@@ -92,9 +92,8 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
       }
     });
 
-  })
-
-});	
+  });
+	
 	
 	
 var query2 = "select gamerscore from users where fb_id = " + user_fb_id;
