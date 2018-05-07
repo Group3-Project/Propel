@@ -108,6 +108,11 @@ app.get('/profile',function(req, res){
 		 user_profile.fb_id = user_profile.id;
 		 var promise_friends = getData("select * from user_friends where user_id =" + user_profile.id);
 			promise_friends.then(function(dataFriends){
+					for (i = 0; i < dataFriends.length; i++){			
+						if (dataFriends[i].friend_id == user_profile.id){
+							friends = true;
+						}
+					}
 		 	res.render('profile',{userview: user_profile, user: user_profile,userfriends:dataFriends});
 		 });
 	}else{
