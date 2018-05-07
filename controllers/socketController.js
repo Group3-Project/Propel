@@ -76,17 +76,30 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   })
 
 });
-var query2 = "select gamerscore from users where fb_id =" + user_fb_id;
-
+var query2 = "select gamerscore from users where fb_id = " + user_fb_id;
+var get_gamescore = function(query){
+	return new Promise (function(resolve,reject){
+		DB.query(query, function(error, rows, fields){
+			if(error){
+				console.log('MySQL Query Error ' + error);
+				reject(false);
+			}
+			else{
+				console.log(rows);
+				resolve(rows);
+			}
+		});
+	});
+};
+var gamer_score_temp = get_gamescore(query2);
+gamer_score_temp.then(function(gamerscore){
+	console.log("-------------------------------------------------------------------------------------------------------------------");
+	console.log(gamerscore);
+	console.log("-------------------------------------------------------------------------------------------------------------------");
+});
   setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time
-  
-  var gamer_score = DB.query(query2, (error, rows, fields)=>{
-	if(error){
-        	console.log('mysql query error' + error);
-      }
-  });
   // putting the matchmaking emit above the whole pack things as I do not know what it is
-  var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'timeLoop', null, gamer_score); // pass it literally everything I can, even if it is not used. Tidy up if you wish
+  var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'timeLoop', null, null); // pass it literally everything I can, even if it is not used. Tidy up if you wish
   var i;
   var y;
   var emitToSocket;
