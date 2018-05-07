@@ -16,7 +16,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   	if (!(user_fb_id in Player.list)) {
   		Player.onConnect(socket);
 		if(GamerScore){
-			console.log("Connection with ID " + socket.id + ", " + user_fb_name + "with GamerScore " + GamerScore + " is connected" );
+			console.log(user_fb_name + " with GamerScore " + GamerScore + " and ID " + socket.id +" is connected" );
 		}
   	};
 
@@ -25,7 +25,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     	Player.onDisconnect(socket);
     	user_fb_id = null;
     	if(GamerScore){
-		console.log("Connection with ID " + socket.id + ", " + user_fb_name + "with GamerScore " + GamerScore + " is disconnected" );
+		console.log(user_fb_name + " with GamerScore " + GamerScore + " and ID " + socket.id +" is disconnected" );
 	}
     });
   };
