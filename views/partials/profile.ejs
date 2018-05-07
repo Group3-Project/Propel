@@ -90,7 +90,7 @@
 		socket.emit('addFriend', {user_id : <%= user.id %>, friend_id : <%= userview.fb_id %> })
 	}
 	function removeFriend(){
-		
+		socket.emit('removefriend', {user_id : <%= user.id %>, friend_id : <%= userview.fb_id %> })
 	}
 </script>
 <% } %>
