@@ -138,18 +138,13 @@ app.get('/profile/:username',function(req, res){
 				if(req.user){
 					var promiseisfriend = getData("select * from user_friends where friend_id = " + req.params.username + " and user_id = " + user_profile.id);
 						promiseisfriend.then(function(dataIsFriend){
-							console.log(dataIsFriend.length+"  11");
-							console.log(dataFriends.length+"  12");
 							if(dataIsFriend != 0){
-								console.log("in if");
-								console.log(friends + "IN IFFF");
 								friends = true;
 							}
-							console.log(friends + "after IFFF");
+							socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
+							res.render('profile',{user: user_profile, userview: dataUser[0], userfriends : dataFriends,friends: friends});
 						})
-					console.log(friends + "after OUTSIDE IFF");
-					socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
-					res.render('profile',{user: user_profile, userview: dataUser[0], userfriends : dataFriends,friends: friends});
+		
 				}else{
 					res.render('profile',{userview: dataUser[0], userfriends : dataFriends});
 					console.log(userfriends);
