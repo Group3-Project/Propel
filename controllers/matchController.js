@@ -1,11 +1,4 @@
-
-module.exports = function(app, express, server, fbId, Player, initPack, removePack, io, DB, thingToDo, game, gamerScore) {
-
-  if (thingToDo == 'newConnection') {
-    newConnection(fbId, gamerScore, game);
-  } else if (thingToDo == 'timeLoop') {
-    timeLoop();
-  }
+module.exports = function(app, express, server, fbId, Player, initPack, removePack, io, DB, thingToDo, gameConnect, gamerscore) {
 
   function game(port, noPlayers) {
     this.port = port;
@@ -17,7 +10,6 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
     findRoom: function(id, gamerScore) {
       if (this.rooms.length == 0) {
         this.addRoom(id, gamerScore); // create new room
-        console.log('  empty room list');
         return {port: this.port, id: null};
       } else {
         for (var i = 0; i < this.rooms.length; i++) { // loop through all waiting (not yet filled) rooms
@@ -28,16 +20,13 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
           if (t == 5) { // if -> crude but ensures no overwaits
             newId = this.rooms[i].id; // in case room gets deleted below
             this.joinRoom(this.rooms[i].id, gamerScore);
-            console.log('  timeout');
             return {port: this.port, id: newId}; // match!
           } else if (gamerScore <= gs+(gs*(0.05*t)) && gamerScore >= gs-(gs*(0.05*t))) { // else if -> boundaries change based on how long room queued, fcfs
             newId = this.rooms[i].id; // in case room gets deleted below
             this.joinRoom(this.rooms[i].id, gamerScore);
-            console.log('  match in boundaries');
             return {port: this.port, id: newId}; // match!
           } else { // can't find a match
             this.addRoom(id, gamerScore); // create new room
-            console.log('  cant find match');
             return {port: this.port, id: null};
           }
         }
@@ -62,7 +51,6 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
       this.rooms = this.rooms.filter(function(oldRoom) {return oldRoom.id != id;});
     },
     checkRooms: function() { // as users get places in rooms immediately
-      console.log('  check rooms')
       var returnArray = []; // all newly matched users to be pushed back
 
       var i;
@@ -74,6 +62,7 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
           var ti = 5 - this.rooms[i].time;
 
           var gsj = this.rooms[j].returnGamerScore(); // get rooms average gamerScore and how long its been waiting
+
           var tj = 5 - this.rooms[j].time;
 
           var newId;
@@ -84,15 +73,25 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
             oldId = this.rooms[j].id; // for when room gets deleted below
             this.rooms[i].joinRoom(id, gamerScore);
             this.removeRoom(this.rooms[j].id); // get rid of room j which is now merged with room i
+
+            console.log('t == 5');
+
             returnArray.push({port: this.port, id: newId, oldId: oldId}); // match!
-            if (((gsj.gsj-(gsj*(0.05*tj)) <= gsi.gsi+(gsi*(0.05*ti))) && gsj.gsj-(gsj*(0.05*tj)) >= gsi.gsi-(gsi*(0.05*ti))) || (gsi.gsi-(gsi*(0.05*ti)) <= (gsj.gsj+(gsj*(0.05*tj))) && (gsi.gsi-(gsi*(0.05*ti))) >= (gsj.gsj-(gsj*(0.05*tj))))) {
-              newId = this.rooms[i].id; // in case room gets deleted below
-              oldId = this.rooms[j].id; // for when room gets deleted below
-              this.rooms[i].joinRoom(id, gamerScore);
-              this.removeRoom(this.rooms[j].id); // get rid of room j which is now merged with room i
-              returnArray.push({port: this.port, id: newId, oldId: oldId}); // match!
-            } // if no match found, do nothing
           }
+
+          if (((gsj-(gsj*(0.05*tj)) <= gsi+(gsi*(0.05*ti))) && gsj-(gsj*(0.05*tj)) >= gsi-(gsi*(0.05*ti))) || (gsi-(gsi*(0.05*ti)) <= (gsj+(gsj*(0.05*tj))) && (gsi-(gsi*(0.05*ti))) >= (gsj-(gsj*(0.05*tj))))) {
+            newId = this.rooms[i].id; // in case room gets deleted below
+            oldId = this.rooms[j].id; // for when room gets deleted below
+
+            this.joinRoom(this.rooms[i].id, this.rooms[j].gamerScore);
+            this.removeRoom(this.rooms[j].id); // get rid of room j which is now merged with room i
+
+            console.log('boundary match');
+
+            returnArray.push({port: this.port, id: newId, oldId: oldId}); // match!
+          } // if no match found, do nothing
+
+          console.log('nothing');
         }
       }
 
@@ -128,19 +127,13 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // create instances by reading whatever database we are holding the games in
-  var chess = new game( 8082, 2 );
-  var shoot = new game( 8084, 4 );
 
-  var waitingUsers = [];
 
   // you can call this on a new user connection
   function newConnection(id, gamerScore, game) {
     var values = game.findRoom(id, gamerScore);
     if (values.id != null) { // if -> game was not found
       waitingIndex = waitingUsers.findIndex(function(waiting) { return waiting.id === values.id; }); // find room by id
-
-      console.log('  waitingIndex');
-
       return {port: values.port, id: values.id}; // pass back port and game to join !!! VALUES TO BE EMMITED !!!
     } else { // else -> game not found
       waitingUsers.push({id: id, game: game});
@@ -152,73 +145,51 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
   // this is called every second, you could do this just before your lobby secondly emit
   function timeLoop() {
     var games = waitingUsers.map(function (wU) { return wU.game; });
+    var returnObj = [];
 
     var i;
     var j;
-
     for (i = 0; i < games.length; i++) { // loop through all games
       var pushBack = games[i].checkRooms(); // an array of all newly matched users
+      //console.log(pushBack);
 
       for (j = 0; j < pushBack.length; j++) { // loop through newly matched users
-        return {port: pushBack.port, id: pushBack.id, oldId: pushBack.oldId}; // port = port to connect to
-      }                                                                       // id = id to connect to
-                                                                              // oldId = id of user for these values to be emitted to
-                                                                              // !!! VALUES TO BE EMMITTED !!!
+        returnObj.push(pushBack[j]); // port = port to connect to
+}                                    // id = id to connect to
+                                     // oldId = id of user for these values to be emitted to
+                                     // !!! VALUES TO BE EMMITTED !!!
       for (j = 0; j < games[i].rooms.length; j++) { // see countDown
         games[i].rooms[j].countDown(); // for each room in game
       }
+
+
+      if (returnObj.length != 0) {
+        return returnObj;
+      } else {
+        return 'null';
+      }
+
     }
   }
+
+  var chess = new game( 8082, 2 ); // manually append games here
+  var shoot = new game( 8084, 4 ); // ^
+
+  var waitingUsers = [];
+
+  if (thingToDo == 'newConnection') {
+    newConnection(fbId, gamerScore, gameConnect);
+  } else if (thingToDo == 'timeLoop') {
+    timeLoop();
+  }
+
 };
 
 
-
-
-//console.log('5, 22, chess');
-//newConnection(5, 22, chess);
-//console.log('timeLoop');
-//timeLoop();
-//console.log('7, 30, chess');
-//newConnection(8, 30, chess);
-// remove from waiting users, like a reverse newConnection
-//console.log('timeLoop');
-//timeLoop();
-//console.log(chess.findRoom(12, 21));
-
 /* General Comments
 
-STRUCTURE OF HOW THIS WILL WORK
-
-read page for game title <- Markuss. I really do not want to try and figure out where in you ejs you want this
-pass game title to lobby <- ^
-
-lobby calls the newConnection function here, passing the fb id (acts as a new room id - just add mutable room ...
-... list in game), the gamerScore of user and the game they wish to connect to (game title ^^^)
-
-This function returns a) port and room id, to be emmited to user that requested newConnection *
-                    b) null value where a wait call is emmited to client side js. This also puts user in ...
-                       ... wait list to be explained below
-
-That handles new connections but what about users who don't get an immediate match? The timeLoop function is ...
-... called every second, you could do this just before your lobby secondly emit. This will return a list of ...
-... port, id, oldId. Being the port and room to connect to, and the id for this information to be emmited to ...
-... respectively. As long as you keep a list of currently connected users with their ids, we are all good.
-
-* How does a game handle a room id? If a room exists with that id - add user, if not - create new room. Easy. ...
-... See chess as an example
-
-This can all replace the basic stuff put in yesterday. Hope it all makes sense, though I get if you don't want...
-... to try and figure out the game.checkRooms() function. That barely makes sense to me.
-
 WHATS STILL LEFT TO DO HERE
-
-- Send lobby the game name from page user is on
-- On connection call newConnection
-- Every second call timeLoop
-- Emit back matches
+- Send lobby the game name from page user is on <- just add this to the emit
 - Make it so games expand / contract with mutable rooms
-
-Thats about it. I will at this point note that I have removed the gamerScore changing with win/loss altogether. ...
-... For demonstration purposes we will just assign our connecting users these as random integers (1-10)
 
 */
