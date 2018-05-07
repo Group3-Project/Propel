@@ -140,7 +140,7 @@ app.get('/profile/:username',function(req, res){
 						promiseisfriend.then(function(dataIsFriend){
 							console.log(dataIsFriend.length+"  11");
 							console.log(dataFriends.length+"  12");
-							if(typeof dataIsFriend != 'undefined'){
+							if(dataIsFriend != 0){
 								console.log("in if");
 								friends = true;
 							}
