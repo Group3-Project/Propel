@@ -9,13 +9,13 @@
   				<% if (user.id != userview.fb_id){ %>
 				<div class="profile-menu">
 					<ul class="nav nav-pills nav-fill">
-						<% if (!friends){ %>
-  						<li class="nav-item" onclick ="addFriend()">
-    						<a class="nav-link" href="#">Add Friend</a>
+						<% if (friends){ %>
+						<li class="nav-item" onclick ="removeFriend()">
+    						<a class="nav-link" href="#">Remove Friend</a>
  						</li>
  						<% } else{ %>
- 							<li class="nav-item" onclick ="removeFriend()">
-    						<a class="nav-link" href="#">Remove Friend</a>
+						<li class="nav-item" onclick ="addFriend()">
+    						<a class="nav-link" href="#">Add Friend</a>
  						</li>
  						<% } %>
 
