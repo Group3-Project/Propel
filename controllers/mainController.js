@@ -140,6 +140,7 @@ app.get('/profile/:username',function(req, res){
 			var promise_friends = getData("select * from user_friends s1 LEFT JOIN users s2 ON s1.friend_id = s2.fb_id WHERE s1.user_id =" + req.params.username);
 			promise_friends.then(function(dataFriends){
 				if(req.user){
+					console.log(dataFriends + "@@@@@@");
 					for (i = 0; i < dataFriends.length; i++){	
 						console.log(dataFriends[i].friend_id + "@@@" + user_profile.id);
 						if (dataFriends[i].friend_id == user_profile.id){
