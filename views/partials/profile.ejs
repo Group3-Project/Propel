@@ -9,7 +9,6 @@
   				<% if (user.id != userview.fb_id){ %>
 				<div class="profile-menu">
 					<ul class="nav nav-pills nav-fill">
-						<% console.log('asd' + friends) %>
 						<% if (!friends){ %>
   						<li class="nav-item" onclick ="addFriend()">
     						<a class="nav-link" href="#">Add Friend</a>
@@ -56,8 +55,8 @@
 			<div class="card">
 				<span class="card-head">Friends</span>
 				<table>
-				<% 				console.log(userfriends);
-				if(userfriends.length > 0){ console.log(userfriends)%>
+				<% 
+				if(userfriends.length > 0){ %>
 				<% for(var i=0; i < userfriends.length; i++) { %>
 				   <tr>
 				   	<td><%= userfriends[i].id %></td>
