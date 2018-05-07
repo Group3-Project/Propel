@@ -94,7 +94,8 @@ var get_gamescore = function(query){
 var gamer_score_temp = get_gamescore(query2);
 gamer_score_temp.then(function(gamerscore){
 	console.log("-------------------------------------------------------------------------------------------------------------------");
-	console.log(gamerscore);
+	console.log(gamerscore[0]);
+	console.log(gamerscore[0].gamerscore);
 	console.log("-------------------------------------------------------------------------------------------------------------------");
 });
   setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time
