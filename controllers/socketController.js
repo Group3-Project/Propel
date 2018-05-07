@@ -51,7 +51,6 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   });
 
   socket.on('addFriend', function(data){
-    console.log(data);
     var query = 'Select * from user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id;
     DB.query(query, function(error, rows, fields){
       if(!!error){
@@ -73,6 +72,31 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   })
 
 });
+	
+	
+  socket.on('removefriend', function(data){
+    var query = 'Select * from user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id;
+    DB.query(query, function(error, rows, fields){
+      if(!!error){
+        console.log('MySQL Query Error: ' + error);
+      }else{
+        if(rows.length > 0){
+          DB.query('DELETE FROM user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id;', data, function(error, rows, fields){
+            if(!!error){
+              console.log('MySQL Query Error: ' + error);
+            }else{
+              socket.emit('friend_removed');
+            }
+          });
+        }
+      }
+    });
+
+  })
+
+});	
+	
+	
 var query2 = "select gamerscore from users where fb_id = " + user_fb_id;
 var get_gamescore = function(query){
 	return new Promise (function(resolve,reject){
