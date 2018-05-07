@@ -15,7 +15,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 
   	if (!(user_fb_id in Player.list)) {
   		Player.onConnect(socket);
-		if(GamerScore){
+		if(GamerScore >= 0){
 			console.log(user_fb_name + " with GamerScore " + GamerScore + " and ID " + socket.id +" is connected" );
 		}
   	};
@@ -24,7 +24,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     	delete socket_list[id];
     	Player.onDisconnect(socket);
     	user_fb_id = null;
-    	if(GamerScore){
+    	if(GamerScore >= 0){
 		console.log(user_fb_name + " with GamerScore " + GamerScore + " and ID " + socket.id +" is disconnected" );
 	}
     });
@@ -93,7 +93,7 @@ gamer_score_temp.then(function(gamerscore){
 });
   setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time
   // putting the matchmaking emit above the whole pack things as I do not know what it is
-  if(GamerScore){
+  if(GamerScore >= 0){
   	var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'timeLoop', null, GamerScore); // pass it literally everything I can, even if it is not used. Tidy up if you wish
   }
   var emitToSocket;
