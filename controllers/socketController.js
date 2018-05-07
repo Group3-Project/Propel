@@ -70,8 +70,6 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     });
 
   })
-
-});
 	
 	
   socket.on('removefriend', function(data){
@@ -93,6 +91,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     });
 
   });
+});
 	
 	
 	
