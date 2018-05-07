@@ -141,7 +141,7 @@ app.get('/profile/:username',function(req, res){
 				if(req.user){
 					var promiseisfriend = getData("select * from user_friends where friend_id = " + req.params.username + " and user_id = " + user_profile.id);
 						promiseisfriend.then(function(dataIsFriend){
-							if(dataIsFriend.length > 0){
+							if(typeof dataIsFriend != 'undefined'){
 								friends = true;
 							}
 						})
