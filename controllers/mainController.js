@@ -38,7 +38,6 @@ Player.getAllInitPack = ()=>{ //To get all the previous player states
 	var players = [];
 	for(var i in Player.list)
 		players.push(Player.list[i].getInitPack());
-	console.log(Player.list);
 	return players;
 }
 Player.onDisconnect = (socket)=>{
@@ -57,7 +56,7 @@ Player.update = ()=>{
 //first db select to get all the game list
 DB.query("select * from game_list", function(error, rows, fields){
 	if(!!error){
-		console.log('mysql query error' + error);
+		console.log('MySQL query Error: ' + error);
 	}else{
 		game_list = rows;
 	}
@@ -70,10 +69,9 @@ var getData = function (query){
 	return new Promise(function(resolve, reject){
 		DB.query(query, function(error, rows, fields){
 			if(!!error){
-				console.log('mysql query error' + error);
+				console.log('MySQL query Error: ' + error);
 				reject(false);
 			}else{
-				console.log(typeof rows)
 				resolve(rows);
 				//her_profile =  rows;
 			}
@@ -166,7 +164,6 @@ app.get('/gameView/:gameID',function(req, res){
 		user_profile = req.user;
 		socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 		gameInfo.then(function(data){
-			 console.log(data[0]);
 			 res.render('gameView',{game: data[0], user: user_profile});
 		})
 	}
