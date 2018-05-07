@@ -38,7 +38,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 
     DB.query(query, function(error, rows, fields) { // get gamerScore
       if (!!error) {
-        console.log('MySQL query error: ' + error);
+        console.log('MySQL Query Error: ' + error);
       } else {
         var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'newConnection', user.game, query); // pass it literally everything I can, even if it is not used. Tidy up if you wish
         if (emitObj.port != null) {
@@ -49,22 +49,21 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   });
 
   socket.on('gameFound', function(user_fb_id) {
-    console.log(user_fb_id + ' assigned game');
+    console.log(user_fb_id + ' Assigned Game');
   });
 
   socket.on('addFriend', function(data){
     console.log(data);
     var query = 'Select * from user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id;
-    console.log(query)
     DB.query(query, function(error, rows, fields){
       if(!!error){
-        console.log('mysql query error' + error);
+        console.log('MySQL Query Error: ' + error);
       }else{
         if(rows.length == 0){
           console.log("No entries")
           DB.query('Insert into user_friends Set ?', data, function(error, rows, fields){
             if(!!error){
-              console.log('mysql query error' + error);
+              console.log('MySQL Query Error: ' + error);
             }else{
               socket.emit('friend_added');
             }
@@ -81,7 +80,7 @@ var get_gamescore = function(query){
 	return new Promise (function(resolve,reject){
 		DB.query(query, function(error, rows, fields){
 			if(!!error){
-				console.log('MySQL Query Error ' + error);
+				console.log('MySQL Query Error: ' + error);
 				reject(false);
 			}
 			else{
@@ -100,13 +99,10 @@ gamer_score_temp.then(function(gamerscore){
   if(GamerScore){
   	var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'timeLoop', null, GamerScore); // pass it literally everything I can, even if it is not used. Tidy up if you wish
   }
- 
-  var i;
-  var y;
   var emitToSocket;
 if(typeof emitObj != 'undefined'){
-  for (i = 0; i < emitObj.length; i++) {
-    for (y = 0; y < socket_list.length; y++) {
+  for (var i = 0; i < emitObj.length; i++) {
+    for (var y = 0; y < socket_list.length; y++) {
       if (socket_list[y] == emitObj[i].oldId) {
         emitToSocket = socket_list[y];
       }
