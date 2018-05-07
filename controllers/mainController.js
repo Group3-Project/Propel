@@ -144,7 +144,7 @@ app.get('/profile/:username',function(req, res){
 							if(dataIsFriend.length > 0){
 								friends = true;
 							}
-						}
+						})
 					}
 					
 					
