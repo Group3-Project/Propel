@@ -85,7 +85,6 @@ var get_gamescore = function(query){
 				reject(false);
 			}
 			else{
-				console.log(rows);
 				resolve(rows);
 			}
 		});
