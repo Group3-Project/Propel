@@ -92,5 +92,11 @@
 	function removeFriend(){
 		socket.emit('removefriend', {user_id : <%= user.id %>, friend_id : <%= userview.fb_id %> })
 	}
+	socket.on('friend_added',function(){
+		location.reload();
+	})
+	socket.on('friend_removed',function(){
+		location.reload();
+	})
 </script>
 <% } %>
