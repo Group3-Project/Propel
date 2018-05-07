@@ -87,7 +87,6 @@ app.use(cookieParser());
 app.get('/',function(req, res){
 	user_profile = null;
 	if(req.user){	
-		console.log(req.user);
 		 user_profile = req.user;
 		 console.log("User recognized!");
 		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
