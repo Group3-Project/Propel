@@ -143,7 +143,7 @@ app.get('/profile/:username',function(req, res){
 					console.log(dataFriends + "@@@@@@");
 					for (i = 0; i < dataFriends.length; i++){	
 						console.log(dataFriends[i].friend_id + "@@@" + user_profile.id);
-						if (dataFriends[i].friend_id == user_profile.id){
+						if (dataFriends[i].user_id == user_profile.id){
 							friends = true;
 						}
 					}
