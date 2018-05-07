@@ -81,7 +81,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
         console.log('MySQL Query Error: ' + error);
       }else{
         if(rows.length > 0){
-          DB.query('DELETE FROM user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id;', data, function(error, rows, fields){
+          DB.query('DELETE FROM user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id, data, function(error, rows, fields){
             if(!!error){
               console.log('MySQL Query Error: ' + error);
             }else{
