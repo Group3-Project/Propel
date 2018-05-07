@@ -80,7 +80,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time
   
   // putting the matchmaking emit above the whole pack things as I do not know what it is
-  var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'timeLoop', NULL, NULL); // pass it literally everything I can, even if it is not used. Tidy up if you wish
+  var emitObj = matchController(app, express, server, Player, initPack, removePack, io, DB, 'timeLoop', NULL, NULL); // pass it literally everything I can, even if it is not used. Tidy up if you wish
   var i;
   var y;
   var emitToSocket;
