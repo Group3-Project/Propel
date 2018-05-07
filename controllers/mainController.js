@@ -102,6 +102,7 @@ app.get('/',function(req, res){
 	
 });
 app.get('/profile',function(req, res){
+	var friends = false;
 	if(req.user){	
 		 user_profile = req.user;
 		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
