@@ -93,10 +93,11 @@
 		socket.emit('removefriend', {user_id : <%= user.id %>, friend_id : <%= userview.fb_id %> })
 	}
 	socket.on('friend_added',function(){
-		location.reload();
+	console.log("check");
+		window.location.reload(true);
 	})
 	socket.on('friend_removed',function(){
-		location.reload();
+		window.location.reload(true);
 	})
 </script>
 <% } %>
