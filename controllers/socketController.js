@@ -80,11 +80,11 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time
   
   // putting the matchmaking emit above the whole pack things as I do not know what it is
-  var emitObj = matchController(app, express, server, null, Player, initPack, removePack, io, DB, 'timeLoop', null, null); // pass it literally everything I can, even if it is not used. Tidy up if you wish
+  var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'timeLoop', null, null); // pass it literally everything I can, even if it is not used. Tidy up if you wish
   var i;
   var y;
   var emitToSocket;
- if (typeof emitObj !== 'undefined'){
+
   for (i = 0; i < emitObj.length; i++) {
     for (y = 0; y < socket_list.length; y++) {
       if (socket_list[y] == emitObj[i].oldId) {
@@ -92,7 +92,6 @@ setInterval(()=>{ //Set the interval, it runs the function again and again after
       }
     }
     socket.broadcast.to(emitToSocket).emit('message', {port: emitObj[i].port, id: emitObj[i].id});
-  }
   }
   // end of matchmaking, presume issue is here if there are any
 
