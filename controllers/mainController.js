@@ -73,7 +73,6 @@ var getData = function (query){
 				reject(false);
 			}else{
 				resolve(rows);
-				//her_profile =  rows;
 			}
 		});
 
@@ -147,7 +146,6 @@ app.get('/profile/:username',function(req, res){
 		
 				}else{
 					res.render('profile',{userview: dataUser[0], userfriends : dataFriends});
-					console.log(userfriends);
 				}
 				
 			})
@@ -182,6 +180,4 @@ app.get('/logout', function (req, res) {
         res.redirect('/');
     });
 });
-
-
 };
