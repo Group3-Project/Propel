@@ -103,6 +103,10 @@ a span:hover{
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+.profile-username input{
+	border: 0;
+    	background: transparent;
+}
 .profile-menu .nav-item:hover{
 	background-color: #cfcfcf;
 }
