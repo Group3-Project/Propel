@@ -1,5 +1,6 @@
 module.exports = function(app,express,server, user_fb_id,Player,initPack,removePack,user_fb_name,io,DB){ //Get all the passed variables
 var GamerScore;
+var GameName;
 var matchController = require('./matchController');
 
 //Handling the Ping TimeOut
@@ -29,11 +30,11 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     });
   };
 	socket.on('GameName',function(data){
-		console.log(data.name);
+		GameName = data.name;
 	});
 	
 	socket.on('requestGame', function(user) { //joinLobby -> requestGame
-		var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'newConnection', user.game, GamerScore);
+		var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'newConnection', GameName, GamerScore);
 		if (emitObj.port != null) {
 			socket.emit('assignGame', emitObj);
 		}
