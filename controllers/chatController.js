@@ -36,7 +36,7 @@ io.sockets.on('connection', function(socket){
             var ind = msg.indexOf('/');
             if(ind !== -1){
                 var name = msg.substring(0, ind);
-                var msg = msg.substring(ind + 2);
+                var msg = msg.substring(ind + 1);
 		console.log(name);
 		console.log(users);
 		if(name in users){
