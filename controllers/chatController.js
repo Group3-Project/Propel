@@ -18,6 +18,7 @@ io.sockets.on('connection', function(socket){
             }
 	    if(user_list.indexOf(Object.keys(users)[i]) == -1){
 		user_list.push(toString(Object.keys(users)[i]));
+		    console.log(user_list);
 	    }
             temp_list.push(tempObj);
             
@@ -33,9 +34,7 @@ io.sockets.on('connection', function(socket){
             var ind = msg.indexOf('/');
             if(ind !== -1){
                 var name = msg.substring(0, ind);
-		    console.log(name);
                 var msg = msg.substring(ind + 1);
-		    console.log(msg);
 		if(name in user_list){
                     users[name].emit('whisper', {msg: msg, nick: socket.nickname});
                 } else{
