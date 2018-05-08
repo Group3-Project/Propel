@@ -4,5 +4,5 @@
 </div>
 <script>
   var Name = document.querySelector(".h1name").textContent.replace(/(\r\n\t|\n|\r\t)/gm,"");
-  socket.emit('GameName',{name : Name}); 
+  socket.emit('requestGame',{gameName: Name}); 
 </script>
