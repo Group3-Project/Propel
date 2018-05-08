@@ -1,8 +1,8 @@
 module.exports = function(app,express,server,user_fb_id,Player,user_fb_name,io){ //Get all the passed variables
 
 var users = {};
-var user_list = [];
-var c = 1;
+//var user_list = [];
+	
 //listen on every connection
 io.sockets.on('connection', function(socket){
      if(user_fb_id){
@@ -20,9 +20,6 @@ io.sockets.on('connection', function(socket){
             }
 	    if(user_list.indexOf(Object.keys(users)[i]) == -1){
 		user_list.push(Object.keys(users)[i]);
-		user_list.push("hello");
-		c++;
-		user_list.push(c);
 		console.log(user_list);
 	    }
             temp_list.push(tempObj);
