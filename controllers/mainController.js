@@ -132,9 +132,9 @@ app.get('/bullyingPolicy',function(req, res){
 	if(req.user){	
 		 user_profile = req.user;
 		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
-		 res.render('upload',{user: user_profile});
+		 res.render('bullyingPolicy',{user: user_profile});
 	}else{
-		res.render('upload',{});
+		res.render('bullyingPolicy',{});
 	}
 });
 	
