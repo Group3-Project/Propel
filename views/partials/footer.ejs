@@ -9,7 +9,7 @@
 </footer>
 <script type="text/javascript">
 	function checkLogin () {
-		if(<%= user_id!= null %>){
+		if(<%= user.id != null %>){
 			window.location.href = "upload";
 		}else{
 			if (confirm("You must log in!")) {
