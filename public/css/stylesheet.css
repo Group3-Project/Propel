@@ -107,6 +107,8 @@ a span:hover{
 	border: 0;
     	background: transparent;
 	outline:none;
+	text-align:center;
+	color:white;
 }
 .profile-menu .nav-item:hover{
 	background-color: #cfcfcf;
