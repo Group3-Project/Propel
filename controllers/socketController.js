@@ -36,18 +36,10 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 		console.log(data);
 	});
 	socket.on('requestGame', function(user) { //joinLobby -> requestGame
-    var query = 'Select gamerscore from users where fb_id ='+ user.id;
-
-    DB.query(query, function(error, rows, fields) { // get gamerScore
-      if (!!error) {
-        console.log('MySQL Query Error: ' + error);
-      } else {
-        var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'newConnection', user.game, query); // pass it literally everything I can, even if it is not used. Tidy up if you wish
-        if (emitObj.port != null) {
-          socket.emit('assignGame', emitObj);
-        }
-      }
-    });
+		var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'newConnection', user.game, GamerScore);
+		if (emitObj.port != null) {
+			socket.emit('assignGame', emitObj);
+		}
   });
 
   socket.on('gameFound', function(user_fb_id) {
@@ -121,7 +113,7 @@ gamer_score_temp.then(function(gamerscore){
   setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time
   // putting the matchmaking emit above the whole pack things as I do not know what it is
   if(GamerScore >= 0){
-  	var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'timeLoop', null, GamerScore); // pass it literally everything I can, even if it is not used. Tidy up if you wish
+  	var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'timeLoop', NULL, NULL); // pass it literally everything I can, even if it is not used. Tidy up if you wish
   }
   var emitToSocket;
 if(typeof emitObj != 'undefined'){
