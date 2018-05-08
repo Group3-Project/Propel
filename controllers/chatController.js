@@ -32,13 +32,13 @@ io.sockets.on('connection', function(socket){
     socket.on('send message', function(data, callback){
         var msg = data.trim();
         if(msg.substr(0,3) === '/w '){
-            msg = msg.substring(3);
-            var ind = msg.indexOf('-');
-            if(ind !== -1){
+            msg = msg.substr(3);
+            var ind = msg.indexOf('/');
+            if(ind != -1){
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 2);
 		
-                if(name in users){
+		if(name in users){
                     users[name].emit('whisper', {msg: msg, nick: socket.nickname});
                 } else{
                     callback('Error! Enter a valid User.');
