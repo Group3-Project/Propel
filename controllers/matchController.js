@@ -148,8 +148,8 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
   function newConnection(id, gamerScore, game) {
     //console.log(chess);
     //game = game.toLowerCase();
-    game = 'chess';
-    var values = game.findRoom(id, gamerScore);
+    //game = 'chess';
+    var values = chess.findRoom(id, gamerScore);
     if (values.id != null) { // if -> game was not found
       waitingIndex = waitingUsers.findIndex(function(waiting) { return waiting.id === values.id; }); // find room by id
       console.log({port: values.port, id: values.id});
