@@ -39,7 +39,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 			console.log('game found' + emitObj);
 			socket.emit('assignGame', emitObj);
 		} else {
-			socket.emit('game not found yet');
+			console.log('game not found yet');
 		}
   });
 
