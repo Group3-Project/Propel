@@ -9,7 +9,6 @@
   				<% if (user.id != userview.fb_id){ %>
 				<div class="profile-menu">
 					<ul class="nav nav-pills nav-fill">
-					<% console.log(friends + "oooo");%>
 						<% if (friends){ %>
 						<li class="nav-item" onclick ="removeFriend()">
     						<a class="nav-link" href="#">Remove Friend</a>
@@ -60,8 +59,7 @@
 				if(userfriends.length > 0){ %>
 				<% for(var i=0; i < userfriends.length; i++) { %>
 				   <tr>
-				   	<td><%= userfriends[i].id %></td>
-				     <td><%= userfriends[i].name %></td>
+				     <td><a href="/profile/<%userfriends.user_id%>"><%= userfriends[i].name %></a></td>
 				   </tr>
 				<% } } %>
 				</table>
