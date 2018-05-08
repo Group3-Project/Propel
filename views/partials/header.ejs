@@ -56,7 +56,10 @@ document.getElementById("hidechat").style.display= "initial";
 </div>
 <script type="text/javascript">
 	function logout(){
-		var getID = <%= user_id %>;
-		socket.emit('kill_user', getID);
+	if(user_id){
+	  var getID = <%= user_id %>;
+	  socket.emit('kill_user', getID);
 	}
+		
+}
 </script>
