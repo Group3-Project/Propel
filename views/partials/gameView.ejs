@@ -26,6 +26,7 @@
   				<div class="card-body">
     				<p class="card-text">
 				<p style="color: white"><%= game.name %></p>
+				<%= socket.emit('GameName',{game.name});%>
 				</p>
   				</div>
 			</div>
