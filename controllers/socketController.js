@@ -5,9 +5,6 @@ var matchController = require('./matchController');
 //Handling the Ping TimeOut
 io.set('heartbeat timeout',5000000);
 io.set('heartbeat interval',5000000);
-
-
-	
 	
 //Global List for all the socket connections
 var socket_list = {};
@@ -31,10 +28,10 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 	console.log(user_fb_name + " is disconnected" );
     });
   };
-
-	socket.on('GameName',(data)=>{
+	socket.on('GameName',function(data){
 		console.log(data);
 	});
+	
 	socket.on('requestGame', function(user) { //joinLobby -> requestGame
 		var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'newConnection', user.game, GamerScore);
 		if (emitObj.port != null) {
