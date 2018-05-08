@@ -29,7 +29,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     });
   };
 	socket.on('GameName',function(data){
-		console.log(data);
+		console.log(data.name);
 	});
 	
 	socket.on('requestGame', function(user) { //joinLobby -> requestGame
