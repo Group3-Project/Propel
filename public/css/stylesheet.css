@@ -109,6 +109,7 @@ a span:hover{
 	outline:none;
 	text-align:center;
 	color:white;
+	margin-top:13px;
 }
 .profile-menu .nav-item:hover{
 	background-color: #cfcfcf;
