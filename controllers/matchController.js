@@ -120,8 +120,6 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
     if (toPlay == 'shooter') {
       game = shooter;
     }
-    console.log(id);
-    console.log(gamerScore);
     var values = game.findRoom(id, gamerScore);
     if (values.id != null) { // if -> game was not found
       waitingIndex = waitingUsers.findIndex(function(waiting) { return waiting.id === values.id; }); // find room by id
