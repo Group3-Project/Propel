@@ -30,6 +30,8 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     });
   };	
 	socket.on('requestGame', function(user) { //joinLobby -> requestGame
+		console.log('requestGmae here');
+		console.log(user);
 		if(typeof emitObj != 'undefined'){
 			var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'newConnection', user.gameName, GamerScore);
 			if (emitObj.port != null) {
