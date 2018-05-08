@@ -155,11 +155,7 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
     }
     //game = 'chess';
     
-    console.log(id);
     var values = game.findRoom(id, gamerScore);
-    console.log(values.id);
-    console.log('values here');
-    console.log(values);
     if (values.id != null) { // if -> game was not found
       waitingIndex = waitingUsers.findIndex(function(waiting) { return waiting.id === values.id; }); // find room by id
       console.log({port: values.port, id: values.id});
