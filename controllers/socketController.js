@@ -24,9 +24,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     	delete socket_list[id];
     	Player.onDisconnect(socket);
     	user_fb_id = null;
-    	if(GamerScore >= 0){
-		console.log(user_fb_name + " with GamerScore " + GamerScore + " and ID " + socket.id +" is disconnected" );
-	}
+	console.log(user_fb_name + " is disconnected" );
     });
   };
 
