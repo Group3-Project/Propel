@@ -31,13 +31,13 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   };	
 	socket.on('requestGame', function(user) { //joinLobby -> requestGame
 		var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'newConnection', user.gameName, GamerScore);
--			if(typeof emitObj != 'undefined'){	
--				if (emitObj.port != null) {
--					console.log('game found' + emitObj);
--					socket.emit('assignGame', emitObj);
--				} else {
--					console.log('game not found yet');
--				}
+			if(typeof emitObj != 'undefined'){	
+				if (emitObj.port != null) {
+					console.log('game found' + emitObj);
+					socket.emit('assignGame', emitObj);
+				} else {
+					console.log('game not found yet');
+				}
   });
 
   socket.on('gameFound', function(user_fb_id) {
