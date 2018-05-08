@@ -6,6 +6,11 @@ var matchController = require('./matchController');
 io.set('heartbeat timeout',5000000);
 io.set('heartbeat interval',5000000);
 
+socket.on('GameName',(data)=>{
+	console.log(data);
+});
+	
+	
 //Global List for all the socket connections
 var socket_list = {};
 io.sockets.on('connection', (socket)=>{ //Whenever a player connect
