@@ -111,9 +111,8 @@ a span:hover{
 	color:white;
 	margin-top:13px;
 }
-.profile-username .btn{
-	padding: 6px;
-	text-align:center;
+.profile-username i{
+	cursor: pointer;
 }
 .profile-menu .nav-item:hover{
 	background-color: #cfcfcf;
