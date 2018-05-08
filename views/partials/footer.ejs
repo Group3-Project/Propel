@@ -13,7 +13,7 @@
         <span>Privacy Policy</span></br>
         <span>Terms of Service</span></br>
         <span>Bulling Policy</span></br>
-        <a onClick=checkLogin()><span>Upload a Game</span></br></a>
+        <a onClick=checkLoginUpload()><span>Upload a Game</span></br></a>
         <span>Contact Us</span>
       </div>
 </footer>
@@ -21,7 +21,7 @@
 <script type="text/javascript">
 
 
-	function checkLogin () {
+	function checkLoginUpload () {
 		if(<%= user_id != null %>){
 			window.location.href = "upload";
 		}else{
