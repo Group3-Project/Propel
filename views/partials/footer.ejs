@@ -3,7 +3,18 @@
         <span>Privacy Policy</span></br>
         <span>Terms of Service</span></br>
         <span>Bulling Policy</span></br>
-        <a href="upload"><span>Upload a Game</span></br></a>
+        <a onClick=checkLogin()><span>Upload a Game</span></br></a>
         <span>Contact Us</span>
       </div>
 </footer>
+<script type="text/javascript">
+	function checkLogin () {
+		if(<%= user_id!= null %>){
+			window.location.href = "upload";
+		}else{
+			if (confirm("You must log in!")) {
+		        window.location.href = "/auth/facebook";
+		    } 
+		}
+	}
+</script>
