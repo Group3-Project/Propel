@@ -28,13 +28,9 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     	user_fb_id = null;
 	console.log(user_fb_name + " is disconnected" );
     });
-  };
-	socket.on('GameName',function(data){
-		GameName = data.name;
-	});
-	
+  };	
 	socket.on('requestGame', function(user) { //joinLobby -> requestGame
-		var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'newConnection', GameName, GamerScore);
+		var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'newConnection', user.gameName, GamerScore);
 		if (emitObj.port != null) {
 			console.log('game found' + emitObj);
 			socket.emit('assignGame', emitObj);
