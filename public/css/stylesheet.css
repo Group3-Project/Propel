@@ -389,3 +389,128 @@ text-align: center;
   color:gray;
   font-style:italic;
 }
+
+/* BULLY Style*/
+/*###################################################################*/
+/*###################################################################*/
+/*###################################################################*/
+.InfoImg{
+	width: 90%;
+	height: 600px;	
+	margin: auto;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+	padding-bottom: 20px;
+	background-color: white;
+	border-radius: 7px;
+	resize:both;
+	overflow:auto;
+	margin-top:20px;
+}
+
+.Img{
+	margin: auto;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 700px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.StopBullying {
+	background-color: #343a40;
+	text-align: center;
+	color: white;
+	width: 60%;
+	margin: auto;
+	padding: 1px;
+	margin-top: 15px;
+	border-radius: 7px;
+	margin-bottom: 10px;
+	z-index: 4;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+}
+
+h5{
+	color: white;
+	margin-top: auto;
+	text-align: center;
+	position: relative;
+	top: 50%;
+
+}
+
+.HelpfulLinks,th,td {
+	margin:auto;
+	border: 3px solid black;
+	border-radius: 7px;
+	padding: 5px;
+	background: linear-gradient(#efefef, #cfcfcf);
+	color:black;
+}
+
+.NeedMoreHelp{
+	background-color: #343a40;
+	text-align: center;
+	color: white;
+	width: 70%;
+	margin: auto;
+	padding: 1px;
+	margin-top: 15px;
+	border-radius: 7px;
+	margin-bottom: 10px;
+	z-index: 4;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+
+}
+
+.Stance{
+	background-color: #343a40;
+	text-align: center;
+	color: white;
+	width: 70%;
+	margin: auto;
+	padding: 1px;
+	margin-top: 15px;
+	border-radius: 7px;
+	margin-bottom: 10px;
+	z-index: 4;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+}
+
+.Belief{
+	text-align: center;
+	font-size: 30px;
+}
+h3, h4{
+	color: white;
+	margin-top: auto;
+	text-align: center;
+	position: relative;
+	top: 50%;
+	font-size: 40px;
+}
+
+h2{
+	color: white;
+	margin-top: auto;
+	text-align: center;
+	position: relative;
+	top: 50%;
+	font-size: 60px;
+}
+
+.Message, .table{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+	text-align: center;
+	color: #343a40;
+	width: 70%;
+	margin: auto;
+	padding: 1px;
+	margin-top: 15px;
+	border-radius: 7px;
+	margin-bottom: 10px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
