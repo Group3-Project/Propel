@@ -5,7 +5,8 @@ var socketController = require('./socketController');
 var chatController = require('./chatController');
 var game_list;
 var initPack = {player:[]};
-var removePack = {player:[]};	
+var removePack = {player:[]};
+var user_list = [];
 var Player = (id)=>{
   var self = {
     id:id
@@ -89,7 +90,7 @@ app.get('/',function(req, res){
 		 user_profile = req.user;
 		 console.log("User recognized!");
 		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
-		 chatController(app,express,server,user_profile.id,Player,user_profile.name,io);
+		 chatController(app,express,server,user_profile.id,Player,user_profile.name,io,user_list);
 	}else{
 		console.log('User not logged in');
 	}
