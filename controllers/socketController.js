@@ -33,7 +33,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 		console.log('requestGmae here');
 		console.log(user);
 		
-			var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'newConnection', user.gameName, GamerScore);
+			var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'newConnection', user.gameName, GamerScore);
 			if(typeof emitObj != 'undefined'){	
 				if (emitObj.port != null) {
 					console.log('game found' + emitObj);
