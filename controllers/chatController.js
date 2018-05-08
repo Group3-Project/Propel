@@ -1,4 +1,4 @@
-module.exports = function(app,express,server,user_fb_id,Player,user_fb_name,io){ //Get all the passed variables
+module.exports = function(app,express,server,user_fb_id,Player,user_fb_name,io,user_list){ //Get all the passed variables
 
 var users = {};
 //var user_list = [];
