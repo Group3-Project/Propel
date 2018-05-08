@@ -2,7 +2,7 @@
 <div class="jumbotron gameview-title"><h1><%= game.name %></h1></div>
 <iframe class="iframeGame" style="width:100%; min-height:400px; height:80vh;" src="<%= game.URL %>"></iframe>
 </div>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script type="text/javascript">
-  var socket = io();
   socket.emit('GameName');
 </script>
