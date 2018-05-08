@@ -37,6 +37,11 @@ io.sockets.on('connection', function(socket){
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 1);
 		var n = name.toString();
+		 for(var i=0; i<user_list.length; i++){
+		 	if (n==user_list[i]){
+				console.log(n);
+			}
+		 }
 		if(n in user_list){
                     users[n].emit('whisper', {msg: msg, nick: socket.nickname});
                 } else{
