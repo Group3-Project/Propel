@@ -7,6 +7,7 @@ var game_list;
 var initPack = {player:[]};
 var removePack = {player:[]};
 var user_list = [];
+var users = {};
 var Player = (id)=>{
   var self = {
     id:id
@@ -90,7 +91,7 @@ app.get('/',function(req, res){
 		 user_profile = req.user;
 		 console.log("User recognized!");
 		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
-		 chatController(app,express,server,user_profile.id,Player,user_profile.name,io,user_list);
+		 chatController(app,express,server,user_profile.id,Player,user_profile.name,io,user_list,users);
 	}else{
 		console.log('User not logged in');
 	}
@@ -122,9 +123,18 @@ app.get('/upload',function(req, res){
 	if(req.user){	
 		 user_profile = req.user;
 		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
-		 res.render('upload',{userview: user_profile, user: user_profile});
+		 res.render('upload',{user: user_profile});
 	}else{
 		res.render('index',{game_list : game_list, user: user_profile});
+	}
+});
+app.get('/bullyingPolicy',function(req, res){
+	if(req.user){	
+		 user_profile = req.user;
+		 socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
+		 res.render('upload',{user: user_profile});
+	}else{
+		res.render('upload',{});
 	}
 });
 	
