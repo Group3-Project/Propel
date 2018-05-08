@@ -147,8 +147,6 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
   // you can call this on a new user connection
   function newConnection(id, gamerScore, game) {
     game = game.toLowerCase();
-    console.log(game);
-
     var values = game.findRoom(id, gamerScore);
     if (values.id != null) { // if -> game was not found
       waitingIndex = waitingUsers.findIndex(function(waiting) { return waiting.id === values.id; }); // find room by id
@@ -228,7 +226,6 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
     //var thingToDo = 'timeLoop';
   
   if (thingToDo == 'newConnection') {
-    console.log('here pls');
     newConnection(fbId, gamerScore, gameConnect);
   } else if (thingToDo == 'timeLoop') {
     timeLoop();
