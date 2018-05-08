@@ -3,4 +3,4 @@
 <iframe class="iframeGame" style="width:100%; min-height:400px; height:80vh;" src="<%= game.URL %>"></iframe>
 </div>
 <% var name = game.name; %>
-<% console.log(name); %>
+<% socket.emit('GameName',{name}); %>
