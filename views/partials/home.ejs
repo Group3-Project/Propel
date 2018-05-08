@@ -64,7 +64,8 @@
 	function checkLogin () {
 		if(<%= user_id!= null %>){
 			window.location.href = "/gameView/<%= game_list[0].id %>";
-			var name = game_list[0].name;
+			var name = "";
+			name = <%= game_list[0].name %>;
 			socket.emit('GameName',{name});
 		}else{
 			if (confirm("You must log in!")) {
