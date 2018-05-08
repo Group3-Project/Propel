@@ -36,7 +36,10 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 	socket.on('requestGame', function(user) { //joinLobby -> requestGame
 		var emitObj = matchController(app, express, server, user.id, Player, initPack, removePack, io, DB, 'newConnection', GameName, GamerScore);
 		if (emitObj.port != null) {
+			console.log('game found' + emitObj);
 			socket.emit('assignGame', emitObj);
+		} else {
+			socket.emit('game not found yet');
 		}
   });
 
