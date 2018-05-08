@@ -34,7 +34,7 @@ io.sockets.on('connection', function(socket){
         if(msg.substr(0,3) === '/w '){
             msg = msg.substr(3);
             var ind = msg.indexOf('/');
-            if(ind != -1){
+            if(ind !== -1){
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 2);
 		
