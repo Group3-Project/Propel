@@ -1,7 +1,7 @@
 module.exports = function(app,express,server,user_fb_id,Player,user_fb_name,io){ //Get all the passed variables
 
 var users = {};
-
+var user_list =[];
 //listen on every connection
 io.sockets.on('connection', function(socket){
 
@@ -20,7 +20,8 @@ io.sockets.on('connection', function(socket){
               	 'name' : Object.keys(users)[i],
               	  'id' : users[Object.keys(users)[i]].id
             }
-        temp_list.push(tempObj)
+	    user_list.push(Object.keys(users)[i]);
+            temp_list.push(tempObj);
             
        	 }
         io.sockets.emit('usernames', temp_list);
@@ -37,8 +38,8 @@ io.sockets.on('connection', function(socket){
             if(ind !== -1){
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 1);
-		console.log(name in Object.keys(users));
-		if(name in Object.keys(users)){
+		console.log(name in user_list);
+		if(name in user_list){
                     users[name].emit('whisper', {msg: msg, nick: socket.nickname});
                 } else{
                     callback('Error! Enter a valid User.');
