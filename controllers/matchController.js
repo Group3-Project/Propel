@@ -225,6 +225,7 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
     //var thingToDo = 'timeLoop';
   
   if (thingToDo == 'newConnection') {
+    console.log('here pls');
     newConnection(fbId, gamerScore, gameConnect);
   } else if (thingToDo == 'timeLoop') {
     timeLoop();
