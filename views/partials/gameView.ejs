@@ -3,6 +3,6 @@
 <iframe class="iframeGame" style="width:100%; min-height:400px; height:80vh;" src="<%= game.URL %>"></iframe>
 </div>
 <script>
-  var Name = document.querySelector(".h1name").textContent;
+  var Name = document.querySelector(".h1name").textContent.replace(/(\r\n\t|\n|\r\t)/gm,"");
   socket.emit('GameName',{name : Name}); 
 </script>
