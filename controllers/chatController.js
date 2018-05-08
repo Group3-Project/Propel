@@ -2,7 +2,7 @@ module.exports = function(app,express,server,user_fb_id,Player,user_fb_name,io){
 
 var users = {};
 var user_list = [];
-
+var c = 1;
 //listen on every connection
 io.sockets.on('connection', function(socket){
      if(user_fb_id){
@@ -11,6 +11,7 @@ io.sockets.on('connection', function(socket){
      	    updateNicknames();
      }
     function updateNicknames(){
+	    
         var temp_list = [];
     	for (i = 0; i < Object.keys(users).length; i++){
             tempObj = {
@@ -20,7 +21,9 @@ io.sockets.on('connection', function(socket){
 	    if(user_list.indexOf(Object.keys(users)[i]) == -1){
 		user_list.push(Object.keys(users)[i]);
 		user_list.push("hello");
-		    console.log(user_list);
+		c++;
+		user_list.push(c);
+		console.log(user_list);
 	    }
             temp_list.push(tempObj);
             
