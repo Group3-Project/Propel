@@ -63,6 +63,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
               console.log('MySQL Query Error: ' + error);
             }else{
               socket.emit('friend_added');
+		    console.log("HEY123");
             }
           });
         }
