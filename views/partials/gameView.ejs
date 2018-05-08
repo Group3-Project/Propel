@@ -1,8 +1,8 @@
 <div class="container">
-<div class="jumbotron gameview-title"><h1><%= game.name %></h1></div>
+<div class="jumbotron gameview-title"><h1 id='hello'><%= game.name %></h1></div>
 <iframe class="iframeGame" style="width:100%; min-height:400px; height:80vh;" src="<%= game.URL %>"></iframe>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>
-  socket.emit('GameName',{name : game.name}); 
+  var Name = document.querySelector('hello').textContent;
+  socket.emit('GameName',{name : Name}); 
 </script>
