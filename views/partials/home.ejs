@@ -28,9 +28,10 @@
 					<img class="hero-item" src = "<%= game_list[1].thumb %>">
 			</div>
 		</div>
-		<div class="col-lg-3 col-md-6">
+		<div class="col-lg-3 col-md-6" onclick = "checkLogin()">
 			<div class="card card-item">
-				<span class="card-head">Arcade</span>
+				<span class="card-head"><%= game_list[2].name %></span>
+				<img class="hero-item" src = "<%= game_list[2].thumb %>">
 			</div>
 		</div>
 	</div>
@@ -38,8 +39,9 @@
 		<!-- ROW 3 -->
 	<div class="row">
 		<div class="col-lg-3 col-md-6">
-			<div class="card card-item">
-				<span class="card-head">Racing</span>
+			<div class="card card-item" onclick = "checkLogin()">
+				<span class="card-head"><%= game_list[3].name %></span>
+				<img class="hero-item" src = "<%= game_list[2].thumb %>">
 			</div>
 		</div>
 		<div class="col-lg-3 col-md-6" >
