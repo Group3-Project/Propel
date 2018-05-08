@@ -30,19 +30,12 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     });
   };	
 	socket.on('requestGame', function(user) { //joinLobby -> requestGame
-		console.log('requestGmae here');
-		console.log(user);
-		
-			var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'newConnection', user.gameName, GamerScore);
-			if(typeof emitObj != 'undefined'){	
-				if (emitObj.port != null) {
-					console.log('game found' + emitObj);
-					socket.emit('assignGame', emitObj);
-				} else {
-					console.log('game not found yet');
-				}
+		var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'newConnection', user.gameName, GamerScore);
+		if(typeof emitObj != 'undefined'){	
+			if (emitObj.port != null) {
+				socket.emit('assignGame', emitObj);
 			}
-
+		}
   });
 
   socket.on('gameFound', function(user_fb_id) {
@@ -62,7 +55,6 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
               console.log('MySQL Query Error: ' + error);
             }else{
               socket.emit('friend_added');
-		    console.log("HEY123");
             }
           });
         }
