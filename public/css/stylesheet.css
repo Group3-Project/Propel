@@ -143,9 +143,15 @@ a span:hover{
 .friends_table{
 	text-align:left;
 }
+.friends_table td{
+	margin-left:5px;
+}
 .friends_table a{
 	text-decoration:none;
 	color:white;
+}
+.friends_table a:hover{
+	text-decoration:underline;
 }
 
 /*UPLOAD A GAME*/
