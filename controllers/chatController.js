@@ -17,7 +17,7 @@ io.sockets.on('connection', function(socket){
               	  'id' : users[Object.keys(users)[i]].id
             }
 	    if(user_list.indexOf(Object.keys(users)[i]) == -1){
-		user_list.push(toString(Object.keys(users)[i]));
+		user_list.push((Object.keys(users)[i]);
 		    console.log(user_list);
 	    }
             temp_list.push(tempObj);
