@@ -59,7 +59,8 @@
 				if(userfriends.length > 0){ %>
 				<% for(var i=0; i < userfriends.length; i++) { %>
 				   <tr>
-				     <td><a href="/profile/<%userfriends[i].user_id%>"><%= userfriends[i].name %></a></td>
+				   <%console.log(userfriends[i]);%>
+				     <td><a href="/profile/<%= userfriends[i].user_id%>"><%= userfriends[i].name %></a></td>
 				   </tr>
 				<% } } %>
 				</table>
