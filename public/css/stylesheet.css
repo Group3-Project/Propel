@@ -153,9 +153,6 @@ a span:hover{
 .friends_table a:hover{
 	text-decoration:underline;
 }
-.card-friends{
-	overflow-y:scroll;
-}
 
 /*UPLOAD A GAME*/
 /*###################################################################*/
