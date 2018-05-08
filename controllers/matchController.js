@@ -154,15 +154,16 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
       game = shooter;
     }
     //game = 'chess';
-    
+    console.log(id);
+    console.log(gamerScore);
     var values = game.findRoom(id, gamerScore);
     if (values.id != null) { // if -> game was not found
       waitingIndex = waitingUsers.findIndex(function(waiting) { return waiting.id === values.id; }); // find room by id
-      console.log({port: values.port, id: values.id});
+      //console.log({port: values.port, id: values.id});
       return {port: values.port, id: values.id}; // pass back port and game to join !!! VALUES TO BE EMMITED !!!
     } else { // else -> game not found
       waitingUsers.push({id: id, game: game});
-      console.log({port: null, id: null});
+      //console.log({port: null, id: null});
       return {port: null, id: null};
       // return a null value
     }
