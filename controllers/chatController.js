@@ -36,15 +36,14 @@ io.sockets.on('connection', function(socket){
             if(ind !== -1){
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 1);
-		var n = name.toString();
-		   console.log(users);
-		 for(var i=0; i<user_list.length; i++){
-		 	if (n == user_list[i]){
-				users[n].emit('whisper', {msg: msg, nick: socket.nickname});
-			}else if (i == user_list.length-1 && n != user_list[i]){
-				callback('Error! Enter a valid User.');
-			}
-		 }
+								var n = name.toString();
+		 						for(var i=0; i<user_list.length; i++){
+		 							if (n == user_list[i]){
+									users[n].emit('whisper', {msg: msg, nick: socket.nickname});
+									}else if (i == user_list.length-1 && n != user_list[i]){
+										callback('Error! Enter a valid User.');
+									}
+		 						}
 		/*if(n in user_list){
                     users[n].emit('whisper', {msg: msg, nick: socket.nickname});
                 } else{
