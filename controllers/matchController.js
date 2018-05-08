@@ -167,4 +167,4 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
   } else if (thingToDo == 'timeLoop') {
     timeLoop();
   }
-  
+};
