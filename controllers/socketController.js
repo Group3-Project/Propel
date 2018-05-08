@@ -38,6 +38,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 				} else {
 					console.log('game not found yet');
 				}
+			}
   });
 
   socket.on('gameFound', function(user_fb_id) {
