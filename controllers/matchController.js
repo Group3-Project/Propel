@@ -145,11 +145,16 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
   
   
   // you can call this on a new user connection
-  function newConnection(id, gamerScore, game) {
-    //console.log(chess);
-    //game = game.toLowerCase();
+  function newConnection(id, gamerScore, toPlay) {
+    toPlay = toPlay.toLowerCase();
+    if (toPlay == 'chess') {
+      game = chess;
+    }
+    if (toPlay == 'shooter') {
+      game = shooter;
+    }
     //game = 'chess';
-    var values = chess.findRoom(id, gamerScore);
+    var values = game.findRoom(id, gamerScore);
     if (values.id != null) { // if -> game was not found
       waitingIndex = waitingUsers.findIndex(function(waiting) { return waiting.id === values.id; }); // find room by id
       console.log({port: values.port, id: values.id});
