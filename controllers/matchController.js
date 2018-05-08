@@ -219,10 +219,10 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
     //console.log(timeLoop());
     */
   
-    var fbId = 10;
-    var gamerScore = 20;
-    var gameConnect = 'chess';
-    var thingToDo = 'timeLoop';
+    //var fbId = 10;
+    //var gamerScore = 20;
+    //var gameConnect = 'chess';
+    //var thingToDo = 'timeLoop';
   
   if (thingToDo == 'newConnection') {
     newConnection(fbId, gamerScore, gameConnect);
