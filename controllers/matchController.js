@@ -1,4 +1,4 @@
-module.exports = function(app, express, server, fbId, Player, initPack, removePack, io, DB, thingToDo, gameConnect, gamerscore) {
+module.exports = function(app, express, server, fbId, Player, initPack, removePack, io, DB, thingToDo, gameConnect, gamerScore) {
 
   
   function game(port, noPlayers) {
