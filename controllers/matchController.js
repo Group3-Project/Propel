@@ -57,10 +57,10 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
       var i;
       var j;
   
-      console.log(this.rooms.length);
+      //console.log(this.rooms.length);
   
       for (i = 0; i < this.rooms.length; i++) {
-        console.log('times here');
+        //console.log('times here');
         for (j = i+1; j < this.rooms.length; j++) {
           var gsi = this.rooms[i].returnGamerScore(); // get rooms average gamerScore and how long its been waiting
           var ti = 5 - this.rooms[i].time;
@@ -71,37 +71,37 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
   
           var newId;
           var oldId;
-          console.log('up here');
+          //console.log('up here');
   
           if (ti == 5) { // if -> crude but ensures no overwaits
             newId = this.rooms[i].id; // in case room gets deleted below
             oldId = this.rooms[j].id; // for when room gets deleted below
   
-            console.log('\n' + oldId + '\n');
+            //console.log('\n' + oldId + '\n');
   
             this.joinRoom(newId, gamerScore);
             this.removeRoom(oldId); // get rid of room j which is now merged with room i
             
-            console.log('t == 5');
+            //console.log('t == 5');
   
-            console.log({port: this.port, id: newId, oldId: oldId});
+            //console.log({port: this.port, id: newId, oldId: oldId});
             returnArray.push({port: this.port, id: newId, oldId: oldId}); // match!
             break;
           }
   
           if (((gsj-(gsj*(0.05*tj)) <= gsi+(gsi*(0.05*ti))) && gsj-(gsj*(0.05*tj)) >= gsi-(gsi*(0.05*ti))) || (gsi-(gsi*(0.05*ti)) <= (gsj+(gsj*(0.05*tj))) && (gsi-(gsi*(0.05*ti))) >= (gsj-(gsj*(0.05*tj))))) {
-            console.log('boundary here');
+            //console.log('boundary here');
             newId = this.rooms[i].id; // in case room gets deleted below
-            console.log(this.rooms[i].id);
-            console.log(newId);
-            console.log(this.rooms[j].id);
-            console.log('here now');
+            //console.log(this.rooms[i].id);
+            //console.log(newId);
+            //console.log(this.rooms[j].id);
+            //console.log('here now');
             oldId = this.rooms[j].id; // for when room gets deleted below
-            console.log('here and now');
+            //console.log('here and now');
             this.joinRoom(newId, oldId.gamerScore);
             this.removeRoom(oldId); // get rid of room j which is now merged with room i
   
-            console.log('boundary match');
+            //console.log('boundary match');
   
             returnArray.push({port: this.port, id: newId, oldId: oldId}); // match!
           } // if no match found, do nothing
@@ -137,9 +137,9 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
     }
   }
   
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////// START HERE /////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////
+  //////////////// START HERE ///////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////
   
   // create instances by reading whatever database we are holding the games in
   
@@ -159,10 +159,10 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
   
   // this is called every second, you could do this just before your lobby secondly emit
   function timeLoop() {
-    console.log('here1');
+    //console.log('here1');
     var games = waitingUsers.map(function (wU) { return wU.game; });
     var returnObj = [];
-    console.log('here2');
+    //console.log('here2');
   
     var i;
     var j;
@@ -203,18 +203,18 @@ module.exports = function(app, express, server, fbId, Player, initPack, removePa
     newConnection('match100', 100, chess);
     newConnection('match150', 150, chess);
 
-    console.log('timeLoop 1');
-    console.log(timeLoop());
-    console.log('timeLoop 2');
-    console.log(timeLoop());
-    console.log('timeLoop 3');
-    console.log(timeLoop());
-    console.log('timeLoop 4');
-    console.log(timeLoop());
-    console.log('timeLoop 5');
-    console.log(timeLoop());
-    console.log('timeLoop 6');
-    console.log(timeLoop());
+    //console.log('timeLoop 1');
+    //console.log(timeLoop());
+    //console.log('timeLoop 2');
+    //console.log(timeLoop());
+    //console.log('timeLoop 3');
+    //console.log(timeLoop());
+    //console.log('timeLoop 4');
+    //console.log(timeLoop());
+    //console.log('timeLoop 5');
+    //console.log(timeLoop());
+    //console.log('timeLoop 6');
+    //console.log(timeLoop());
     */
   
     var fbId = 10;
