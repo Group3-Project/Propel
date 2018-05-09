@@ -38,9 +38,9 @@ io.sockets.on('connection', function(socket){
 		console.log('-1 whispering here');
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 1);
-		var n = name.toString();
+		var n = name.toString().toLowerCase();
 		console.log('-1 whispering here 2');
-		console.log(n);
+		console.log('xXx' + n + 'xXx');
 		var found = false;
 		for(var i = 0; i < users.length; i++) {
 			if (users[i].name == n) {
