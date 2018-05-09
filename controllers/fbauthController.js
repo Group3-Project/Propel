@@ -5,9 +5,8 @@ module.exports = function (app,passport,db) { //Initialise the login
 	var promise_user = getData("SELECT * FROM users where fb_id =" + user._json.id);
  	promise_user.then(function(namechecker){
 		user._json.name = namechecker[0].name;
-		console.log(user._json.name);
+		done(null, user._json);
 	});
-	done(null, user._json);
 });
 	
 var getData = function (query){
