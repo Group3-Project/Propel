@@ -1,6 +1,5 @@
 <% if (typeof user == 'object' && user) { %>
 <% var user_id = user.id; %>
-
 <div id="contentWrap" class="card card-item">
 <span class="chat-main-wrap">
 <span class="card-head">
@@ -66,7 +65,6 @@ Global Chat
             user_control.push(user);
         }
          
-
       });
       //Emit message
       messageForm.submit(function(e){
@@ -92,16 +90,9 @@ Global Chat
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
-      var Whipser = [];
       socket.on('whisper', function(data){
         messageBox.val("");
-        var value = '';
-        value += '<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>';
-        if(list.indexOf(value) < 0){
-            chat.append(value);
-            Whisper.push(value);
-        }
-        //chat.append('<span class="whipser"><b>' + data.nick +':- </b> '+ data.msg + '</span><br/>');
+        chat.append('<span class="whipser"><b>' + data.nick +':- </b> '+ data.msg + '</span><br/>');
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
