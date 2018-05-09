@@ -50,6 +50,7 @@ Player.update = ()=>{
   var pack = []; //Contains information of every single player in the game and will be sent to each player connected
   for(var i in Player.list){
     var player = Player.list[i];
+	  console.log(Player.list[i]);
     pack.push(player.getUpdatePack());
   }
   return pack;
