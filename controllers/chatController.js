@@ -2,6 +2,8 @@ module.exports = function(app,express,server,user_fb_id,Player,user_fb_name,io,u
 
 //var users = {};
 //var user_list = [];
+	console.log('users abiut to be bhfoijhvrdvjhsdhuf');
+	console.log(users);
 console.log('users length here 1 ' + users.length);
 
 //listen on every connection
