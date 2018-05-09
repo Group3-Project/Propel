@@ -43,6 +43,7 @@ io.sockets.on('connection', function(socket){
 		console.log('xXx' + n + 'xXx');
 		var found = false;
 		for(var i = 0; i < users.length; i++) {
+			console.log(users[i].name.toLowerCase().replace(/\s/g, ''));
 			if (users[i].name == n) {
 			found = true;
 			break;
