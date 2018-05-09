@@ -51,6 +51,7 @@
 		document.getElementById("tick").style.display = "none";
 		document.getElementById("edit").style.display = "initial";
 		var new_name = document.getElementById("txtbedit").value;
+		window.alert("hey");
 		socket.emit('changeName', {user_id : <%= user.id %>, new_name });
 		window.location.reload(true);
 	}
