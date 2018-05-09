@@ -167,7 +167,7 @@ a span:hover{
 .friends_table a:hover{
 	text-decoration:underline;
 }
-.profile-area .latestG{
+.profile-area .latestG img{
 	object-fit:cover;
 	object-position:center;
 	height:174px;
