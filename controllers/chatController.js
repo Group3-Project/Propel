@@ -71,7 +71,7 @@ io.sockets.on('connection', function(socket){
 				console.log(emitto);
 				//emitto.emit('whisper', {msg: msg, nick: socket.nickname});
 				//socket.broadcast.to(emitto).emit('whisper', {msg: msg, nick: socket.nickname});
-				            io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
+				            io.sockets.emit('whisper', {msg: msg, nick: socket.nickname});
 
 				break;
 			}
