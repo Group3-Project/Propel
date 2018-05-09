@@ -19,7 +19,8 @@ function(accessToken, refreshToken, profile, done) {
   	profile_data = {};
   	profile_data. email = profile._json.email;
   	profile_data.fb_id = profile._json.id;
-	profile_data.name = profile._json.name;
+	profile_data.name = profile._json.name;]
+	console.log(profile_data.name + "WWWWWW");
 	
 //Check if user with that FB_id isn't aleady registerd in the Database
 db.query('select exists (select 1 from users where fb_id =  ?) as duplicateCheck', profile_data.fb_id, function(err,resp){
