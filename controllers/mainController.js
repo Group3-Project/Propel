@@ -111,6 +111,7 @@ app.get('/profile',function(req, res){
 			var promise_games = getData("select name, thumb from game_list s1, users s2 where s2.latest_game = s1.id);
 			promise_games.then(function(dataGames){
 				console.log(dataGames);
+			});
 		
 					for (i = 0; i < dataFriends.length; i++){			
 						if (dataFriends[i].friend_id == user_profile.id){
