@@ -91,7 +91,7 @@ game.prototype = {
           this.joinRoom(newId, oldId.gamerScore);
           this.removeRoom(oldId); // get rid of room j which is now merged with room i
 
-          console.log('boundary match');
+          console.log('\nBoundary Match');
 
           returnArray.push({port: this.port, id: newId, oldId: oldId}); // match!
         } // if no match found, do nothing
@@ -195,7 +195,7 @@ console.log(newConnection('Ben', 1500, chess));
 console.log('New Connection initiated by Mayank');
 console.log(newConnection('Mayank', 9, chess));
 
-console.log('--------MatchMaking--------');
+console.log('\n--------MatchMaking--------\n');
 
 console.log('TimeLoop 1');
 console.log(timeLoop());
