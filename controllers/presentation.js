@@ -91,7 +91,7 @@ game.prototype = {
           this.joinRoom(newId, oldId.gamerScore);
           this.removeRoom(oldId); // get rid of room j which is now merged with room i
 
-          console.log('Boundary Match\n');
+          console.log('Boundary Match');
 
           returnArray.push({port: this.port, id: newId, oldId: oldId}); // match!
         } // if no match found, do nothing
