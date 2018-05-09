@@ -169,11 +169,12 @@ function timeLoop() {
 
     if (returnObj.length != 0) {
       return returnObj;
+      console.log('\n');
     } else {
       return 'null';
+      console.log('\n');
     }
   }
-  console.log('\n');
 }
 
 var chess = new game( 8082, 2 );
