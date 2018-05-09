@@ -42,32 +42,22 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     console.log(user_fb_id + ' Assigned Game');
   });
 	
-  socket.on('changeName', function(data){
-	  var query = 'Select * from user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id;
-    DB.query(query, function(error, rows, fields){
-      if(!!error){
-        console.log('MySQL Query Error: ' + error);
-      }else{
-	      console.log(rows);
-      }
-    });
-  });
+  socket.on('changeName', function(data){	
+	var promise_user = getData("Select * from users");
+	promise_user.then(function(dataUser){
+        console.log(dataUser);
+	});
 	  
 	var promise_user = getData("UPDATE users SET name = '" + data.new_name + "' where fb_id = "+ data.user_id);
 	promise_user.then(function(dataUser){
-		console.log("!!!!!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@@@");
         socket.emit('nameChanged');
 	});
+	  
+	var promise_user = getData("Select * from users");
+	promise_user.then(function(dataUser){
+        console.log(dataUser);
+	});
 	
-		  var query2 = 'Select * from user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id;
-    DB.query(query2, function(error, rows, fields){
-      if(!!error){
-        console.log('MySQL Query Error: ' + error);
-      }else{
-	      console.log(rows);
-      }
-    });
-  });
   });
 
   socket.on('addFriend', function(data){
