@@ -50,7 +50,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
       }else{
         socket.emit('friend_added');
       }
-    }
+    });
   });
 
   socket.on('addFriend', function(data){
