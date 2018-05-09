@@ -180,21 +180,21 @@ var shoot = new game( 8084, 4 );
 
 // Testing variables
 console.log('New Connection initiated by Kuber');
-console.log(newConnection('Kuber', 9, chess));
+newConnection('Kuber', 9, chess);
 console.log('New Connection initiated by Markuss');
-console.log(newConnection('Markuss', 10, chess));
+newConnection('Markuss', 10, chess);
 console.log('New Connection initiated by Ollie');
-console.log(newConnection('Ollie', 2, chess));
+newConnection('Ollie', 2, chess);
 console.log('New Connection initiated by Ollie Junior');
-console.log(newConnection('Ollie Junior', 3, chess));
+newConnection('Ollie Junior', 3, chess);
 console.log('New Connection initiated by Cassie');
-console.log(newConnection('Cassie', 6, chess));
+newConnection('Cassie', 6, chess);
 console.log('New Connection initiated by Samuel');
-console.log(newConnection('Samuel', 6, chess));
+newConnection('Samuel', 6, chess);
 console.log('New Connection initiated by Ben');
-console.log(newConnection('Ben', 1, chess));
+newConnection('Ben', 1, chess);
 console.log('New Connection initiated by Mayank');
-console.log(newConnection('Mayank', 2, chess));
+newConnection('Mayank', 2, chess);
 
 console.log('\n--------MatchMaking--------\n');
 
