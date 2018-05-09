@@ -53,7 +53,7 @@
 </script>
 				<input id="txtbedit" readonly type="text" value="<%= userview.name %>">
 				<span id="edit" onclick="edName()"><i class="material-icons">edit</i></span>
-				<span id="tick" style="visibility:collapse;" onclick="subName()"><i class="material-icons">done</i></span>
+				<span id="tick" style="display:none;" onclick="subName()"><i class="material-icons">done</i></span>
 				<%}else{%>
 				<p><%= userview.name %></p>
 				<% } %>
