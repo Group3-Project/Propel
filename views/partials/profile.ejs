@@ -34,6 +34,23 @@
     				<p class="card-text">
 				
 				<%if(ownprofile){%>
+				<script>
+	function editname(){
+		document.getElementById("txtbedit").readOnly = false;
+		document.getElementById("txtbedit").style.border = initial;
+		document.getElementById("txtbedit").style.background = initial;
+		document.getElementById("tick")style.visibility = visible;
+		document.getElementById("edit")style.visibility = collapse;
+	}
+	function submitname(){
+		document.getElementById("txtbedit").readOnly = true;
+		document.getElementById("txtbedit").style.border = 0;
+		document.getElementById("txtbedit").style.background = 0;
+		document.getElementById("tick")style.visibility = collapse;
+		document.getElementById("edit")style.visibility = visible;
+
+	}
+</script>
 				<input id="txtbedit" readonly type="text" value="<%= userview.name %>">
 				<span id="edit" onclick="editname()"><i class="material-icons">edit</i></span>
 				<span id="tick" onclick="submitname()"><i id="tick" style="visibility:collapse;" class="material-icons">done</i></span>
@@ -90,25 +107,6 @@
 		</div>
 	</div>
 </div>
-<% if(ownprofile){ %>
-<script>
-	function editname(){
-		document.getElementById("txtbedit").readOnly = false;
-		document.getElementById("txtbedit").style.border = initial;
-		document.getElementById("txtbedit").style.background = initial;
-		document.getElementById("tick")style.visibility = visible;
-		document.getElementById("edit")style.visibility = collapse;
-	}
-	function submitname(){
-		document.getElementById("txtbedit").readOnly = true;
-		document.getElementById("txtbedit").style.border = 0;
-		document.getElementById("txtbedit").style.background = 0;
-		document.getElementById("tick")style.visibility = collapse;
-		document.getElementById("edit")style.visibility = visible;
-
-	}
-</script>
-<%}%>
 
 <% if (typeof user == 'object' && user){ %>
 <script type="text/javascript">
