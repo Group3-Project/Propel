@@ -35,14 +35,14 @@
 				
 				<%if(ownprofile){%>
 				<script>
-	function editname(){
+	function edName(){
 		document.getElementById("txtbedit").readOnly = false;
 		document.getElementById("txtbedit").style.border = solid 1px black;
 		document.getElementById("txtbedit").style.background = white;
 		document.getElementById("tick").style.visibility = visible;
 		document.getElementById("edit").style.visibility = collapse;
 	}
-	function submitname(){
+	function subName(){
 		document.getElementById("txtbedit").readOnly = true;
 		document.getElementById("txtbedit").style.border = 0;
 		document.getElementById("txtbedit").style.background = 0;
@@ -52,8 +52,8 @@
 	}
 </script>
 				<input id="txtbedit" readonly type="text" value="<%= userview.name %>">
-				<span id="edit" onclick="editname()"><i class="material-icons">edit</i></span>
-				<span id="tick" onclick="submitname()"><i id="tick" style="visibility:collapse;" class="material-icons">done</i></span>
+				<span id="edit" onclick="edName()"><i class="material-icons">edit</i></span>
+				<span id="tick" onclick="subName()"><i id="tick" style="visibility:collapse;" class="material-icons">done</i></span>
 				<%}else{%>
 				<p><%= userview.name %></p>
 				<% } %>
