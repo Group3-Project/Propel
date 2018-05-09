@@ -102,6 +102,7 @@ app.get('/',function(req, res){
 app.get('/profile',function(req, res){
 	var friends = false;
 	var ownprofile = true;
+	var gamedata = null;
 	if(req.user){	
 		 user_profile = req.user;
 		 //socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
@@ -110,7 +111,7 @@ app.get('/profile',function(req, res){
 		promise_friends.then(function(dataFriends){
 			var promise_games = getData("select s1.name, s1.thumb from game_list s1, users s2 where s2.latest_game = s1.id");
 			promise_games.then(function(dataGames){
-				console.log(dataGames);
+				gamedata = dataGames;
 			});
 		
 					for (i = 0; i < dataFriends.length; i++){			
@@ -118,7 +119,7 @@ app.get('/profile',function(req, res){
 							friends = true;
 						}
 					}
-		 	res.render('profile',{userview: user_profile, user: user_profile,userfriends:dataFriends, friends: friends, ownprofile});
+		 	res.render('profile',{userview: user_profile, user: user_profile, data_Games: gamedata,userfriends:dataFriends, friends: friends, ownprofile});
 		 });
 	}else{
 		res.render('index',{game_list : game_list, user: user_profile});
@@ -148,6 +149,11 @@ app.get('/profile/:username',function(req, res){
 	user_profile = req.user;
 	var friends = false;
 	var ownprofile = false;
+	var gamedata = null;
+	var promise_games = getData("select s1.name, s1.thumb from game_list s1, users s2 where s2.latest_game = s1.id");
+	promise_games.then(function(dataGames){
+		gamedata = dataGames;
+	});
 	var promise_user = getData("select * from users where fb_id =" + req.params.username);
 	promise_user.then(function(dataUser){
 			var promise_friends = getData("select * from user_friends s1 LEFT JOIN users s2 ON s1.friend_id = s2.fb_id WHERE s1.user_id =" + req.params.username);
@@ -159,11 +165,11 @@ app.get('/profile/:username',function(req, res){
 								friends = true;
 							}
 							//socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
-							res.render('profile',{user: user_profile, userview: dataUser[0], userfriends : dataFriends,friends: friends, ownprofile});
+							res.render('profile',{user: user_profile, data_Games: gamedata, userview: dataUser[0], userfriends : dataFriends,friends: friends, ownprofile});
 						})
 		
 				}else{
-					res.render('profile',{userview: dataUser[0], userfriends : dataFriends});
+					res.render('profile',{userview: dataUser[0], userfriends : dataFriends, data_Games: gamedata});
 				}
 				
 			})
