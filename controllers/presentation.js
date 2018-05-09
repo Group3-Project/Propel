@@ -144,6 +144,7 @@ function newConnection(id, gamerScore, game) {
 
 // this is called every second, you could do this just before your lobby secondly emit
 function timeLoop() {
+  console.log('fewfewfewfewfewfewfewf');
   waitingUsersFiltered = waitingUsers;
   var games = waitingUsers.map(function (wU) { return wU.game; });
   var returnObj = [];
@@ -169,10 +170,8 @@ function timeLoop() {
 
     if (returnObj.length != 0) {
       return returnObj;
-      console.log('\n');
     } else {
       return 'null';
-      console.log('\n');
     }
   }
 }
