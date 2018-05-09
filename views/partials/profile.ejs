@@ -36,20 +36,18 @@
 				<%if(ownprofile){%>
 				<script>
 	function editname(){
-	console.log("wwww");
-	window.alert("hey");
 		document.getElementById("txtbedit").readOnly = false;
 		document.getElementById("txtbedit").style.border = initial;
 		document.getElementById("txtbedit").style.background = initial;
-		document.getElementById("tick")style.visibility = visible;
-		document.getElementById("edit")style.visibility = collapse;
+		document.getElementById("tick").style.visibility = visible;
+		document.getElementById("edit").style.visibility = collapse;
 	}
 	function submitname(){
 		document.getElementById("txtbedit").readOnly = true;
 		document.getElementById("txtbedit").style.border = 0;
 		document.getElementById("txtbedit").style.background = 0;
-		document.getElementById("tick")style.visibility = collapse;
-		document.getElementById("edit")style.visibility = visible;
+		document.getElementById("tick").style.visibility = collapse;
+		document.getElementById("edit").style.visibility = visible;
 
 	}
 </script>
