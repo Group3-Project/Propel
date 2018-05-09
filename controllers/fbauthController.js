@@ -2,7 +2,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function (app,passport,db) { //Initialise the login
 	passport.serializeUser(function(user, done) {
-		console.log(user);
+		user[0].name = "hey";
 	done(null, user._json);
 });
 
