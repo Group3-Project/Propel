@@ -39,11 +39,12 @@ io.sockets.on('connection', function(socket){
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 1);
 		var n = name.toString().toLowerCase().replace(/\s/g, '');
-		console.log('-1 whispering here 2');
-		console.log('xXx' + n + 'xXx');
+		//console.log('-1 whispering here 2');
+		//console.log('xXx' + n + 'xXx');
 		var found = false;
+		console.log('users length here ' + users.length);
 		for(var i = 0; i < users.length; i++) {
-			console.log(users[i].name.toLowerCase().replace(/\s/g, ''));
+			//console.log(users[i].name.toLowerCase().replace(/\s/g, ''));
 			if (users[i].name == n) {
 			found = true;
 			break;
