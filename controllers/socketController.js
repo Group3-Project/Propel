@@ -5,7 +5,7 @@ var GameName;
 var matchController = require('./matchController');
 const EventEmitter = require('events');
 const emitter = new EventEmitter();
-emitter.setMaxListeners(1000000000000);
+emitter.setMaxListeners(0);
 
 //Handling the Ping TimeOut
 io.set('heartbeat timeout',5000000);
@@ -41,6 +41,13 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 			} 
 		}
   });
+	
+socket.on('clickgame', function(data) {
+	var promise_user = getData("UPDATE users SET latest_game = '" + data.game_id + "' where fb_id = "+ data.user_id);
+	promise_user.then(function(dataUser){
+	});
+});
+
 
   socket.on('gameFound', function(user_fb_id) {
     console.log(user_fb_id + ' Assigned Game');
