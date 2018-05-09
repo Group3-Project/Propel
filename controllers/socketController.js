@@ -43,12 +43,12 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   });
 	
   socket.on('changeName', function(data){
-    var query = 'UPDATE users SET name = ' + new_name[0] + ' where user_id ='+ data.user_id;
+    var query = 'UPDATE users SET name = ' + new_name + ' where user_id ='+ data.user_id;
     DB.query(query, function(error, rows, fields){
       if(!!error){
         console.log('MySQL Query Error: ' + error);
       }else{
-        socket.emit('friend_added');
+        socket.emit('nameChanged');
       }
     });
   });
