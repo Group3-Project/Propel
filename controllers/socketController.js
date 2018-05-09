@@ -16,6 +16,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   	socket_list[socket.id] = socket;
 
   	if (!(user_fb_id in Player.list)) {
+		console.log("@@@@@@@@@@@@@@@@@" + Player + "@@@@@@@@@@@@@@@@@@@@@@@@@");
   		Player.onConnect(socket);
 		if(GamerScore >= 0){
 			console.log(user_fb_name + " with GamerScore " + GamerScore + " and ID " + socket.id +" is connected" );
