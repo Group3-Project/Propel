@@ -91,7 +91,7 @@ game.prototype = {
           this.joinRoom(newId, oldId.gamerScore);
           this.removeRoom(oldId); // get rid of room j which is now merged with room i
 
-          console.log('\nBoundary Match');
+          console.log('Boundary Match\n');
 
           returnArray.push({port: this.port, id: newId, oldId: oldId}); // match!
         } // if no match found, do nothing
@@ -181,31 +181,31 @@ var shoot = new game( 8084, 4 );
 console.log('New Connection initiated by Kuber');
 console.log(newConnection('Kuber', 9, chess));
 console.log('New Connection initiated by Markuss');
-console.log(newConnection('Markuss', 21, chess));
+console.log(newConnection('Markuss', 10, chess));
 console.log('New Connection initiated by Ollie');
-console.log(newConnection('Ollie', 20, chess));
+console.log(newConnection('Ollie', 2, chess));
 console.log('New Connection initiated by Ollie Junior');
-console.log(newConnection('Ollie Junior', 31, chess));
+console.log(newConnection('Ollie Junior', 3, chess));
 console.log('New Connection initiated by Cassie');
-console.log(newConnection('Cassie', 30, chess));
+console.log(newConnection('Cassie', 6, chess));
 console.log('New Connection initiated by Samuel');
-console.log(newConnection('Samuel', 100, chess));
+console.log(newConnection('Samuel', 6, chess));
 console.log('New Connection initiated by Ben');
-console.log(newConnection('Ben', 1500, chess));
+console.log(newConnection('Ben', 1, chess));
 console.log('New Connection initiated by Mayank');
-console.log(newConnection('Mayank', 9, chess));
+console.log(newConnection('Mayank', 2, chess));
 
 console.log('\n--------MatchMaking--------\n');
 
-console.log('TimeLoop 1');
+console.log('TimeLoop 1 :');
 console.log(timeLoop());
-console.log('\nTimeLoop 2');
+console.log('TimeLoop 2 :\n');
 console.log(timeLoop());
-console.log('\nTimeLoop 3');
+console.log('TimeLoop 3 :\n');
 console.log(timeLoop());
-console.log('\nTimeLoop 4');
+console.log('TimeLoop 4 :\n');
 console.log(timeLoop());
-console.log('\nTimeLoop 5');
+console.log('TimeLoop 5 :\n');
 console.log(timeLoop());
-console.log('\nTimeLoop 6');
+console.log('TimeLoop 6 :\n');
 console.log(timeLoop());
