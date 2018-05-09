@@ -53,7 +53,7 @@ io.sockets.on('connection', function(socket){
 		////console.log('-1 whispering here 2');
 		////console.log('xXx' + n + 'xXx');
 		//console.log('users length here 9 ' + users.length);
-		for (var property in users) {
+		/*for (var property in users) {
 		    if (users.hasOwnProperty(property)) {
 			if (property.toString().toLowerCase().replace(/\s/g, '') == n) {
 				socket.broadcast.to(user_fb_name).emit('whisper', {msg: msg, nick: socket.nickname});
@@ -61,10 +61,12 @@ io.sockets.on('connection', function(socket){
 			}
 			//console.log('\n\n\nproperty print' + property);
 		    }
-		}
+		}*/
+			console.log('here');
 		for(var i = 0; i < user_id_list.length; i++) {
-			////console.log(users[i].name.toLowerCase().replace(/\s/g, ''));
+			console.log(user_id_list[i].name.toLowerCase().replace(/\s/g, ''));
 			if (user_id_list[i].name.toLowerCase().replace(/\s/g, '') == n) {
+				
 				socket.broadcast.to(user_id_list[i].id).emit('whisper', {msg: msg, nick: socket.nickname});
 				break;
 			}
