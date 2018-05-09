@@ -38,8 +38,11 @@ io.sockets.on('connection', function(socket){
                 var msg = msg.substring(ind + 1);
 								var n = name.toString();
 		 						for(var i=0; i<user_list.length; i++){
+									console.log("before if");
+									console.log(n);
 		 							if (n == user_list[i]){
-										console.log(n);
+									console.log("after if");
+									console.log(n);
 									users['Oliver Storey-Young'].emit('whisper', {msg: msg, nick: socket.nickname});
 									}else if (i == user_list.length-1 && n != user_list[i]){
 										callback('Error! Enter a valid User.');
