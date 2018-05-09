@@ -46,7 +46,9 @@ io.sockets.on('connection', function(socket){
 									}
 		 						}*/
 		if(n in user_list){
-                    users[n].emit('whisper', {msg: msg, nick: socket.nickname});
+                    //users[n].emit('whisper', {msg: msg, nick: socket.nickname});
+			socket.broadcast.to(user_fb_name).emit('whisper', {msg: msg, nick: socket.nickname});
+
                 } else{
                     callback('Error! Enter a valid User.');
                 }
