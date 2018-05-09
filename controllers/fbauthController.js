@@ -2,9 +2,26 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function (app,passport,db) { //Initialise the login
 	passport.serializeUser(function(user, done) {
-		user._json.name = "sadsad";
+	var promise_user = getData("SELECT name FROM users where fb_id =" + user._json.id);
+ 	promise_user.then(function(namechecker){
+		user._json.name = namechecker;
+	});
 	done(null, user._json);
 });
+	
+var getData = function (query){
+	return new Promise(function(resolve, reject){
+		DB.query(query, function(error, rows, fields){
+			if(!!error){
+				console.log('MySQL Query Error: ' + error);
+				reject(false);
+			}else{
+				resolve(rows);
+			}
+		});
+
+	});
+};
 
 passport.deserializeUser(function(id, done) { //Setting the id to null, eg. after logout happens
 	done(null,id);
