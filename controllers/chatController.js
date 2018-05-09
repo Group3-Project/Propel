@@ -9,7 +9,7 @@ io.sockets.on('connection', function(socket){
 	    socket.nickname = user_fb_name;
             users[socket.nickname] = socket;
      	    updateNicknames();
-	    console.log(users);
+	    //console.log(users);
      }
     function updateNicknames(){
 	    
@@ -37,16 +37,32 @@ io.sockets.on('connection', function(socket){
             if(ind !== -1){
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 1);
-		var n = name.toString();
-								//console.log(users);
-		 						/*for(var i=0; i<user_list.length; i++){
-		 							if (n == user_list[i]){
-									users[n].emit('whisper', {msg: msg, nick: socket.nickname});
-									}else if (i == user_list.length-1 && n != user_list[i]){
-										callback('Error! Enter a valid User.');
-									}
-		 						}*/
-		if(n in user_list){
+				var n = name.toString();
+										//console.log(users);
+										/*for(var i=0; i<user_list.length; i++){
+											if (n == user_list[i]){
+											users[n].emit('whisper', {msg: msg, nick: socket.nickname});
+											}else if (i == user_list.length-1 && n != user_list[i]){
+												callback('Error! Enter a valid User.');
+											}
+										}*/
+				var found = false;
+				for(var i = 0; i < users.length; i++) {
+					if (users[i].name == n) {
+					found = true;
+					break;
+					}
+				}
+				
+				if (found == true) {
+					console.log('whipering');
+					socket.broadcast.to(user_fb_name).emit('whisper', {msg: msg, nick: socket.nickname});
+				}
+				
+		
+				
+		    
+		    /*if(n in user_list){
                     //users[n].emit('whisper', {msg: msg, nick: socket.nickname});
 			socket.broadcast.to(user_fb_name).emit('whisper', {msg: msg, nick: socket.nickname});
 
@@ -55,7 +71,7 @@ io.sockets.on('connection', function(socket){
                 }
             } else{
                     callback('Error! Enter a message for your Whisper');
-                }
+                }*/
             
         } else{
         io.sockets.emit('new message', {msg: msg, nick: socket.nickname});
