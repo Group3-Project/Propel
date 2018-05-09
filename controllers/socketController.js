@@ -41,6 +41,17 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   socket.on('gameFound', function(user_fb_id) {
     console.log(user_fb_id + ' Assigned Game');
   });
+	
+  socket.on('changeName', function(data){
+    var query = 'UPDATE users SET name = ' + new_name[0] + ' where user_id ='+ data.user_id;
+    DB.query(query, function(error, rows, fields){
+      if(!!error){
+        console.log('MySQL Query Error: ' + error);
+      }else{
+        socket.emit('friend_added');
+      }
+    }
+  });
 
   socket.on('addFriend', function(data){
     var query = 'Select * from user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id;
