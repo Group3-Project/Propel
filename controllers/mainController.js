@@ -112,8 +112,6 @@ app.get('/profile',function(req, res){
 			var promise_games = getData("select s1.name, s1.thumb from game_list s1, users s2 where s2.latest_game = s1.id");
 			promise_games.then(function(dataGames){
 				gamedata = dataGames;
-				console.log(gamedata[0].thumb);
-			});
 		
 					for (i = 0; i < dataFriends.length; i++){			
 						if (dataFriends[i].friend_id == user_profile.id){
@@ -121,7 +119,8 @@ app.get('/profile',function(req, res){
 						}
 					}
 		 	res.render('profile',{userview: user_profile, user: user_profile, data_Games: gamedata,userfriends:dataFriends, friends: friends, ownprofile});
-		 });
+			});
+			});
 	}else{
 		res.render('index',{game_list : game_list, user: user_profile});
 	}
@@ -154,7 +153,6 @@ app.get('/profile/:username',function(req, res){
 	var promise_games = getData("select s1.name, s1.thumb from game_list s1, users s2 where s2.latest_game = s1.id");
 	promise_games.then(function(dataGames){
 		gamedata = dataGames;
-	});
 	var promise_user = getData("select * from users where fb_id =" + req.params.username);
 	promise_user.then(function(dataUser){
 			var promise_friends = getData("select * from user_friends s1 LEFT JOIN users s2 ON s1.friend_id = s2.fb_id WHERE s1.user_id =" + req.params.username);
@@ -175,6 +173,7 @@ app.get('/profile/:username',function(req, res){
 				
 			})
 	})
+});
 });
 
 app.get('/gameView/:gameID',function(req, res){
