@@ -35,22 +35,23 @@ io.sockets.on('connection', function(socket){
             msg = msg.substr(3);
             var ind = msg.indexOf('/');
             if(ind !== -1){
+		console.log('-1 wispering here');
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 1);
-        				var n = name.toString();
-                
-        				var found = false;
-        				for(var i = 0; i < users.length; i++) {
-        					if (users[i].name == n) {
-        					found = true;
-        					break;
-        					}
-        				}
+			var n = name.toString();
 
-        				if (found == true) {
-        					console.log('whipering');
-        					socket.broadcast.to(user_fb_name).emit('whisper', {msg: msg, nick: socket.nickname});
-        				}
+			var found = false;
+			for(var i = 0; i < users.length; i++) {
+				if (users[i].name == n) {
+				found = true;
+				break;
+				}
+			}
+
+			if (found == true) {
+				console.log('whipering');
+				socket.broadcast.to(user_fb_name).emit('whisper', {msg: msg, nick: socket.nickname});
+			}
 
 
             }
