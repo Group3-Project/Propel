@@ -111,13 +111,11 @@ a span:hover{
 	color:white;
 	margin-top:13px;
 }
-.profile-username i{
-	position:absolute;
-	margin-top:15px;
-}
 .profile-username span{
 	cursor: pointer;
 	text-align:right;
+		position:absolute;
+	margin-top:15px;
 }
 .profile-menu .nav-item:hover{
 	background-color: #cfcfcf;
