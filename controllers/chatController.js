@@ -67,11 +67,11 @@ io.sockets.on('connection', function(socket){
 			console.log(user_id_list[i].name.toLowerCase().replace(/\s/g, ''));
 			if (user_id_list[i].name.toLowerCase().replace(/\s/g, '') == n) {
 				console.log('match found');
-				var emitto = user_id_list[i].id;
+				var emitto = user_id_list[i].id.toString();;
 				console.log(emitto);
 				//emitto.emit('whisper', {msg: msg, nick: socket.nickname});
-				//socket.broadcast.to(emitto).emit('whisper', {msg: msg, nick: socket.nickname});
-				            io.sockets.emit('whisper', {msg: msg, nick: socket.nickname});
+				socket.broadcast.to(emitto).emit('whisper', {msg: msg, nick: socket.nickname});
+				            //io.sockets.emit('whisper', {msg: msg, nick: socket.nickname});
 
 				break;
 			}
