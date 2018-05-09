@@ -13,7 +13,7 @@ module.exports = function (app,passport,db) { //Initialise the login
 var getData = function (query){
 	console.log("heheh");
 	return new Promise(function(resolve, reject){
-		DB.query(query, function(error, rows, fields){
+		db.query(query, function(error, rows, fields){
 			if(!!error){
 				console.log('MySQL Query Error: ' + error);
 				reject(false);
