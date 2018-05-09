@@ -109,7 +109,7 @@ app.get('/profile',function(req, res){
 		 user_profile.fb_id = user_profile.id;
 		 var promise_friends = getData("select * from user_friends s1 LEFT JOIN users s2 ON s1.friend_id = s2.fb_id WHERE s1.user_id =" + user_profile.id);
 		promise_friends.then(function(dataFriends){
-			var promise_games = getData("select s1.name, s1.thumb from game_list s1, users s2 where s2.latest_game = s1.id");
+			var promise_games = getData("select s1.name, s1.thumb from game_list s1, users s2 where s2.latest_game = s1.id and s2.fb_id =" + user_profile.id);
 			promise_games.then(function(dataGames){
 				gamedata = dataGames;
 		
@@ -150,7 +150,7 @@ app.get('/profile/:username',function(req, res){
 	var friends = false;
 	var ownprofile = false;
 	var gamedata = null;
-	var promise_games = getData("select s1.name, s1.thumb from game_list s1, users s2 where s2.latest_game = s1.id");
+	var promise_games = getData("select s1.name, s1.thumb from game_list s1, users s2 where s2.latest_game = s1.id and fb_id =" + req.params.username);
 	promise_games.then(function(dataGames){
 		gamedata = dataGames;
 	var promise_user = getData("select * from users where fb_id =" + req.params.username);
