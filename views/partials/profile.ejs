@@ -32,9 +32,9 @@
 			<div class="card profile-username">
   				<div class="card-body">
     				<p class="card-text">
-				<input readonly type="text" value="<%= userview.name %>">
-				<i class="material-icons">edit</i>
-				<i style="visibility:collapse;" class="material-icons">done</i>
+				<input id="txtbedit" readonly type="text" value="<%= userview.name %>">
+				<i id="edit" class="material-icons" onclick="editname()">edit</i>
+				<i id="tick" style="visibility:collapse;" onclick="submitname()" class="material-icons">done</i>
 				</p>
   				</div>
 			</div>
@@ -87,6 +87,21 @@
 </div>
 <% if (typeof user == 'object' && user){ %>
 <script type="text/javascript">
+	function editname(){
+		document.getElementById("txtbedit").readOnly = false;
+		document.getElementById("txtbedit").style.border = initial;
+		document.getElementById("txtbedit").style.background = initial;
+		document.getElementById("tick")style.visibility = visible;
+		document.getElementById("edit")style.visibility = collapse;
+	}
+	function submitname(){
+		document.getElementById("txtbedit").readOnly = true;
+		document.getElementById("txtbedit").style.border = 0;
+		document.getElementById("txtbedit").style.background = 0;
+		document.getElementById("tick")style.visibility = collapse;
+		document.getElementById("edit")style.visibility = visible;
+
+	}
 	function addFriend(){
 		socket.emit('addFriend', {user_id : <%= user.id %>, friend_id : <%= userview.fb_id %> })
 		window.location.reload(true);
