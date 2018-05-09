@@ -71,7 +71,7 @@
 <script type="text/javascript">
 	function checkLogin (id) {
 		if(<%= user_id!= null %>){
-			socket.emit('clickgame', {user_id : <%= user.id %>}});
+			socket.emit('clickgame', {user_id : <%= user_id %>, game_id : id}});
 			window.location.href = "/gameView/" + id;
 		}else{
 			if (confirm("You must log in!")) {
