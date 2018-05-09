@@ -34,6 +34,27 @@
     				<p class="card-text">
 				
 				<%if(ownprofile){%>
+				<script>
+	function edName(){
+		document.getElementById("txtbedit").readOnly = false;
+		document.getElementById("txtbedit").style.border = "1px solid black";
+		document.getElementById("txtbedit").style.color = "black";
+		document.getElementById("txtbedit").style.background = "white";
+		document.getElementById("tick").style.display = "initial";
+		document.getElementById("edit").style.display = "none";
+	}
+	function subName(){
+		document.getElementById("txtbedit").readOnly = true;
+		document.getElementById("txtbedit").style.border = "initial";
+		document.getElementById("txtbedit").style.color = "white";
+		document.getElementById("txtbedit").style.background = "initial";
+		document.getElementById("tick").style.display = "none";
+		document.getElementById("edit").style.display = "initial";
+		socket.emit('changeName', {user_id : <%= user.id %>, new_name : document.getElementById("txtbedit").value;})
+		window.location.reload(true);
+
+	}
+</script>
 				<input id="txtbedit" readonly type="text" value="<%= userview.name %>">
 				<span id="edit" onclick="edName()"><i class="material-icons">edit</i></span>
 				<span id="tick" style="display:none;" onclick="subName()"><i class="material-icons">done</i></span>
@@ -90,27 +111,6 @@
 		</div>
 	</div>
 </div>
-<script>
-	function edName(){
-		document.getElementById("txtbedit").readOnly = false;
-		document.getElementById("txtbedit").style.border = "1px solid black";
-		document.getElementById("txtbedit").style.color = "black";
-		document.getElementById("txtbedit").style.background = "white";
-		document.getElementById("tick").style.display = "initial";
-		document.getElementById("edit").style.display = "none";
-	}
-	function subName(){
-		document.getElementById("txtbedit").readOnly = true;
-		document.getElementById("txtbedit").style.border = "initial";
-		document.getElementById("txtbedit").style.color = "white";
-		document.getElementById("txtbedit").style.background = "initial";
-		document.getElementById("tick").style.display = "none";
-		document.getElementById("edit").style.display = "initial";
-		socket.emit('changeName', {user_id : <%= user.id %>, new_name : document.getElementById("txtbedit").value;})
-		window.location.reload(true);
-
-	}
-</script>
 <% if (typeof user == 'object' && user){ %>
 <script type="text/javascript">
 	function addFriend(){
