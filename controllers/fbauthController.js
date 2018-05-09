@@ -4,8 +4,8 @@ module.exports = function (app,passport,db) { //Initialise the login
 	passport.serializeUser(function(user, done) {
 	var promise_user = getData("SELECT * FROM users where fb_id =" + user._json.id);
  	promise_user.then(function(namechecker){
-		console.log(namechecker[0].name + "@@@@");
 		user._json.name = namechecker[0].name;
+		console.log(user._json.name);
 	});
 	done(null, user._json);
 });
@@ -19,7 +19,6 @@ var getData = function (query){
 				reject(false);
 				
 			}else{
-			console.log("dddddddddwwwwwwwwwwwwwdddddd");
 				resolve(rows);
 			}
 		});
