@@ -52,7 +52,10 @@
 		document.getElementById("edit").style.display = "initial";
 		var new_name = document.getElementById("txtbedit").value;
 		socket.emit('changeName', {user_id : <%= user.id %>, new_name });
-		window.location.reload(true);
+		if (confirm("Log in and log out to see changes made")) {
+		        window.location.href = "/auth/facebook";
+		}
+		
 	}
 </script>
 				<input id="txtbedit" readonly type="text" value="<%= userview.name %>">
