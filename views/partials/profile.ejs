@@ -53,7 +53,6 @@
 		var new_name = document.getElementById("txtbedit").value;
 		window.alert("hey");
 		socket.emit('changeName', {user_id : <%= user.id %>, new_name });
-		window.location.reload(true);
 	}
 </script>
 				<input id="txtbedit" readonly type="text" value="<%= userview.name %>">
