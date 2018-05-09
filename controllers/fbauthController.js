@@ -2,9 +2,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function (app,passport,db) { //Initialise the login
 	passport.serializeUser(function(user, done) {
-	var promise_user = getData("SELECT name FROM users where fb_id =" + user._json.id);
+	var promise_user = getData("SELECT user_name FROM users where fb_id =" + user._json.id);
  	promise_user.then(function(namechecker){
-		console.log(namechecker);
 		user._json.name = namechecker;
 	});
 	done(null, user._json);
