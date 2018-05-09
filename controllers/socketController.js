@@ -33,20 +33,20 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
 	console.log(user_fb_name + " is disconnected" );
     });
   };	
-	socket.on('requestGame', function(user) { //joinLobby -> requestGame
+	/*socket.on('requestGame', function(user) { //joinLobby -> requestGame
 		var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'newConnection', user.gameName, GamerScore);
 		if(typeof emitObj != 'undefined'){	
 			if (emitObj.port != null) {
 				socket.emit('assignGame', emitObj);
 			} 
 		}
-  });
+  });*/
 	
 socket.on('clickgame', function(data) {
 	var promise_user = getData("UPDATE users SET latest_game = '" + data.game_id + "' where fb_id = "+ data.user_id);
 	promise_user.then(function(dataUser){
 	});
-});
+})
 
 
   socket.on('gameFound', function(user_fb_id) {
@@ -141,7 +141,7 @@ gamer_score_temp.then(function(gamerscore){
 });
   setInterval(()=>{ //Set the interval, it runs the function again and again after the specified time
   // putting the matchmaking emit above the whole pack things as I do not know what it is
-  if(GamerScore >= 0){
+  /*if(GamerScore >= 0){
   	var emitObj = matchController(app, express, server, user_fb_id, Player, initPack, removePack, io, DB, 'timeLoop', null, null); // pass it literally everything I can, even if it is not used. Tidy up if you wish
   }
   var emitToSocket;
@@ -155,7 +155,7 @@ if(typeof emitObj != 'undefined'){
   }
     socket.broadcast.to(emitToSocket).emit('message', {port: emitObj[i].port, id: emitObj[i].id});
   }
-  // end of matchmaking, presume issue is here if there are any
+  // end of matchmaking, presume issue is here if there are any*/
 
   var pack = Player.update(); //Creates a pack for the update function
   for (var i in socket_list) {
