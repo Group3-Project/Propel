@@ -112,7 +112,7 @@ app.get('/profile',function(req, res){
 			var promise_games = getData("select s1.name, s1.thumb from game_list s1, users s2 where s2.latest_game = s1.id");
 			promise_games.then(function(dataGames){
 				gamedata = dataGames;
-				console.log(data_Games);
+				console.log(gamedata);
 			});
 		
 					for (i = 0; i < dataFriends.length; i++){			
