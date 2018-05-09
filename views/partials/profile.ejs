@@ -90,8 +90,8 @@
 		</div>
 	</div>
 </div>
-<% if (typeof user == 'object' && user){ %>
-<script type="text/javascript">
+<% if(ownprofile){ %>
+<script>
 	function editname(){
 		document.getElementById("txtbedit").readOnly = false;
 		document.getElementById("txtbedit").style.border = initial;
@@ -107,6 +107,11 @@
 		document.getElementById("edit")style.visibility = visible;
 
 	}
+</script>
+<%}%>
+
+<% if (typeof user == 'object' && user){ %>
+<script type="text/javascript">
 	function addFriend(){
 		socket.emit('addFriend', {user_id : <%= user.id %>, friend_id : <%= userview.fb_id %> })
 		window.location.reload(true);
