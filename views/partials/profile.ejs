@@ -50,8 +50,6 @@
 		document.getElementById("txtbedit").style.background = "initial";
 		document.getElementById("tick").style.display = "none";
 		document.getElementById("edit").style.display = "initial";
-		socket.emit('changeName', {user_id : <%= user.id %>, new_name : document.getElementById("txtbedit").value;})
-		window.location.reload(true);
 
 	}
 </script>
