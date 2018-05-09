@@ -36,7 +36,7 @@ io.sockets.on('connection', function(socket){
             if(ind !== -1){
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 1);
-								var n = name.toString();
+								/*var n = name.toString();
 								//console.log(users);
 		 						for(var i=0; i<user_list.length; i++){
 		 							if (n == user_list[i]){
@@ -44,12 +44,12 @@ io.sockets.on('connection', function(socket){
 									}else if (i == user_list.length-1 && n != user_list[i]){
 										callback('Error! Enter a valid User.');
 									}
-		 						}
-		/*if(n in user_list){
-                    users[n].emit('whisper', {msg: msg, nick: socket.nickname});
+		 						}*/
+		if(name in user_list){
+                    users[name].emit('whisper', {msg: msg, nick: socket.nickname});
                 } else{
                     callback('Error! Enter a valid User.');
-                }*/
+                }
             } else{
                     callback('Error! Enter a message for your Whisper');
                 }
