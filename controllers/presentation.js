@@ -97,7 +97,6 @@ game.prototype = {
         } // if no match found, do nothing
       }
     }
-
     return returnArray;
   }
 }
@@ -160,7 +159,6 @@ function timeLoop() {
       games[i].removeRoom(pushBack[j].oldId);
     }                                       // id = id to connect to
                                             // oldId = id of user for these values to be emitted to
-                                            // !!! VALUES TO BE EMMITTED !!!
 
     for (j = 0; j < games[i].rooms.length; j++) { // see countDown
       games[i].rooms[j].countDown(); // for each room in game
@@ -174,88 +172,40 @@ function timeLoop() {
       return 'null';
     }
   }
-
-
-
 }
 
 var chess = new game( 8082, 2 );
 var shoot = new game( 8084, 4 );
 
-
 // Testing variables
-console.log('newConnection match09a');
-console.log(newConnection('match09a', 9, chess));
-console.log('newConnection match21');
-console.log(newConnection('match21', 21, chess));
-console.log('newConnection match20');
-console.log(newConnection('match20', 20, chess));
-console.log('newConnection match31');
-console.log(newConnection('match31', 31, chess));
-console.log('newConnection match30');
-console.log(newConnection('match30', 30, chess));
-console.log('newConnection match100');
-console.log(newConnection('match100', 100, chess));
-console.log('newConnection match150');
-console.log(newConnection('match150', 1500, chess));
-console.log('newConnection match09b');
-console.log(newConnection('match09b', 9, chess));
+console.log('New Connection initiated by Kuber');
+console.log(newConnection('Kuber', 9, chess));
+console.log('New Connection initiated by Markuss');
+console.log(newConnection('Markuss', 21, chess));
+console.log('New Connection initiated by Ollie');
+console.log(newConnection('Ollie', 20, chess));
+console.log('New Connection initiated by Ollie Junior');
+console.log(newConnection('Ollie Junior', 31, chess));
+console.log('New Connection initiated by Cassie');
+console.log(newConnection('Cassie', 30, chess));
+console.log('New Connection initiated by Samuel');
+console.log(newConnection('Samuel', 100, chess));
+console.log('New Connection initiated by Ben');
+console.log(newConnection('Ben', 1500, chess));
+console.log('New Connection initiated by Mayank');
+console.log(newConnection('Mayank', 9, chess));
 
-console.log('\n\n\n');
+console.log('--------MatchMaking--------');
 
-console.log('timeLoop 1');
+console.log('TimeLoop 1');
 console.log(timeLoop());
-console.log('\n\ntimeLoop 2');
+console.log('\nTimeLoop 2');
 console.log(timeLoop());
-console.log('\n\ntimeLoop 3');
+console.log('\nTimeLoop 3');
 console.log(timeLoop());
-console.log('\n\ntimeLoop 4');
+console.log('\nTimeLoop 4');
 console.log(timeLoop());
-console.log('\n\ntimeLoop 5');
+console.log('\nTimeLoop 5');
 console.log(timeLoop());
-console.log('\n\ntimeLoop 6');
+console.log('\nTimeLoop 6');
 console.log(timeLoop());
-
-/*var i;
-
-console.log('\n\ntimeLoop 1');
-console.log(timeLoop());
-
-for (i = 0; i < this.waitingUsers.length; i++) {
-  console.log(waitingUsers[i].id);
-}
-
-console.log('\n\ntimeLoop 2');
-console.log(timeLoop());
-
-for (i = 0; i < this.waitingUsers.length; i++) {
-  console.log(waitingUsers[i].id);
-}
-
-console.log('\n\ntimeLoop 3');
-console.log(timeLoop());
-
-for (i = 0; i < this.waitingUsers.length; i++) {
-  console.log(waitingUsers[i].id);
-}
-
-console.log('\n\ntimeLoop 4');
-console.log(timeLoop());
-
-for (i = 0; i < this.waitingUsers.length; i++) {
-  console.log(waitingUsers[i].id);
-}
-
-console.log('\n\ntimeLoop 5');
-console.log(timeLoop());
-
-for (i = 0; i < this.waitingUsers.length; i++) {
-  console.log(waitingUsers[i].id);
-}
-
-console.log('\n\ntimeLoop 6');
-console.log(timeLoop());
-
-for (i = 0; i < this.waitingUsers.length; i++) {
-  console.log(waitingUsers[i].id);
-}*/
