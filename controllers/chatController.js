@@ -9,6 +9,7 @@ io.sockets.on('connection', function(socket){
 	    socket.nickname = user_fb_name;
             users[socket.nickname] = socket;
      	    updateNicknames();
+	    console.log(users);
      }
     function updateNicknames(){
 	    
