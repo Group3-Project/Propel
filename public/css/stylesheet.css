@@ -167,6 +167,11 @@ a span:hover{
 .friends_table a:hover{
 	text-decoration:underline;
 }
+.profile-area .latestG{
+	object-fit:cover;
+	object-position:center;
+	height:174px;
+}
 
 /* GAME VIEW*/
 /*###################################################################*/
