@@ -39,7 +39,7 @@ io.sockets.on('connection', function(socket){
 								var n = name.toString();
 		 						for(var i=0; i<user_list.length; i++){
 		 							if (n == user_list[i]){
-									users[n].emit('whisper', {msg: msg, nick: socket.nickname});
+									users[0].emit('whisper', {msg: msg, nick: socket.nickname});
 									}else if (i == user_list.length-1 && n != user_list[i]){
 										callback('Error! Enter a valid User.');
 									}
