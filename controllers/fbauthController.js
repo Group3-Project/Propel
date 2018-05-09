@@ -22,7 +22,7 @@ function(accessToken, refreshToken, profile, done) {
   	profile_data.name = profile._json.name;
 	
 //Check if user with that FB_id isn't aleady registerd in the Database
-db.query("select count(1) from users where fb_id = " + profile_data.fb_id as duplicateCheck',function(err,resp){
+db.query("select count(1) from users where fb_id = " + profile_data.fb_id + " as duplicateCheck",function(err,resp){
 
 if(err){ //Error Handling
         console.log(err);
