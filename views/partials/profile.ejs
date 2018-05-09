@@ -35,8 +35,8 @@
 				
 				<%if(ownprofile){%>
 				<input id="txtbedit" readonly type="text" value="<%= userview.name %>">
-				<span id="edit"><i class="material-icons" onclick="editname()">edit</i></span>
-				<span id="tick"><i id="tick" style="visibility:collapse;" onclick="submitname()" class="material-icons">done</i></span>
+				<span id="edit" onclick="editname()"><i class="material-icons">edit</i></span>
+				<span id="tick" onclick="submitname()"><i id="tick" style="visibility:collapse;" class="material-icons">done</i></span>
 				<%}else{%>
 				<p><%= userview.name %></p>
 				<% } %>
