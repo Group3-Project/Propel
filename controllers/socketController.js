@@ -43,16 +43,10 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   });
 	
   socket.on('changeName', function(data){
-    var query = "UPDATE users SET name = '" + data.new_name + "' where fb_id = "+ data.user_id;
-	  console.log(query);
-    DB.query(query, function(error, rows, fields){
-      if(!!error){
-        console.log('MySQL Query Error: ' + error);
-      }else{
-	console.log(rows);
+	var promise_user = getData("UPDATE users SET name = '" + data.new_name + "' where fb_id = "+ data.user_id);
+	promise_user.then(function(dataUser){
         socket.emit('nameChanged');
-      }
-    });
+	});
   });
 
   socket.on('addFriend', function(data){
@@ -114,6 +108,21 @@ var get_gamescore = function(query){
 		});
 	});
 };
+	
+var getData = function (query){
+	return new Promise(function(resolve, reject){
+		DB.query(query, function(error, rows, fields){
+			if(!!error){
+				console.log('MySQL Query Error: ' + error);
+				reject(false);
+			}else{
+				resolve(rows);
+			}
+		});
+
+	});
+};
+	
 var gamer_score_temp = get_gamescore(query2);
 gamer_score_temp.then(function(gamerscore){
 	GamerScore = gamerscore[0].gamerscore;
