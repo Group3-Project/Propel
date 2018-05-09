@@ -16,19 +16,19 @@
 
 	<!-- ROW 2 -->
 	<div class="row">
-		<div class="col-lg-6 col-md-12" onclick = "checkLogin()">
+		<div class="col-lg-6 col-md-12" onclick = "checkLogin(<%= game_list[0].id %>)">
 			<div class="card card-item">
 				<span class="card-head"><%= game_list[0].name %></span>
 				<img class="hero-item" src = "<%= game_list[0].thumb %>">
 			</div>
 		</div>
-		<div class="col-lg-3 col-md-6" onclick = "checkLogin()">
+		<div class="col-lg-3 col-md-6" onclick = "checkLogin(<%= game_list[1].id %>)">
 			<div class="card card-item">
 				<span class="card-head"><%= game_list[1].name %></span>
 					<img class="hero-item" src = "<%= game_list[1].thumb %>">
 			</div>
 		</div>
-		<div class="col-lg-3 col-md-6" onclick = "checkLogin()">
+		<div class="col-lg-3 col-md-6" onclick = "checkLogin(<%= game_list[2].id %>)">
 			<div class="card card-item">
 				<span class="card-head"><%= game_list[2].name %></span>
 				<img class="hero-item" src = "<%= game_list[2].thumb %>">
@@ -69,9 +69,9 @@
 </div>
 
 <script type="text/javascript">
-	function checkLogin () {
+	function checkLogin (id) {
 		if(<%= user_id!= null %>){
-			window.location.href = "/gameView/<%= game_list[0].id %>";
+			window.location.href = "/gameView/" + id;
 		}else{
 			if (confirm("You must log in!")) {
 		        window.location.href = "/auth/facebook";
