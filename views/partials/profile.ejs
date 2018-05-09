@@ -120,5 +120,9 @@
 	function removeFriend(){
 		socket.emit('removefriend', {user_id : <%= user.id %>, friend_id : <%= userview.fb_id %> })
 	}
+	socket.on('nameChanged', function(data){
+	window.alert("hey");
+	}
+	
 </script>
 <% } %>
