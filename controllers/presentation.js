@@ -130,6 +130,7 @@ var waitingUsersFiltered = [];
 
 // you can call this on a new user connection
 function newConnection(id, gamerScore, game) {
+  console.log('with GamerScore : ' + gamerScore);
   var values = game.findRoom(id, gamerScore);
   if (values.id != null) { // if -> game was found
     game.removeRoom(values.id);
