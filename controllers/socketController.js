@@ -60,6 +60,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
         console.log(rows);
       }
   });
+  });
 
   socket.on('addFriend', function(data){
     var query = 'Select * from user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id;
