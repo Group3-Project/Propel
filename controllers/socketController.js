@@ -5,7 +5,7 @@ var GameName;
 var matchController = require('./matchController');
 const EventEmitter = require('events');
 const emitter = new EventEmitter();
-emitter.setMaxListeners(0);
+emitter.setMaxListeners(1000000000000);
 
 //Handling the Ping TimeOut
 io.set('heartbeat timeout',5000000);
