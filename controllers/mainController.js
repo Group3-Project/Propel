@@ -108,7 +108,7 @@ app.get('/profile',function(req, res){
 		 user_profile.fb_id = user_profile.id;
 		 var promise_friends = getData("select * from user_friends s1 LEFT JOIN users s2 ON s1.friend_id = s2.fb_id WHERE s1.user_id =" + user_profile.id);
 		promise_friends.then(function(dataFriends){
-			var promise_games = getData("select name, thumb from game_list s1, users s2 where s2.latest_game = s1.id);
+			var promise_games = getData("select name, thumb from game_list s1, users s2 where s2.latest_game = s1.id");
 			promise_games.then(function(dataGames){
 				console.log(dataGames);
 			});
