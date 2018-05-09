@@ -4,7 +4,7 @@ module.exports = function (app,passport,db) { //Initialise the login
 	passport.serializeUser(function(user, done) {
 	var promise_user = getData("SELECT * FROM users where fb_id =" + user._json.id);
  	promise_user.then(function(namechecker){
-		console.log("ddddddddddddddd");
+		console.log(namechecker);
 		user._json.name = namechecker[0].name;
 	});
 	done(null, user._json);
