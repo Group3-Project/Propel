@@ -60,12 +60,12 @@ io.sockets.on('connection', function(socket){
     });
 	
     //socket.on('disconnect', function(data){
-    socket.on('kill_user', (data)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainController
+    /*socket.on('kill_user', (data)=>{ //Only disconnect if Logout is pressed, cacthes the emit from mainController
         delete users[socket.nickname];
         Player.onDisconnect(socket);
 	user_fb_id = null;
         updateNicknames();
-    });
+    });*/
 
     socket.on('typing', function(data){
         io.sockets.emit('typing', {nick : user_fb_name});
