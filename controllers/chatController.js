@@ -55,17 +55,20 @@ io.sockets.on('connection', function(socket){
 			console.log('STARTING HERE YO');
 		for (var property in users) {
 		    if (users.hasOwnProperty(property)) {
-			
+			if (property.toString().toLowerCase().replace(/\s/g, '') == n) {
+				found = true;
+				break;
+			}
 			console.log('\n\n\nproperty print' + property);
 		    }
 		}
-		for(var i = 0; i < users.length; i++) {
+		/*for(var i = 0; i < users.length; i++) {
 			////console.log(users[i].name.toLowerCase().replace(/\s/g, ''));
 			if (users[i].name == n) {
 			found = true;
 			break;
 			}
-		}
+		}*/
 
 		if (found == true) {
 			//console.log('whipering');
