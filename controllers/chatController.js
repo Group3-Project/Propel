@@ -69,8 +69,8 @@ io.sockets.on('connection', function(socket){
 				console.log('match found');
 				var emitto = user_id_list[i].id.toString();;
 				console.log(emitto);
-				//emitto.emit('whisper', {msg: msg, nick: socket.nickname});
-				socket.broadcast.to(emitto).emit('whisper', {msg: msg, nick: socket.nickname});
+				emitto.emit('whisper', {msg: msg, nick: socket.nickname});
+				//socket.broadcast.to(emitto).emit('whisper', {msg: msg, nick: socket.nickname});
 				            //io.sockets.emit('whisper', {msg: msg, nick: socket.nickname});
 
 				break;
