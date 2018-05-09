@@ -1,11 +1,9 @@
 module.exports = function(app,express,server, user_fb_id,Player,initPack,removePack,user_fb_name,io,DB){ //Get all the passed variables
-import EventEmitter from 'events';
+
 var GamerScore;
 var GameName;
 var matchController = require('./matchController');
 
-const emitter = new EventEmitter();
-emitter.setMaxListeners(0);
 
 //Handling the Ping TimeOut
 io.set('heartbeat timeout',5000000);
