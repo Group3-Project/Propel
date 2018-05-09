@@ -173,12 +173,14 @@ function timeLoop() {
       return 'null';
     }
   }
+  console.log('\n');
 }
 
 var chess = new game( 8082, 2 );
 var shoot = new game( 8084, 4 );
 
 // Testing variables
+console.log('\n');
 console.log('New Connection initiated by Kuber');
 newConnection('Kuber', 9, chess);
 console.log('New Connection initiated by Markuss');
@@ -200,19 +202,14 @@ console.log('\n--------MatchMaking--------\n');
 
 console.log('TimeLoop 1 :');
 console.log(timeLoop());
-console.log('\n');
+
 console.log('TimeLoop 2 :');
 console.log(timeLoop());
-console.log('\n');
 console.log('TimeLoop 3 :');
 console.log(timeLoop());
-console.log('\n');
 console.log('TimeLoop 4 :');
 console.log(timeLoop());
-console.log('\n');
 console.log('TimeLoop 5 :');
 console.log(timeLoop());
-console.log('\n');
 console.log('TimeLoop 6 :');
 console.log(timeLoop());
-console.log('\n');
