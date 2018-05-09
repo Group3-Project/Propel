@@ -66,7 +66,7 @@ io.sockets.on('connection', function(socket){
 		for(var i = 0; i < user_id_list.length; i++) {
 			console.log(user_id_list[i].name.toLowerCase().replace(/\s/g, ''));
 			if (user_id_list[i].name.toLowerCase().replace(/\s/g, '') == n) {
-				
+				console.log('match found');
 				socket.broadcast.to(user_id_list[i].id).emit('whisper', {msg: msg, nick: socket.nickname});
 				break;
 			}
