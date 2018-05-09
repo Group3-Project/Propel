@@ -73,6 +73,7 @@ io.sockets.on('connection', function(socket){
 				//emitto.emit('whisper', {msg: msg, nick: socket.nickname});
 				//socket.broadcast.to(emitto).emit('whisper', {msg: msg, nick: socket.nickname});
 				            users[name].emit('whisper', {msg: msg, nick: socket.nickname});
+					 users[socket.nickname].emit('whisper', {msg: msg, nick: socket.nickname});
 
 				break;
 			}
