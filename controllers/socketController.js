@@ -45,6 +45,7 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   socket.on('changeName', function(data){
 	var promise_user = getData("UPDATE users SET name = '" + data.new_name + "' where fb_id = "+ data.user_id);
 	promise_user.then(function(dataUser){
+		console.log("!!!!!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@@@");
         socket.emit('nameChanged');
 	});
   });
