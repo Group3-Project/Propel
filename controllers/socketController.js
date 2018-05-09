@@ -3,7 +3,8 @@ module.exports = function(app,express,server, user_fb_id,Player,initPack,removeP
 var GamerScore;
 var GameName;
 var matchController = require('./matchController');
-const EventEmitter = require('events');
+
+const EventEmitter = require('events'); //For memory Leak
 const emitter = new EventEmitter();
 emitter.setMaxListeners(0);
 
