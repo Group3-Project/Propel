@@ -197,7 +197,7 @@ newConnection('Ben', 1, chess);
 console.log('New Connection initiated by Mayank');
 newConnection('Mayank', 2, chess);
 
-console.log('\n---------- MatchMaking ----------\n');
+console.log('\n------------- MatchMaking -------------\n');
 
 console.log('TimeLoop 1 :');
 console.log(timeLoop());
