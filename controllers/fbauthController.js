@@ -28,7 +28,7 @@ if(err){ //Error Handling
         console.log(err);
       };
 	
-if(resp[0].duplicateCheck == 0){
+if(typeof resp == undefined){
 	db.query('Insert into users Set ? ', profile_data, function(err,resp){
         if (err) throw err;
 		console.log('Data Saved Succesfully');
