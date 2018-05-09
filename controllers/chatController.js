@@ -5,7 +5,7 @@ module.exports = function(app,express,server,user_fb_id,Player,user_fb_name,io,u
 	//console.log('users abiut to be bhfoijhvrdvjhsdhuf');
 	//console.log(users);
 //console.log('users length here 1 ' + users.length);
-
+var user_id_list = [];
 //listen on every connection
 io.sockets.on('connection', function(socket){
 	//console.log('users length here 2 ' + users.length);
@@ -33,6 +33,8 @@ io.sockets.on('connection', function(socket){
 
        	 }
 	    //console.log('users length here 7 ' + users.length);
+	    user_id_list = [];
+	    user_id_list = temp_list;
         io.sockets.emit('usernames', temp_list);
     }
 
@@ -50,30 +52,24 @@ io.sockets.on('connection', function(socket){
 		var n = name.toString().toLowerCase().replace(/\s/g, '');
 		////console.log('-1 whispering here 2');
 		////console.log('xXx' + n + 'xXx');
-		var found = false;
 		//console.log('users length here 9 ' + users.length);
-			console.log('STARTING HERE YO');
 		for (var property in users) {
 		    if (users.hasOwnProperty(property)) {
 			if (property.toString().toLowerCase().replace(/\s/g, '') == n) {
-				found = true;
+				socket.broadcast.to(user_fb_name).emit('whisper', {msg: msg, nick: socket.nickname});
 				break;
 			}
-			console.log('\n\n\nproperty print' + property);
+			//console.log('\n\n\nproperty print' + property);
 		    }
 		}
-		/*for(var i = 0; i < users.length; i++) {
+		for(var i = 0; i < user_id_list.length; i++) {
 			////console.log(users[i].name.toLowerCase().replace(/\s/g, ''));
-			if (users[i].name == n) {
-			found = true;
-			break;
+			if (user_id_list[i].name.toLowerCase().replace(/\s/g, '') == n) {
+				socket.broadcast.to(user_id_list[i].id).emit('whisper', {msg: msg, nick: socket.nickname});
+				break;
 			}
-		}*/
-
-		if (found == true) {
-			//console.log('whipering');
-			socket.broadcast.to(user_fb_name).emit('whisper', {msg: msg, nick: socket.nickname});
 		}
+
 
 
             }
