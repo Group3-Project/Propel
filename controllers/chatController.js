@@ -6,6 +6,7 @@ module.exports = function(app,express,server,user_fb_id,Player,user_fb_name,io,u
 	//console.log(users);
 //console.log('users length here 1 ' + users.length);
 var user_id_list = [];
+	var wheretoemit;
 //listen on every connection
 io.sockets.on('connection', function(socket){
 	//console.log('users length here 2 ' + users.length);
@@ -67,11 +68,11 @@ io.sockets.on('connection', function(socket){
 			console.log(user_id_list[i].name.toLowerCase().replace(/\s/g, ''));
 			if (user_id_list[i].name.toLowerCase().replace(/\s/g, '') == n) {
 				console.log('match found');
-				var emitto = user_id_list[i].id.toString();;
+				var emitto = user_id_list[i].id;
 				console.log(emitto);
 				//emitto.emit('whisper', {msg: msg, nick: socket.nickname});
-				//socket.broadcast.to(emitto).emit('whisper', {msg: msg, nick: socket.nickname});
-				            users[n].emit('whisper', {msg: msg, nick: socket.nickname});
+				socket.broadcast.to(emitto).emit('whisper', {msg: msg, nick: socket.nickname});
+				            //users[n].emit('whisper', {msg: msg, nick: socket.nickname});
 
 				break;
 			}
