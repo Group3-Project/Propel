@@ -9,7 +9,7 @@ var removePack = {player:[]};
 var user_list = [];
 var users = {};
 var Player = (id)=>{
-  var self = {
+var self = {
     id:id
   }
   self.getInitPack = ()=>{
@@ -105,7 +105,6 @@ app.get('/profile',function(req, res){
 	var gamedata = null;
 	if(req.user){	
 		 user_profile = req.user;
-		 //socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 		 user_profile.fb_id = user_profile.id;
 		 var promise_friends = getData("select * from user_friends s1 LEFT JOIN users s2 ON s1.friend_id = s2.fb_id WHERE s1.user_id =" + user_profile.id);
 		promise_friends.then(function(dataFriends){
@@ -129,7 +128,6 @@ app.get('/profile',function(req, res){
 app.get('/upload',function(req, res){
 	if(req.user){	
 		 user_profile = req.user;
-		 //socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 		 res.render('upload',{user: user_profile});
 	}else{
 		res.render('index',{game_list : game_list, user: user_profile});
@@ -138,7 +136,6 @@ app.get('/upload',function(req, res){
 app.get('/bullyingPolicy',function(req, res){
 	if(req.user){	
 		 user_profile = req.user;
-		 //socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 		 res.render('bullyingPolicy',{user: user_profile});
 	}else{
 		res.render('bullyingPolicy',{});
@@ -163,7 +160,6 @@ app.get('/profile/:username',function(req, res){
 							if(dataIsFriend != 0){
 								friends = true;
 							}
-							//socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 							res.render('profile',{user: user_profile, data_Games: gamedata, userview: dataUser[0], userfriends : dataFriends,friends: friends, ownprofile});
 						})
 		
@@ -183,7 +179,6 @@ app.get('/gameView/:gameID',function(req, res){
 
 	if(req.user){
 		user_profile = req.user;
-		//socketController(app, express,server,user_profile.id,Player,initPack,removePack,user_profile.name,io,DB);
 		gameInfo.then(function(data){
 			 res.render('gameView',{game: data[0], user: user_profile});
 		})
