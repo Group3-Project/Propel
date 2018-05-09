@@ -50,7 +50,9 @@
 		document.getElementById("txtbedit").style.background = "initial";
 		document.getElementById("tick").style.display = "none";
 		document.getElementById("edit").style.display = "initial";
-
+		var new_name = document.getElementById("txtbedit").value;
+		socket.emit('changeName', {user_id : <%= user.id %>, new_name });
+		window.location.reload(true);
 	}
 </script>
 				<input id="txtbedit" readonly type="text" value="<%= userview.name %>">
