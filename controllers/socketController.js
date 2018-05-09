@@ -51,6 +51,14 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
         socket.emit('nameChanged');
       }
     });
+	 
+	var query = "Select * from users";
+    DB.query(query, function(error, rows, fields){
+      if(!!error){
+        console.log('MySQL Query Error: ' + error);
+      }else{
+        console.log(rows);
+      }
   });
 
   socket.on('addFriend', function(data){
