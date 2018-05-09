@@ -51,4 +51,4 @@ var mainController = require('./controllers/mainController');
 
 //Launch the defined controllers
 mainController(app,connection, express, server);
-fbauthController(app,passport,connection, server);
+fbauthController(app,passport,connection);
