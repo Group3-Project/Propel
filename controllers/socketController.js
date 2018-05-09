@@ -42,22 +42,11 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
     console.log(user_fb_id + ' Assigned Game');
   });
 	
-  socket.on('changeName', function(data){	
-	var promise_user = getData("Select * from users");
-	promise_user.then(function(dataUser){
-        console.log(dataUser);
-	});
-	  
+  socket.on('changeName', function(data){		  
 	var promise_user = getData("UPDATE users SET name = '" + data.new_name + "' where fb_id = "+ data.user_id);
 	promise_user.then(function(dataUser){
         socket.emit('nameChanged');
-	});
-	  
-	var promise_user = getData("Select * from users");
-	promise_user.then(function(dataUser){
-        console.log(dataUser);
-	});
-	
+	});	
   });
 
   socket.on('addFriend', function(data){
