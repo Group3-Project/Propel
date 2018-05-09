@@ -43,11 +43,31 @@ io.sockets.on('connection', (socket)=>{ //Whenever a player connect
   });
 	
   socket.on('changeName', function(data){
+	  var query = 'Select * from user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id;
+    DB.query(query, function(error, rows, fields){
+      if(!!error){
+        console.log('MySQL Query Error: ' + error);
+      }else{
+	      console.log(rows);
+      }
+    });
+  });
+	  
 	var promise_user = getData("UPDATE users SET name = '" + data.new_name + "' where fb_id = "+ data.user_id);
 	promise_user.then(function(dataUser){
 		console.log("!!!!!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@@@");
         socket.emit('nameChanged');
 	});
+	
+		  var query2 = 'Select * from user_friends where user_id ='+ data.user_id+' and friend_id='+ data.friend_id;
+    DB.query(query2, function(error, rows, fields){
+      if(!!error){
+        console.log('MySQL Query Error: ' + error);
+      }else{
+	      console.log(rows);
+      }
+    });
+  });
   });
 
   socket.on('addFriend', function(data){
