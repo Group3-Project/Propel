@@ -92,9 +92,16 @@ Global Chat
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
+      var Whipser = [];
       socket.on('whisper', function(data){
         messageBox.val("");
-        chat.append('<span class="whipser"><b>' + data.nick +':- </b> '+ data.msg + '</span><br/>');
+        var value = '';
+        value += '<span class="msg"><b>' + data.nick +':  </b> '+ data.msg + '</span><br/>';
+        if(list.indexOf(value) < 0){
+            chat.append(value);
+            Whisper.push(value);
+        }
+        //chat.append('<span class="whipser"><b>' + data.nick +':- </b> '+ data.msg + '</span><br/>');
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
