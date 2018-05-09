@@ -32,26 +32,27 @@ io.sockets.on('connection', function(socket){
     socket.on('send message', function(data, callback){
         var msg = data.trim();
         if(msg.substr(0,3) === '/w '){
-            msg = msg.substr(3);
-            var ind = msg.indexOf('/');
-            if(ind !== -1){
-		console.log('-1 wispering here');
+		msg = msg.substr(3);
+		var ind = msg.indexOf('/');
+		if(ind !== -1){
+		console.log('-1 whispering here');
                 var name = msg.substring(0, ind);
                 var msg = msg.substring(ind + 1);
-			var n = name.toString();
-
-			var found = false;
-			for(var i = 0; i < users.length; i++) {
-				if (users[i].name == n) {
-				found = true;
-				break;
-				}
+		var n = name.toString();
+		console.log('-1 whispering here 2');
+		console.log(n);
+		var found = false;
+		for(var i = 0; i < users.length; i++) {
+			if (users[i].name == n) {
+			found = true;
+			break;
 			}
+		}
 
-			if (found == true) {
-				console.log('whipering');
-				socket.broadcast.to(user_fb_name).emit('whisper', {msg: msg, nick: socket.nickname});
-			}
+		if (found == true) {
+			console.log('whipering');
+			socket.broadcast.to(user_fb_name).emit('whisper', {msg: msg, nick: socket.nickname});
+		}
 
 
             }
