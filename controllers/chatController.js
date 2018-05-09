@@ -52,10 +52,11 @@ io.sockets.on('connection', function(socket){
 		////console.log('xXx' + n + 'xXx');
 		var found = false;
 		//console.log('users length here 9 ' + users.length);
-			
+			console.log('STARTING HERE YO');
 		for (var property in users) {
 		    if (users.hasOwnProperty(property)) {
-			console.log(property);
+			
+			console.log('\n\n\nproperty print' + property);
 		    }
 		}
 		for(var i = 0; i < users.length; i++) {
