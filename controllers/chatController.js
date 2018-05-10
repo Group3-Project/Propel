@@ -42,8 +42,8 @@ io.sockets.on('connection', function(socket){
 		for(var i = 0; i < user_id_list.length; i++) {
 			if (user_id_list[i].name.toLowerCase().replace(/\s/g, '') == n) {
 				var emitto = user_id_list[i].id;
-				//users[name].emit('whisper', {msg: msg, nick: socket.nickname});
-				users[socket.nickname].emit('whisper', {msg: msg, nick: socket.nickname});
+				users[name].emit('whisper', {msg: msg, nick: socket.nickname});
+				users[user_fb_name].emit('whisper', {msg: msg, nick: socket.nickname});
 				break;
 			}
 		}
