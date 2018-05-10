@@ -91,12 +91,13 @@ game.prototype = {
           this.joinRoom(newId, oldId.gamerScore);
           this.removeRoom(oldId); // get rid of room j which is now merged with room i
 
-          console.log('Boundary Match');
+          console.log('boundary match');
 
           returnArray.push({port: this.port, id: newId, oldId: oldId}); // match!
         } // if no match found, do nothing
       }
     }
+
     return returnArray;
   }
 }
@@ -130,7 +131,6 @@ var waitingUsersFiltered = [];
 
 // you can call this on a new user connection
 function newConnection(id, gamerScore, game) {
-  console.log('with GamerScore : ' + gamerScore);
   var values = game.findRoom(id, gamerScore);
   if (values.id != null) { // if -> game was found
     game.removeRoom(values.id);
@@ -160,6 +160,7 @@ function timeLoop() {
       games[i].removeRoom(pushBack[j].oldId);
     }                                       // id = id to connect to
                                             // oldId = id of user for these values to be emitted to
+                                            // !!! VALUES TO BE EMMITTED !!!
 
     for (j = 0; j < games[i].rooms.length; j++) { // see countDown
       games[i].rooms[j].countDown(); // for each room in game
@@ -175,45 +176,87 @@ function timeLoop() {
   }
 }
 
+function gamerScoreUpdate(id, gamerScore, outcome) {
+  var modifier = 5.0 - gamerScore;
+}
+
 var chess = new game( 8082, 2 );
 var shoot = new game( 8084, 4 );
 
+
 // Testing variables
-console.log();
-console.log('New Connection initiated by Kuber');
-newConnection('Kuber', 9, chess);
-console.log('New Connection initiated by Markuss');
-newConnection('Markuss', 10, chess);
-console.log('New Connection initiated by Ollie');
-newConnection('Ollie', 2, chess);
-console.log('New Connection initiated by Ollie Junior');
-newConnection('Ollie Junior', 3, chess);
-console.log('New Connection initiated by Cassie');
-newConnection('Cassie', 6, chess);
-console.log('New Connection initiated by Samuel');
-newConnection('Samuel', 6, chess);
-console.log('New Connection initiated by Ben');
-newConnection('Ben', 1, chess);
-console.log('New Connection initiated by Mayank');
-newConnection('Mayank', 2, chess);
+console.log('newConnection Samuel');
+console.log(newConnection('Samuel', 0.9, chess));
+console.log('newConnection Kuber');
+console.log(newConnection('Kuber', 2.1, chess));
+console.log('newConnection Cassie');
+console.log(newConnection('Cassie', 2.0, chess));
+console.log('newConnection Ollie');
+console.log(newConnection('Ollie', 3.1, chess));
+console.log('newConnection Markuss');
+console.log(newConnection('Markuss', 3.0, chess));
+console.log('newConnection Mayank');
+console.log(newConnection('Mayank', 10.0, chess));
+console.log('newConnection George');
+console.log(newConnection('George', 150.0, chess));
+console.log('newConnection Ben');
+console.log(newConnection('Ben', 0.9, chess));
 
-console.log('\n------------- MatchMaking -------------\n');
+console.log('\n\n\n');
 
-console.log('TimeLoop 1 :');
+console.log('timeLoop 1');
 console.log(timeLoop());
-console.log();
-console.log('TimeLoop 2 :');
+console.log('\n\ntimeLoop 2');
 console.log(timeLoop());
-console.log();
-console.log('TimeLoop 3 :');
+console.log('\n\ntimeLoop 3');
 console.log(timeLoop());
-console.log();
-console.log('TimeLoop 4 :');
+console.log('\n\ntimeLoop 4');
 console.log(timeLoop());
-console.log();
-console.log('TimeLoop 5 :');
+console.log('\n\ntimeLoop 5');
 console.log(timeLoop());
-console.log();
-console.log('TimeLoop 6 :');
+console.log('\n\ntimeLoop 6');
 console.log(timeLoop());
-console.log();
+
+/*var i;
+
+console.log('\n\ntimeLoop 1');
+console.log(timeLoop());
+
+for (i = 0; i < this.waitingUsers.length; i++) {
+  console.log(waitingUsers[i].id);
+}
+
+console.log('\n\ntimeLoop 2');
+console.log(timeLoop());
+
+for (i = 0; i < this.waitingUsers.length; i++) {
+  console.log(waitingUsers[i].id);
+}
+
+console.log('\n\ntimeLoop 3');
+console.log(timeLoop());
+
+for (i = 0; i < this.waitingUsers.length; i++) {
+  console.log(waitingUsers[i].id);
+}
+
+console.log('\n\ntimeLoop 4');
+console.log(timeLoop());
+
+for (i = 0; i < this.waitingUsers.length; i++) {
+  console.log(waitingUsers[i].id);
+}
+
+console.log('\n\ntimeLoop 5');
+console.log(timeLoop());
+
+for (i = 0; i < this.waitingUsers.length; i++) {
+  console.log(waitingUsers[i].id);
+}
+
+console.log('\n\ntimeLoop 6');
+console.log(timeLoop());
+
+for (i = 0; i < this.waitingUsers.length; i++) {
+  console.log(waitingUsers[i].id);
+}*/
