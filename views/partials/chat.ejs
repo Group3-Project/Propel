@@ -91,9 +91,15 @@ Global Chat
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
+      var list2 = [];
       socket.on('whisper', function(data){
         messageBox.val("");
-        chat.append('<span class="whipser"><b>' + data.nick +':- </b> '+ data.msg + '</span><br/>');
+        var value2 = '';
+        value2 = '<span class="whipser"><b>' + data.nick +':- </b> '+ data.msg + '</span><br/>';
+        if(list.indexOf(value2) < 0){
+          chat.append(value2);
+          list2.push(value2);
+        }
         box.scrollTop = box.scrollHeight;
         typing.html("");
       });
