@@ -10,7 +10,6 @@ module.exports = function (app,passport,db) { //Initialise the login
 });
 	
 var getData = function (query){
-	console.log("heheh");
 	return new Promise(function(resolve, reject){
 		db.query(query, function(error, rows, fields){
 			if(!!error){
@@ -39,8 +38,7 @@ function(accessToken, refreshToken, profile, done) {
   	profile_data = {};
   	profile_data. email = profile._json.email;
   	profile_data.fb_id = profile._json.id;
-	profile_data.name = profile._json.name+"XXX";
-	console.log(profile_data.name + "000");
+	profile_data.name = profile._json.name;
 	
 //Check if user with that FB_id isn't aleady registerd in the Database
 db.query('select exists (select 1 from users where fb_id =  ?) as duplicateCheck', profile_data.fb_id, function(err,resp){
