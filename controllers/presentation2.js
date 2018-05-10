@@ -1,31 +1,4 @@
-function game(port, noPlayers) {
-  this.port = port;
-  this.noPlayers = noPlayers; // noPlayers == max number of players in given game, - ref , 2 in chess, 4 in shooter - need to pass this
-  this.rooms = [];
-}
-
-game.prototype = {
-  findRoom: function(id, gamerScore) {
-    if (this.rooms.length == 0) {
-      this.addRoom(id, gamerScore); // create new room
-
-      return {port: this.port, id: null};
-    } else {
-      for (var i = 0; i < this.rooms.length; i++) { // loop through all waiting (not yet filled) rooms
-        var gs = this.rooms[i].returnGamerScore(); // get rooms average gamerScore and how long its been waiting
-        var t = 5 - this.rooms[i].time;
-        var newId;
-
-  
-        
-        
-        
-        
-        
-        
-        
-        
-        if (t == 5) {
+       if (t == 5) {
           newId = this.rooms[i].id;
           this.joinRoom(this.rooms[i].id, gamerScore);
 
