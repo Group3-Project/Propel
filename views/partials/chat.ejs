@@ -61,6 +61,7 @@ Global Chat
           user += '<a href = "/profile/' + data[i].id + '">' + data[i].name + '</a><br/>'
         }
         if(user_control.indexOf(user) < 0){
+            users.html('');
             users.append(user);
             user_control.push(user);
         }
