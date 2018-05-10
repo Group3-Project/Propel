@@ -110,7 +110,9 @@
 		<div class="col-lg-3">
 			<div class="card latestG">
 				<span class="card-head">Latest Game</span>
+				<%if(typeof data_Games[0] != "undefined"){%>
 				<img src="<%= data_Games[0].thumb%>">
+				<%}%>
 			</div>
 		</div>
 	</div>
